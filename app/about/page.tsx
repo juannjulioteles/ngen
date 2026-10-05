@@ -20,6 +20,22 @@ export default function AboutPage() {
         layout="wide"
         title={about.title}
         intro={about.intro}
+        media={
+          // Where it began: the real Trailblazers room, greyscale until pointed at.
+          <figure className="group flex flex-col gap-3">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-stone-2 md:aspect-[21/9]">
+              <Image
+                src={site.photos.trailblazers.src}
+                alt={site.photos.trailblazers.alt}
+                fill
+                priority
+                sizes="(min-width: 1312px) 1216px, 100vw"
+                className="object-cover object-[50%_40%] grayscale transition-[filter,transform] duration-700 ease-out group-hover:scale-[1.02] group-hover:grayscale-0"
+              />
+            </div>
+            <figcaption className="text-small text-graphite">{site.photos.trailblazers.caption}</figcaption>
+          </figure>
+        }
         action={
           <PageLink href={site.nav.cta.href} className="btn btn-ink">
             {site.nav.cta.label}

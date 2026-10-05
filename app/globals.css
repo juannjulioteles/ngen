@@ -242,6 +242,41 @@
   }
 }
 
+/* Contact: the drawn email's subject follows whichever topic is hovered or focused */
+.draft-subject {
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s var(--ease-out);
+}
+.draft-subject[data-subject="0"],
+header:has([data-topic="1"]:is(:hover, :focus-visible)) .draft-subject[data-subject="1"],
+header:has([data-topic="2"]:is(:hover, :focus-visible)) .draft-subject[data-subject="2"],
+header:has([data-topic="3"]:is(:hover, :focus-visible)) .draft-subject[data-subject="3"],
+header:has([data-topic="4"]:is(:hover, :focus-visible)) .draft-subject[data-subject="4"] {
+  opacity: 1;
+  transform: none;
+}
+header:has([data-topic]:is(:hover, :focus-visible)) .draft-subject[data-subject="0"] {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+.draft-caret {
+  display: inline-block;
+  width: 1.5px;
+  height: 1.05em;
+  margin-left: 0.12em;
+  vertical-align: -0.15em;
+  background: currentColor;
+  animation: caret 1.1s steps(1) infinite;
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
 /* The mission diagram draws itself once it is in view */
 .venn {
   color: var(--color-paper);

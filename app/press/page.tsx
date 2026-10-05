@@ -8,13 +8,7 @@ const { press } = pages;
 
 export const metadata: Metadata = { title: "Press release", description: press.title };
 
-/** The Trailblazers room, from NGEN's own site. */
-const photo = {
-  src: "https://www.ngennetwork.org/home/hero-ngen-new-group-3200.webp",
-  alt: "NGEN student founders at the Trailblazers Conference in New York",
-  width: 1679,
-  height: 1119,
-};
+const photo = site.photos.trailblazers;
 
 const domain = (href: string) => new URL(href).hostname.replace(/^www\./, "");
 

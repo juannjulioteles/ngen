@@ -16,6 +16,8 @@ const { nav, labels } = site;
  * Once you scroll, the whole bar lifts into a floating frosted pill and the
  * lockup folds down to the vine.
  */
+const DARK_HEADERS = ["/contact"];
+
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -61,6 +63,8 @@ export function SiteNav() {
 
   const isActive = (href: string) => pathname === href;
   const pill = scrolled && !open;
+  /** Pages whose header is set on ink: the lockup and button flip to paper until you scroll. */
+  const darkTop = DARK_HEADERS.includes(pathname) && !scrolled && !open;
   const frost = "bg-paper/72 shadow-[0_10px_30px_-14px_rgb(21_24_21/0.28)] ring-1 ring-ink/6 backdrop-blur-xl backdrop-saturate-150";
 
   return (
@@ -124,7 +128,7 @@ export function SiteNav() {
                 pill ? "pointer-events-none -translate-y-1 opacity-0" : "opacity-100"
               }`}
             >
-              <Wordmark priority tone={open ? "cream" : "ink"} className="h-11" />
+              <Wordmark priority tone={open || darkTop ? "cream" : "ink"} className="h-11" />
             </span>
             <span
               className={`absolute inset-y-0 left-0 flex items-center transition-[opacity,transform] duration-500 ease-out ${
@@ -153,7 +157,7 @@ export function SiteNav() {
                 </li>
               ))}
             </ul>
-            <PageLink href={nav.cta.href} className="btn btn-ink min-h-10 px-4 text-small max-nav:hidden">
+            <PageLink href={nav.cta.href} className={`btn ${darkTop ? "btn-paper" : "btn-ink"} min-h-10 px-4 text-small max-nav:hidden`}>
               {nav.cta.label}
             </PageLink>
             <button

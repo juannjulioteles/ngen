@@ -10,6 +10,11 @@ export const metadata: Metadata = { title: "Sponsors", description: sponsors.int
 
 const mailto = (subject: string) => `mailto:${site.links.email}?subject=${encodeURIComponent(subject)}`;
 
+/** The three that raised the most, for the header mosaic. */
+const founders = ["Series", "Freya", "Nerd Apply"]
+  .map((name) => site.startups.items.find((s) => s.name === name))
+  .filter((s): s is (typeof site.startups.items)[number] => Boolean(s));
+
 export default function SponsorsPage() {
   const logos = site.partner.logos;
 
@@ -20,27 +25,47 @@ export default function SponsorsPage() {
         title={sponsors.title}
         intro={sponsors.intro}
         action={
-          <a href={mailto(`${site.name}: partnership`)} className="btn btn-ink">
-            {sponsors.ctaTitle}
-          </a>
-        }
-        aside={
-          // The case for partnering, at a glance: what founders raised, and who backs them.
-          <div className="flex flex-col gap-8">
-            <dl className="grid grid-cols-2 gap-x-8">
+          <div className="flex flex-col items-start gap-10">
+            <a href={mailto(`${site.name}: partnership`)} className="btn btn-ink">
+              {sponsors.ctaTitle}
+            </a>
+            {/* Proof, grouped with the pitch and clearly smaller than the headline */}
+            <dl className="grid w-full max-w-md grid-cols-2 gap-x-8">
               {sponsors.figures.map((f) => (
                 <div key={f.label} className="border-t border-ink/15 pt-4">
                   <dt className="sr-only">{f.label}</dt>
-                  <dd className="font-display text-[2.5rem] leading-none">{f.value}</dd>
+                  <dd className="font-display text-[2rem] leading-none">{f.value}</dd>
                   <dd className="mt-2 text-small text-graphite">{f.label}</dd>
                 </div>
               ))}
             </dl>
-            <div className="border-t border-ink/15 pt-4">
-              <p className="text-small text-graphite">{site.strip.label}</p>
-              <p className="mt-2 text-base text-ink/80">{site.strip.firms.map((f) => f.name).join(", ")}</p>
-            </div>
           </div>
+        }
+        aside={
+          // The headline promises the next generation of founders: show them.
+          <figure className="flex flex-col gap-3">
+            <div className="grid grid-cols-2 grid-rows-2 gap-3">
+              {founders.map((s, i) => (
+                <div
+                  key={s.name}
+                  className={`group relative overflow-hidden rounded-xl bg-stone-2 ${i === 0 ? "row-span-2" : "aspect-[4/3]"}`}
+                >
+                  <Image
+                    src={s.photo.src}
+                    alt={s.photo.alt}
+                    fill
+                    sizes="(min-width: 1024px) 260px, 50vw"
+                    className="object-cover grayscale transition-[filter,transform] duration-700 ease-out group-hover:scale-[1.04] group-hover:grayscale-0"
+                  />
+                  <span className="absolute bottom-3 left-3 rounded-full bg-paper/90 px-3 py-1 text-small backdrop-blur">
+                    <span className="font-medium">{s.name}</span>
+                    <span className="text-graphite">, {s.badge}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+            <figcaption className="text-small text-graphite">{site.startups.title}, from the NGEN network.</figcaption>
+          </figure>
         }
       />
 

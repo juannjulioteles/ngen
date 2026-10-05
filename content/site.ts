@@ -109,6 +109,8 @@ export type SiteContent = {
       replay: string;
     };
   };
+  /** Real photography, from NGEN's site. */
+  photos: { trailblazers: ImageAsset & { caption: string } };
   strip: {
     label: string;
     /** Firms behind past speakers and alumni. Add `logo` to show a mark instead of the name. */
@@ -224,6 +226,16 @@ export const site: SiteContent = {
       soundOff: "Sound off",
       soundPending: "Click for sound",
       replay: "Watch the launch, with sound",
+    },
+  },
+
+  photos: {
+    trailblazers: {
+      src: "https://www.ngennetwork.org/home/hero-ngen-new-group-3200.webp",
+      alt: "NGEN student founders at the Trailblazers Conference in New York",
+      width: 1679,
+      height: 1119,
+      caption: "Student founders at the Trailblazers Conference, New York.",
     },
   },
 
@@ -512,9 +524,10 @@ export type PagesContent = {
     title: string;
     intro: string;
     topics: ContactTopic[];
-    emailLabel: string;
-    emailNote: string;
     emailCta: string;
+    /** The email drawn on the right, as it opens in your mail app. */
+    draft: { label: string; to: string; subject: string; body: string };
+    topicsTitle: string;
   };
 };
 
@@ -662,8 +675,8 @@ export const pages: PagesContent = {
       { title: "Speaking", body: "Propose yourself or someone else.", subject: "Ivy League Entrepreneurship Conference: speaking" },
       { title: "Press", body: "Media and interview requests.", subject: "Ivy League Entrepreneurship Conference: press" },
     ],
-    emailLabel: "Write to us directly",
-    emailNote: "Or pick a topic below and your email goes to the right person.",
     emailCta: "Write an email",
+    draft: { label: "New message", to: "To", subject: "Subject", body: "Hello, I’m writing about" },
+    topicsTitle: "Or pick a topic, and it reaches the right person",
   },
 };

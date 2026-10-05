@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { pages, site } from "@/content/site";
-import { NgenMark } from "@/components/brand/Ngen";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
 
@@ -19,14 +18,25 @@ export default function TeamPage() {
         title={team.title}
         intro={team.intro}
         aside={
-          // Joining is the one thing to do on this page, so it leads.
-          <div className="grain flex flex-col items-start gap-5 rounded-xl bg-ink p-7 text-paper">
-            <NgenMark className="h-8" />
-            <h2 className="font-display text-h3">{team.joinTitle}</h2>
-            <p className="text-base text-paper/75">{team.joinBody}</p>
-            <a href={joinHref} className="btn btn-paper mt-1">
-              {team.joinCta}
-            </a>
+          // Built by students: the real NGEN students, with the one action (joining) laid over the corner.
+          <div className="relative pb-16 lg:pb-20">
+            <div className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-stone-2">
+              <Image
+                src={site.photos.trailblazers.src}
+                alt={site.photos.trailblazers.alt}
+                fill
+                priority
+                sizes="(min-width: 1024px) 520px, 100vw"
+                className="object-cover object-[50%_65%] grayscale transition-[filter,transform] duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0"
+              />
+            </div>
+            <div className="absolute right-4 bottom-0 left-4 flex flex-col items-start gap-3 rounded-xl bg-ink p-6 text-paper shadow-[0_24px_50px_-20px_rgb(0_0_0/0.5)] sm:left-auto sm:max-w-[22rem]">
+              <h2 className="font-display text-h3">{team.joinTitle}</h2>
+              <p className="text-small text-paper/75">{team.joinBody}</p>
+              <a href={joinHref} className="btn btn-paper mt-1 min-h-10 px-4 text-small">
+                {team.joinCta}
+              </a>
+            </div>
           </div>
         }
       />
