@@ -31,7 +31,7 @@ export function AttendPartner() {
 
         <div className="rule flex flex-col items-start gap-6 max-lg:border-t max-lg:pt-16 lg:border-l lg:pl-[clamp(2rem,5vw,5rem)]">
           <h2 className="font-display text-h1">{partner.title}</h2>
-          <p className="text-lead [text-wrap:balance]">{withNgen(partner.body)}</p>
+          <p className="text-lead lg:[text-wrap:pretty]">{withNgen(partner.body)}</p>
           <a href={`mailto:${links.email}`} className="link font-display text-h3 [overflow-wrap:anywhere]">
             {links.email}
           </a>
