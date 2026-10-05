@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { site } from "@/content/site";
 import { PageLink } from "@/components/ui/PageLink";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 
 const { strip } = site;
 
@@ -13,18 +13,8 @@ export function Strip() {
           <p className="text-small text-graphite max-lg:text-center">{strip.label}</p>
           <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 xl:justify-between">
             {strip.firms.map((f) => (
-              <li key={f.name} className="font-display text-[1.1875rem] leading-none whitespace-nowrap text-ink/55">
-                {f.logo ? (
-                  <Image
-                    src={f.logo.src}
-                    alt={f.logo.alt || f.name}
-                    width={f.logo.width}
-                    height={f.logo.height}
-                    className="h-6 w-auto opacity-60 grayscale"
-                  />
-                ) : (
-                  f.name
-                )}
+              <li key={f.name} className="flex items-center whitespace-nowrap">
+                <BrandLogo brand={f} />
               </li>
             ))}
           </ul>

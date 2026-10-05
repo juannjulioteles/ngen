@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { pages, site } from "@/content/site";
+import { pages, site, type BrandMention } from "@/content/site";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
 
@@ -14,6 +15,22 @@ const mailto = (subject: string) => `mailto:${site.links.email}?subject=${encode
 const founders = ["Series", "Freya", "Nerd Apply"]
   .map((name) => site.startups.items.find((s) => s.name === name))
   .filter((s): s is (typeof site.startups.items)[number] => Boolean(s));
+
+/**
+ * A set of logos in even cells, one rule above and below and none between
+ * rows, so a short last row never leaves a broken line.
+ */
+function LogoGrid({ brands }: { brands: BrandMention[] }) {
+  return (
+    <ul className="rule grid grid-cols-2 gap-x-6 gap-y-2 border-y py-4 sm:grid-cols-3 lg:grid-cols-4">
+      {brands.map((brand) => (
+        <li key={brand.name} className="flex h-16 items-center">
+          <BrandLogo brand={brand} />
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function SponsorsPage() {
   const logos = site.partner.logos;
@@ -75,21 +92,16 @@ export default function SponsorsPage() {
         </ul>
       </PageSection>
 
-      {/* Proof right after the reasons: who has already backed NGEN events */}
+      {/* Proof right after the reasons: who has backed NGEN events, then where speakers and alumni come from */}
       <PageSection
         id="supporters-title"
         title={sponsors.supportersTitle}
         className="pt-0"
         aside={<p className="text-small text-graphite">{sponsors.supportersNote}</p>}
       >
-        {/* One rule above and below the set, none between rows, so a short last row never leaves a broken line */}
-        <ul className="rule grid grid-cols-2 gap-x-6 gap-y-6 border-y py-8 sm:grid-cols-3 lg:grid-cols-4">
-          {sponsors.supporters.map((name) => (
-            <li key={name} className="text-[1.25rem] leading-snug font-medium">
-              {name}
-            </li>
-          ))}
-        </ul>
+        <LogoGrid brands={sponsors.supporters} />
+        <h3 className="mt-12 mb-4 text-small text-graphite">{sponsors.firmsLabel}</h3>
+        <LogoGrid brands={site.strip.firms} />
       </PageSection>
 
       <PageSection

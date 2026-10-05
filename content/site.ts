@@ -20,6 +20,14 @@ export type Photo = {
   caption: string;
 };
 
+/** Another organization named on the site. `logo` shows its mark in place of the name. */
+export type BrandMention = {
+  name: string;
+  logo?: ImageAsset;
+  /** Set beside a logo that is only a mark, as the brand itself does (Y Combinator's square). */
+  logoText?: string;
+};
+
 export type Speaker = {
   name: string;
   roles: string[];
@@ -114,7 +122,7 @@ export type SiteContent = {
   strip: {
     label: string;
     /** Firms behind past speakers and alumni. Add `logo` to show a mark instead of the name. */
-    firms: { name: string; logo?: ImageAsset }[];
+    firms: BrandMention[];
     news: NavLink;
   };
   mission: {
@@ -241,14 +249,15 @@ export const site: SiteContent = {
 
   strip: {
     label: "Past speakers and alumni backers from",
+    // Logos: from each firm's own site (Wikimedia for a16z), shown in one ink.
     firms: [
-      { name: "Y Combinator" },
-      { name: "a16z" },
-      { name: "Techstars" },
-      { name: "B Capital" },
-      { name: "Renaissance Technologies" },
-      { name: "The Motley Fool" },
-      { name: "Girls Who Invest" },
+      { name: "Y Combinator", logo: { src: "/logos/y-combinator.svg", alt: "Y Combinator", width: 48, height: 48 }, logoText: "Combinator" },
+      { name: "a16z", logo: { src: "/logos/a16z.svg", alt: "Andreessen Horowitz", width: 210, height: 48 } },
+      { name: "Techstars", logo: { src: "/logos/techstars.svg", alt: "Techstars", width: 160, height: 37 } },
+      { name: "B Capital", logo: { src: "/logos/b-capital.svg", alt: "B Capital", width: 211, height: 43 } },
+      { name: "Renaissance Technologies", logo: { src: "/logos/renaissance-technologies.svg", alt: "Renaissance Technologies", width: 864, height: 112 } },
+      { name: "The Motley Fool", logo: { src: "/logos/the-motley-fool.svg", alt: "The Motley Fool", width: 2646, height: 725 } },
+      { name: "Girls Who Invest", logo: { src: "/logos/girls-who-invest.png", alt: "Girls Who Invest", width: 498, height: 186 } },
     ],
     news: { label: "Trailblazers is now the Ivy League Entrepreneurship Conference", href: "/about" },
   },
@@ -554,7 +563,9 @@ export type PagesContent = {
     /** Companies that have supported NGEN events before. */
     supportersTitle: string;
     supportersNote: string;
-    supporters: string[];
+    supporters: BrandMention[];
+    /** Small label over the firms behind past speakers and alumni, on the same page. */
+    firmsLabel: string;
     /** TBD for review: partnership formats, no pricing until NGEN confirms. */
     formatsTitle: string;
     formats: Item[];
@@ -684,7 +695,18 @@ export const pages: PagesContent = {
     ],
     supportersTitle: "Past supporters",
     supportersNote: "Companies that have supported NGEN events.",
-    supporters: ["Mercury", "M31 Capital", "OVO Fund", "Honors Fund", "BullMont Capital", "Blue & Gold Ventures", "ProtoPie"],
+    // Logos from each company's own site. TBD: official logo files for M31 Capital,
+    // Honors Fund and Blue & Gold Ventures (their names show until then).
+    supporters: [
+      { name: "Mercury", logo: { src: "/logos/mercury.svg", alt: "Mercury", width: 139, height: 32 } },
+      { name: "M31 Capital" },
+      { name: "OVO Fund", logo: { src: "/logos/ovo-fund.png", alt: "OVO Fund", width: 268, height: 160 } },
+      { name: "Honors Fund" },
+      { name: "BullMont Capital", logo: { src: "/logos/bullmont-capital.png", alt: "BullMont Capital", width: 706, height: 124 } },
+      { name: "Blue & Gold Ventures" },
+      { name: "ProtoPie", logo: { src: "/logos/protopie.svg", alt: "ProtoPie", width: 70, height: 14 } },
+    ],
+    firmsLabel: "Past speakers and alumni backers from",
     reasonsTitle: "Why partner",
     reasons: [
       {
@@ -693,7 +715,7 @@ export const pages: PagesContent = {
       },
       {
         title: "The company you keep",
-        body: "Speakers and alumni backers from Y Combinator, a16z, Techstars, B Capital and more.",
+        body: "Speakers and alumni backers from the firms below.",
       },
       {
         title: "The track record",
