@@ -27,6 +27,11 @@ export default function SpeakersPage() {
         id="speakers-title"
         title={speakers.title}
         intro={speakers.intro}
+        action={
+          <PageLink href={site.nav.cta.href} className="btn btn-ink">
+            {site.nav.cta.label}
+          </PageLink>
+        }
         aside={
           <div aria-hidden="true" className="group relative mx-auto h-[17rem] w-full max-w-[34rem] sm:h-[20rem]">
             {withPhotos.map((s, i) =>

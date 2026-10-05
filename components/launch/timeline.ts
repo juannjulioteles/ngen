@@ -4,31 +4,32 @@
  * schedules its sounds against the same numbers.
  *
  *   0.1  dark, letterbox closed: "NGEN presents"
- *   0.9  three hard cuts, each figure counting up: 3 / 18 / $30M
- *   3.2  montage: the firms behind past speakers and alumni, one per beat
- *   4.7  "Now, a bigger stage." and, beneath it, New York City
- *   6.0  lights up, the title rises line by line, a light sweeps the letters,
+ *   1.0  three cuts, each figure counting up and holding long enough to read:
+ *        3 / 18 / $30M
+ *   4.75 montage: the firms behind past speakers and alumni, one per beat
+ *   6.25 "Now, a bigger stage." and, beneath it, New York City
+ *   7.55 lights up, the title rises line by line, a light sweeps the letters,
  *        the vine grows beside it
- *   7.7  letterbox opens, nav and details settle; the page is live
+ *   9.25 letterbox opens, nav and details settle; the page is live
  */
 export const T = {
   studio: 0.1,
   studioLength: 0.75,
-  cuts: [0.9, 1.65, 2.4],
-  cutLength: 0.75,
-  countLength: 0.5,
-  montage: 3.2,
+  cuts: [1.0, 2.25, 3.5],
+  cutLength: 1.2,
+  countLength: 0.8,
+  montage: 4.75,
   flash: 0.2,
-  turn: 4.7,
+  turn: 6.25,
   turnLength: 1.25,
-  riser: 5.0,
-  title: 6.0,
+  riser: 6.55,
+  title: 7.55,
   lineStagger: 0.16,
-  vine: 5.85,
-  sheen: 6.35,
-  bars: 7.7,
-  details: 7.8,
-  end: 8.9,
+  vine: 7.4,
+  sheen: 7.9,
+  bars: 9.25,
+  details: 9.35,
+  end: 10.45,
 } as const;
 
 /** Leaf unfurl times inside <IvyVine />, relative to its delay. */

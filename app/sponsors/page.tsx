@@ -19,6 +19,11 @@ export default function SponsorsPage() {
         id="sponsors-title"
         title={sponsors.title}
         intro={sponsors.intro}
+        action={
+          <a href={mailto(`${site.name}: partnership`)} className="btn btn-ink">
+            {sponsors.ctaTitle}
+          </a>
+        }
         aside={
           // The case for partnering, at a glance: what founders raised, and who backs them.
           <div className="flex flex-col gap-8">
@@ -26,16 +31,14 @@ export default function SponsorsPage() {
               {sponsors.figures.map((f) => (
                 <div key={f.label} className="border-t border-ink/15 pt-4">
                   <dt className="sr-only">{f.label}</dt>
-                  <dd className="font-display text-[clamp(2.75rem,5vw,4rem)] leading-none">{f.value}</dd>
+                  <dd className="font-display text-[2.5rem] leading-none">{f.value}</dd>
                   <dd className="mt-2 text-small text-graphite">{f.label}</dd>
                 </div>
               ))}
             </dl>
             <div className="border-t border-ink/15 pt-4">
               <p className="text-small text-graphite">{site.strip.label}</p>
-              <p className="mt-2 font-display text-[1.25rem] leading-snug text-ink/70">
-                {site.strip.firms.map((f) => f.name).join(", ")}
-              </p>
+              <p className="mt-2 text-base text-ink/80">{site.strip.firms.map((f) => f.name).join(", ")}</p>
             </div>
           </div>
         }

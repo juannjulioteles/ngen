@@ -4,6 +4,7 @@ import { pages, site } from "@/content/site";
 import { NgenMark, withNgen } from "@/components/brand/Ngen";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
+import { PageLink } from "@/components/ui/PageLink";
 
 const { about } = pages;
 
@@ -19,12 +20,17 @@ export default function AboutPage() {
         layout="wide"
         title={about.title}
         intro={about.intro}
+        action={
+          <PageLink href={site.nav.cta.href} className="btn btn-ink">
+            {site.nav.cta.label}
+          </PageLink>
+        }
         below={
           <dl className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-3">
             {about.facts.map((f) => (
               <div key={f.label}>
                 <dt className="text-small text-graphite">{f.label}</dt>
-                <dd className="mt-1 font-display text-[1.375rem] leading-tight">{f.value}</dd>
+                <dd className="mt-1 text-base font-medium">{f.value}</dd>
               </div>
             ))}
           </dl>
