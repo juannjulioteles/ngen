@@ -269,6 +269,44 @@
 [data-in] .venn-ring {
   stroke-dashoffset: 0;
 }
+
+/* Translucent discs: one layer alone, two where circles meet, three at the centre */
+.venn-disc {
+  fill: var(--color-paper);
+  fill-opacity: 0;
+  transition: fill-opacity 0.6s ease;
+}
+[data-in] .venn-disc {
+  fill-opacity: 0.035;
+  transition-delay: 1s;
+}
+.venn-name {
+  fill: rgb(250 250 247 / 0.65);
+  transition: fill 0.3s ease;
+}
+.venn-ring {
+  transition:
+    stroke-dashoffset 2.2s var(--ease-out),
+    stroke-opacity 0.3s ease;
+}
+
+/* Pointing at an audience below lights up its circle and name */
+.mission:has([data-audience="0"]:hover) .venn-disc-0,
+.mission:has([data-audience="1"]:hover) .venn-disc-1,
+.mission:has([data-audience="2"]:hover) .venn-disc-2 {
+  fill-opacity: 0.11;
+  transition-delay: 0s;
+}
+.mission:has([data-audience="0"]:hover) .venn-ring-0,
+.mission:has([data-audience="1"]:hover) .venn-ring-1,
+.mission:has([data-audience="2"]:hover) .venn-ring-2 {
+  stroke-opacity: 1;
+}
+.mission:has([data-audience="0"]:hover) .venn-name-0,
+.mission:has([data-audience="1"]:hover) .venn-name-1,
+.mission:has([data-audience="2"]:hover) .venn-name-2 {
+  fill: var(--color-paper);
+}
 [data-in] .venn-fill,
 [data-in] .venn-label {
   opacity: 1;

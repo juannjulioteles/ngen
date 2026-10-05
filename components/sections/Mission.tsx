@@ -22,11 +22,12 @@ const CENTRE = { x: 210, y: (138 + 221 + 221) / 3 };
 /**
  * The three people the conference brings together, as a diagram: student
  * founders, influential leaders and sponsors, with the room itself (face to
- * face) where all three overlap. Below it, what each of them gets.
+ * face) where all three overlap. Below it, what each of them gets; pointing
+ * at a column lights up its circle (CSS :has, see globals.css).
  */
 export function Mission() {
   return (
-    <section aria-labelledby="mission-title" className="bg-ink text-paper">
+    <section aria-labelledby="mission-title" className="mission bg-ink text-paper">
       <InView className="wrap py-[clamp(5rem,10vw,8rem)]">
         <h2 id="mission-title" className="reveal text-center font-display text-h2 text-paper/90">
           {mission.title}
@@ -36,7 +37,7 @@ export function Mission() {
           <Venn />
           <ul className="mt-10 grid gap-x-10 gap-y-10 md:grid-cols-3">
             {mission.audiences.map((a, i) => (
-              <li key={a.title} className="reveal flex flex-col gap-3 border-t border-paper/15 pt-5" style={{ "--d": `${0.5 + i * 0.12}s` } as CSSProperties}>
+              <li key={a.title} data-audience={i} className="reveal flex flex-col gap-3 border-t border-paper/15 pt-5 transition-colors duration-300 hover:border-paper/50" style={{ "--d": `${0.5 + i * 0.12}s` } as CSSProperties}>
                 <h3 className="font-display text-h3">{a.title}</h3>
                 <p className="text-base text-paper/80">{a.who}</p>
                 <ul className="mt-1 flex flex-col gap-2 text-small text-mist">
@@ -77,6 +78,10 @@ function Venn() {
           <circle cx={CIRCLES[1].cx} cy={CIRCLES[1].cy} r={R} />
         </clipPath>
       </defs>
+      {/* Faint discs: where circles overlap, the layers add up and get lighter */}
+      {CIRCLES.map((c, i) => (
+        <circle key={`disc-${i}`} className={`venn-disc venn-disc-${i}`} cx={c.cx} cy={c.cy} r={R} />
+      ))}
       {/* Hatch only where all three circles overlap */}
       <g className="venn-fill" clipPath="url(#venn-a)">
         <g clipPath="url(#venn-b)">
@@ -86,7 +91,7 @@ function Venn() {
       {CIRCLES.map((c, i) => (
         <circle
           key={i}
-          className="venn-ring"
+          className={`venn-ring venn-ring-${i}`}
           cx={c.cx}
           cy={c.cy}
           r={R}
@@ -95,7 +100,13 @@ function Venn() {
         />
       ))}
       {CIRCLES.map((c, i) => (
-        <text key={names[i]} x={c.label.x} y={c.label.y} textAnchor={c.label.anchor} className="venn-label fill-mist text-[14px]">
+        <text
+          key={names[i]}
+          x={c.label.x}
+          y={c.label.y}
+          textAnchor={c.label.anchor}
+          className={`venn-label venn-name venn-name-${i} font-display text-[17px]`}
+        >
           {names[i]}
         </text>
       ))}
