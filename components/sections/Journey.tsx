@@ -62,10 +62,12 @@ export function Journey({ showMore = true }: { showMore?: boolean }) {
         </div>
 
         <div className="pl-wrap pr-[var(--gutter)] lg:pr-[clamp(2rem,6vw,6rem)] lg:pl-[clamp(2rem,6vw,6rem)]">
-          <h2 id="journey-title" className="pt-[clamp(5rem,10vw,8rem)] text-small font-medium text-graphite lg:pt-[18svh]">
+          {/* Named for screen readers; on screen the panel and the steps tell it */}
+          <h2 id="journey-title" className="sr-only">
             {journey.title}
           </h2>
-          <ol>
+          {/* Top padding puts the first step's centre at mid-screen, level with the panel's figure */}
+          <ol className="pt-[clamp(2.5rem,7vw,4rem)] lg:pt-[18svh]">
             {journey.steps.map((step, i) => (
               <li
                 key={step.label}
@@ -73,7 +75,7 @@ export function Journey({ showMore = true }: { showMore?: boolean }) {
                   steps.current[i] = el;
                 }}
                 data-step={i}
-                className="flex flex-col justify-center gap-4 py-12 lg:min-h-[78svh] lg:py-0"
+                className="flex flex-col justify-center gap-4 py-12 lg:min-h-[64svh] lg:py-0"
               >
                 <span className="text-small text-graphite tabular">
                   {String(i + 1).padStart(2, "0")}
@@ -94,7 +96,7 @@ export function Journey({ showMore = true }: { showMore?: boolean }) {
             ))}
           </ol>
           {showMore && (
-            <p className="pb-[clamp(5rem,10vw,8rem)] lg:pb-[22svh]">
+            <p className="pb-[clamp(4rem,9vw,7rem)] lg:pb-[18svh]">
               <PageLink href={journey.more.href} className="link">
                 {journey.more.label}
               </PageLink>

@@ -25,21 +25,16 @@ export default function SponsorsPage() {
         title={sponsors.title}
         intro={sponsors.intro}
         action={
-          <div className="flex flex-col items-start gap-10">
-            <a href={mailto(`${site.name}: partnership`)} className="btn btn-ink">
-              {sponsors.ctaTitle}
-            </a>
-            {/* Proof, grouped with the pitch and clearly smaller than the headline */}
-            <dl className="grid w-full max-w-md grid-cols-2 gap-x-8">
-              {sponsors.figures.map((f) => (
-                <div key={f.label} className="border-t border-ink/15 pt-4">
-                  <dt className="sr-only">{f.label}</dt>
-                  <dd className="font-display text-[2rem] leading-none">{f.value}</dd>
-                  <dd className="mt-2 text-small text-graphite">{f.label}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          // Proof, grouped with the pitch and clearly smaller than the headline
+          <dl className="grid w-full max-w-md grid-cols-2 gap-x-8">
+            {sponsors.figures.map((f) => (
+              <div key={f.label} className="border-t border-ink/15 pt-4">
+                <dt className="sr-only">{f.label}</dt>
+                <dd className="font-display text-[2rem] leading-none">{f.value}</dd>
+                <dd className="mt-2 text-small text-graphite">{f.label}</dd>
+              </div>
+            ))}
+          </dl>
         }
         aside={
           // The headline promises the next generation of founders: show them.

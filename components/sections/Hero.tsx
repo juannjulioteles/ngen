@@ -54,7 +54,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="grain relative min-h-[34rem] overflow-hidden bg-forest text-paper md:min-h-0">
+        <div className="grain relative min-h-[34rem] overflow-hidden bg-forest text-paper before:opacity-[0.04] md:min-h-0">
           <div aria-hidden="true" className="intro-glow absolute inset-0" />
           <IvyVine
             animate

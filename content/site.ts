@@ -194,8 +194,8 @@ export const site: SiteContent = {
     links: [
       { label: "About", href: "/about" },
       { label: "Speakers", href: "/speakers" },
-      { label: "Team", href: "/team" },
       { label: "Sponsors", href: "/sponsors" },
+      { label: "Team", href: "/team" },
       { label: "Contact", href: "/contact" },
     ],
     cta: { label: "Request an invite", href: "/invite" },
@@ -591,7 +591,6 @@ export const pages: PagesContent = {
     title: "Connecting world-class student entrepreneurs with today’s most influential leaders.",
     intro: "NGEN, the Ivy League entrepreneurship network, presents the inaugural Ivy League Entrepreneurship Conference in New York City.",
     facts: [
-      { label: "Formerly", value: "Trailblazers" },
       { label: "Location", value: "New York City" },
       { label: "Format", value: "Invite-only" },
     ],

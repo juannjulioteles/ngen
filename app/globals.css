@@ -373,7 +373,7 @@ header:has([data-topic]:is(:hover, :focus-visible)) .draft-subject[data-subject=
 
 /* A low light in the green panel, as if from the stage */
 .intro-glow {
-  background: radial-gradient(60% 55% at 40% 60%, rgb(250 250 247 / 0.09), transparent 70%);
+  background: radial-gradient(60% 55% at 40% 60%, rgb(250 250 247 / 0.035), transparent 70%);
   pointer-events: none;
 }
 

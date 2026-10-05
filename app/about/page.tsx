@@ -4,7 +4,6 @@ import { pages, site } from "@/content/site";
 import { NgenMark, withNgen } from "@/components/brand/Ngen";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
-import { PageLink } from "@/components/ui/PageLink";
 
 const { about } = pages;
 
@@ -20,20 +19,15 @@ export default function AboutPage() {
         title={about.title}
         intro={about.intro}
         action={
-          <div className="flex flex-col items-start gap-10">
-            <PageLink href={site.nav.cta.href} className="btn btn-ink">
-              {site.nav.cta.label}
-            </PageLink>
-            {/* The facts, grouped with the intro and clearly smaller than the headline */}
-            <dl className="grid w-full max-w-md grid-cols-3 gap-x-6">
-              {about.facts.map((f) => (
-                <div key={f.label} className="border-t border-ink/15 pt-4">
-                  <dt className="text-small text-graphite">{f.label}</dt>
-                  <dd className="mt-1 text-base font-medium">{f.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          // The facts, grouped with the intro and clearly smaller than the headline
+          <dl className="grid w-full max-w-sm grid-cols-2 gap-x-8">
+            {about.facts.map((f) => (
+              <div key={f.label} className="border-t border-ink/15 pt-4">
+                <dt className="text-small text-graphite">{f.label}</dt>
+                <dd className="mt-1 text-base font-medium">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
         }
         aside={
           // Where it began: the real Trailblazers room, greyscale until pointed at.
