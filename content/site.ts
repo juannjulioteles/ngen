@@ -514,6 +514,7 @@ export type PagesContent = {
     topics: ContactTopic[];
     emailLabel: string;
     emailNote: string;
+    emailCta: string;
   };
 };
 
@@ -663,5 +664,6 @@ export const pages: PagesContent = {
     ],
     emailLabel: "Write to us directly",
     emailNote: "Or pick a topic below and your email goes to the right person.",
+    emailCta: "Write an email",
   },
 };

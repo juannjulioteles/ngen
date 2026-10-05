@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pages, site } from "@/content/site";
+import { NgenMark } from "@/components/brand/Ngen";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
 
@@ -15,13 +16,17 @@ export default function ContactPage() {
         title={contact.title}
         intro={contact.intro}
         aside={
-          // The address is the answer on this page, so it sits in the header.
-          <div className="flex flex-col gap-3 border-t border-ink/15 pt-5">
-            <p className="text-small text-graphite">{contact.emailLabel}</p>
-            <a href={`mailto:${site.links.email}`} className="link font-display text-h2 [overflow-wrap:anywhere]">
+          // The same card as Team's: label, the address, one line, and a button that opens a ready email.
+          <div className="grain flex flex-col items-start gap-5 rounded-xl bg-ink p-7 text-paper">
+            <NgenMark className="h-8" />
+            <p className="text-small text-mist">{contact.emailLabel}</p>
+            <a href={`mailto:${site.links.email}`} className="link -mt-2 font-display text-h3 [overflow-wrap:anywhere]">
               {site.links.email}
             </a>
-            <p className="text-small text-graphite">{contact.emailNote}</p>
+            <p className="text-base text-paper/75">{contact.emailNote}</p>
+            <a href={`mailto:${site.links.email}?subject=${encodeURIComponent(site.name)}`} className="btn btn-paper mt-1">
+              {contact.emailCta}
+            </a>
           </div>
         }
       />
