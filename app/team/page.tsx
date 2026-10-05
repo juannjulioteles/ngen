@@ -31,8 +31,8 @@ export default function TeamPage() {
         }
       />
 
-      <PageSection id="members-title" title="Organizers">
-        {team.members.length > 0 ? (
+      {team.members.length > 0 ? (
+        <PageSection id="members-title" title="Organizers">
           <ul className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3">
             {team.members.map((member) => (
               <li key={member.name} className="flex flex-col gap-3">
@@ -47,16 +47,31 @@ export default function TeamPage() {
                   />
                 )}
                 <div>
-                  <h3 className="font-display text-[1.5rem] leading-tight">{member.name}</h3>
-                  <p className="text-small text-graphite">{[member.role, member.school].filter(Boolean).join(", ")}</p>
+                  <h3 className="font-display text-[1.5rem] leading-tight">
+                    {member.name}
+                  </h3>
+                  <p className="text-small text-graphite">
+                    {[member.role, member.school].filter(Boolean).join(", ")}
+                  </p>
                 </div>
               </li>
             ))}
           </ul>
-        ) : (
-          <p className="font-display text-h2 lg:[text-wrap:pretty]">{team.membersEmpty}</p>
-        )}
-      </PageSection>
+        </PageSection>
+      ) : (
+        // Until the team is announced: just the sentence, centred, no side label.
+        <section
+          aria-labelledby="members-title"
+          className="wrap py-[clamp(5rem,10vw,8rem)]"
+        >
+          <h2 id="members-title" className="sr-only">
+            Organizers
+          </h2>
+          <p className="mx-auto max-w-[24ch] text-center font-display text-h2">
+            {team.membersEmpty}
+          </p>
+        </section>
+      )}
     </>
   );
 }
