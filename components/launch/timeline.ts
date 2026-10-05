@@ -4,32 +4,34 @@
  * schedules its sounds against the same numbers.
  *
  *   0.1  dark, letterbox closed: "NGEN presents"
- *   1.0  three cuts, each figure counting up and holding long enough to read:
+ *   0.8  three cuts, each figure counting up and holding long enough to read:
  *        3 / 18 / $30M
- *   4.75 montage: the firms behind past speakers and alumni, one per beat
- *   6.25 "Now, a bigger stage." and, beneath it, New York City
- *   7.55 lights up, the title rises line by line, a light sweeps the letters,
+ *   3.65 montage: the firms behind past speakers and alumni, one per beat
+ *   4.9  "Now, a bigger stage." and, beneath it, New York City
+ *   5.95 lights up, the title rises line by line, a light sweeps the letters,
  *        the vine grows beside it
- *   9.25 letterbox opens, nav and details settle; the page is live
+ *   7.4  letterbox opens, nav and details settle; the page is live
+ *
+ * Pace: each figure holds 0.95s (0.75s read as rushed, 1.2s as slow).
  */
 export const T = {
   studio: 0.1,
-  studioLength: 0.75,
-  cuts: [1.0, 2.25, 3.5],
-  cutLength: 1.2,
-  countLength: 0.8,
-  montage: 4.75,
-  flash: 0.2,
-  turn: 6.25,
-  turnLength: 1.25,
-  riser: 6.55,
-  title: 7.55,
+  studioLength: 0.6,
+  cuts: [0.8, 1.75, 2.7],
+  cutLength: 0.95,
+  countLength: 0.6,
+  montage: 3.65,
+  flash: 0.17,
+  turn: 4.9,
+  turnLength: 1.05,
+  riser: 5.15,
+  title: 5.95,
   lineStagger: 0.16,
-  vine: 7.4,
-  sheen: 7.9,
-  bars: 9.25,
-  details: 9.35,
-  end: 10.45,
+  vine: 5.8,
+  sheen: 6.3,
+  bars: 7.4,
+  details: 7.5,
+  end: 8.5,
 } as const;
 
 /** Leaf unfurl times inside <IvyVine />, relative to its delay. */
@@ -51,5 +53,5 @@ export const timelineCss = (montageCount: number) =>
     ["details", T.details],
     ["end", T.end],
   ]
-    .map(([k, v]) => `--t-${k}:${v}s`)
+    .map(([k, v]) => `--t-${k}:${+Number(v).toFixed(3)}s`)
     .join(";")}}`;
