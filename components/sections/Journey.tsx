@@ -38,7 +38,7 @@ export function Journey({ showMore = true }: { showMore?: boolean }) {
           {journey.steps.map((step, i) => (
             <div
               key={step.label}
-              className="absolute inset-0 flex items-center justify-center transition-[opacity,transform,filter] duration-700 ease-out"
+              className="absolute inset-0 flex items-center justify-center transition-[opacity,transform,filter] duration-900 ease-out"
               style={{
                 opacity: active === i ? 1 : 0,
                 transform: active === i ? "none" : `translateY(${i < active ? -24 : 24}px)`,
@@ -67,7 +67,7 @@ export function Journey({ showMore = true }: { showMore?: boolean }) {
             {journey.title}
           </h2>
           {/* Top padding puts the first step's centre at mid-screen, level with the panel's figure */}
-          <ol className="pt-[clamp(2.5rem,7vw,4rem)] lg:pt-[18svh]">
+          <ol className="pt-[clamp(2.5rem,7vw,4rem)] lg:pt-[15svh]">
             {journey.steps.map((step, i) => (
               <li
                 key={step.label}
@@ -75,7 +75,7 @@ export function Journey({ showMore = true }: { showMore?: boolean }) {
                   steps.current[i] = el;
                 }}
                 data-step={i}
-                className="flex flex-col justify-center gap-4 py-12 lg:min-h-[64svh] lg:py-0"
+                className="flex flex-col justify-center gap-4 py-12 lg:min-h-[70svh] lg:py-0"
               >
                 <span className="text-small text-graphite tabular">
                   {String(i + 1).padStart(2, "0")}
@@ -96,7 +96,7 @@ export function Journey({ showMore = true }: { showMore?: boolean }) {
             ))}
           </ol>
           {showMore && (
-            <p className="pb-[clamp(4rem,9vw,7rem)] lg:pb-[18svh]">
+            <p className="pb-[clamp(4rem,9vw,7rem)] lg:pb-[20svh]">
               <PageLink href={journey.more.href} className="link">
                 {journey.more.label}
               </PageLink>
