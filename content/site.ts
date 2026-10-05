@@ -167,8 +167,8 @@ export const site: SiteContent = {
   },
 
   event: {
-    // TBD: event date and time. While null the site says "To be announced".
-    startsAt: null,
+    // The date is set; the start time is TBD (noon keeps the date right in any time zone).
+    startsAt: "2027-04-17T12:00:00-04:00",
     timeZone: "America/New_York",
     // TBD: venue. The city is set.
     venue: null,
@@ -303,7 +303,7 @@ export const site: SiteContent = {
         label: "Now",
         figure: "The Ivy League\nEntrepreneurship\nConference",
         title: "Now, a bigger stage",
-        body: "The inaugural Ivy League Entrepreneurship Conference comes to New York City. The date will be announced here first.",
+        body: "The inaugural Ivy League Entrepreneurship Conference comes to New York City on April\u00a017,\u00a02027.",
       },
     ],
     more: { label: "Read the full story", href: "/about" },
@@ -372,7 +372,7 @@ export const site: SiteContent = {
     more: { label: "All speakers", href: "/speakers" },
     bioLabel: "Read bio",
     close: "Close",
-    // Bios: NGEN's speaker bios, and public bios for Howard Morgan.
+    // Bios: NGEN's speaker bios, public bios for Howard Morgan, and the team's notes for the last five.
     items: [
       {
         name: "Geoff Ralston",
@@ -402,12 +402,48 @@ export const site: SiteContent = {
         bio: "Seema Hingorani is the Founder and Chair of Girls Who Invest, a nonprofit founded in 2015 to increase the number of women in the investment industry. She is also a Managing Director at Morgan Stanley Investment Management.",
         headshot: { src: "https://www.ngennetwork.org/speakers/Copy-of-Seema-Image.jpg", alt: "Seema Hingorani", width: 2048, height: 2048 },
       },
+      // TBD: headshots for the five below; until then the grid shows monograms.
+      {
+        name: "Kenan Saleh",
+        roles: ["Investment Partner, Andreessen Horowitz"],
+        affiliation: "Penn, Wharton",
+        bio: "Kenan Saleh is an Investment Partner at Andreessen Horowitz. He co-founded Halo, which was acquired by Lyft, and then served as GM of Lyft Media.",
+        headshot: null,
+      },
+      {
+        name: "Max Rimpel",
+        roles: ["Partner, General Catalyst"],
+        affiliation: "Cornell",
+        bio: "Max Rimpel is a Partner at General Catalyst, where he sits on the board of Mercor.",
+        headshot: null,
+      },
+      {
+        name: "Issam Freiha",
+        roles: ["Co-Founder & CEO, Blank Street"],
+        affiliation: "Columbia",
+        bio: "Issam Freiha co-founded Blank Street in 2020 and, as CEO, has built it into a global coffee brand.",
+        headshot: null,
+      },
+      {
+        name: "Lorine Pendleton",
+        roles: ["Founder & Managing Partner, 125 Ventures"],
+        affiliation: "Brown",
+        bio: "Lorine Pendleton is the Founder and Managing Partner of 125 Ventures. She was an early investor in Oura, which grew 50x to an $11B valuation.",
+        headshot: null,
+      },
+      {
+        name: "Gary Stewart",
+        roles: ["Founding Head, Adobe Private Capital Americas"],
+        affiliation: "Yale",
+        bio: "Gary Stewart is the Founding Head of Adobe Private Capital Americas. He was previously a Managing Director at Techstars NYC, where he led the $80M JPMorgan Techstars fund.",
+        headshot: null,
+      },
     ],
   },
 
   attend: {
     title: "Attend",
-    body: "The conference is invite-only: student entrepreneurs request an invite to attend. It takes place in New York City, and the date will be announced here first.",
+    body: "The conference is invite-only: student entrepreneurs request an invite to attend. It takes place on April\u00a017,\u00a02027, in New\u00a0York\u00a0City, and invitations arrive by email.",
     dateLabel: "Date",
     venueLabel: "Location",
     cta: "Request an invite",
@@ -514,6 +550,10 @@ export type PagesContent = {
     figures: { value: string; label: string }[];
     reasonsTitle: string;
     reasons: Item[];
+    /** Companies that have supported NGEN events before. */
+    supportersTitle: string;
+    supportersNote: string;
+    supporters: string[];
     /** TBD for review: partnership formats, no pricing until NGEN confirms. */
     formatsTitle: string;
     formats: Item[];
@@ -548,7 +588,7 @@ export const pages: PagesContent = {
       "The Ivy League Entrepreneurship Conference is Trailblazers, reborn on a larger stage. Invite-only and held in New York City, it connects world-class student entrepreneurs with today’s most influential leaders, face to face.",
       "It is deliberately small: a room built for real conversations, not a hall where business cards change hands.",
       "For student founders, it’s a seat across from the people who can change the course of a company. For investors, operators and partners, it’s the chance to meet the next generation while they still take every meeting.",
-      "The date will be announced soon. Invitations can be requested today.",
+      "The conference takes place on April\u00a017,\u00a02027. Invitations can be requested today.",
       "The next great founder is already building. Come meet them.",
     ],
     signature: "The NGEN team",
@@ -565,7 +605,7 @@ export const pages: PagesContent = {
     steps: [
       { title: "Send your request", body: "A few lines on you, your school and what you’re building." },
       { title: "The team reviews it", body: "Every request is read by the NGEN team." },
-      { title: "Invitations arrive by email", body: "Along with the date and venue, once they’re announced." },
+      { title: "Invitations arrive by email", body: "Along with the venue, once it’s announced." },
     ],
     formTitle: "Your request",
     fields: {
@@ -641,6 +681,9 @@ export const pages: PagesContent = {
       { value: "$30M+", label: "raised by founders who came through" },
       { value: "18", label: "conferences, treks and pitch competitions" },
     ],
+    supportersTitle: "Past supporters",
+    supportersNote: "Companies that have supported NGEN events.",
+    supporters: ["Mercury", "M31 Capital", "OVO Fund", "Honors Fund", "BullMont Capital", "Blue & Gold Ventures", "ProtoPie"],
     reasonsTitle: "Why partner",
     reasons: [
       {

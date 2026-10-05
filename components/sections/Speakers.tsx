@@ -23,7 +23,8 @@ export function SpeakersPreview() {
             {speakers.more.label}
           </PageLink>
         </div>
-        <SpeakerGrid items={speakers.items} />
+        {/* One clean row on the home page: the speakers with photos; everyone is on /speakers */}
+        <SpeakerGrid items={speakers.items.filter((s) => s.headshot).slice(0, 4)} />
       </div>
     </section>
   );
@@ -33,7 +34,14 @@ export function SpeakersPreview() {
  * Portrait cards: photo in greyscale until you point at it, the school tag on
  * the photo, name and role below. The whole card opens a dialog with the bio.
  */
-export function SpeakerGrid({ items }: { items: Speaker[] }) {
+export function SpeakerGrid({
+  items,
+  columns = "grid-cols-2 lg:grid-cols-4",
+}: {
+  items: Speaker[];
+  /** Grid columns; pick a count that leaves no card alone on the last row. */
+  columns?: string;
+}) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [current, setCurrent] = useState<Speaker | null>(null);
 
@@ -44,7 +52,7 @@ export function SpeakerGrid({ items }: { items: Speaker[] }) {
 
   return (
     <>
-      <ul className="grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4">
+      <ul className={`grid gap-x-5 gap-y-10 ${columns}`}>
         {items.map((speaker) => (
           <li key={speaker.name}>
             <button

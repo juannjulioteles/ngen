@@ -75,6 +75,23 @@ export default function SponsorsPage() {
         </ul>
       </PageSection>
 
+      {/* Proof right after the reasons: who has already backed NGEN events */}
+      <PageSection
+        id="supporters-title"
+        title={sponsors.supportersTitle}
+        className="pt-0"
+        aside={<p className="text-small text-graphite">{sponsors.supportersNote}</p>}
+      >
+        {/* One rule above and below the set, none between rows, so a short last row never leaves a broken line */}
+        <ul className="rule grid grid-cols-2 gap-x-6 gap-y-6 border-y py-8 sm:grid-cols-3 lg:grid-cols-4">
+          {sponsors.supporters.map((name) => (
+            <li key={name} className="text-[1.25rem] leading-snug font-medium">
+              {name}
+            </li>
+          ))}
+        </ul>
+      </PageSection>
+
       <PageSection
         id="formats-title"
         title={sponsors.formatsTitle}

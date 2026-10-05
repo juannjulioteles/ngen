@@ -77,7 +77,8 @@ export default function SpeakersPage() {
         className="pt-0"
         aside={<p className="text-small text-graphite">{site.speakers.subtitle}</p>}
       >
-        <SpeakerGrid items={site.speakers.items} />
+        {/* Nine speakers: three columns, so no card sits alone on the last row */}
+        <SpeakerGrid items={site.speakers.items} columns="grid-cols-2 sm:grid-cols-3" />
       </PageSection>
     </>
   );
