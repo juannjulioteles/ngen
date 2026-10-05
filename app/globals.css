@@ -1,0 +1,612 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Stone and ink, with forest green kept for one place: the panel the vine
+   grows in. Caslon for headlines, Hanken Grotesk for everything you read
+   or click.
+   ------------------------------------------------------------------------ */
+
+@theme {
+  --color-*: initial;
+  --color-stone: #f3f1ec;
+  --color-stone-2: #e9e6df;
+  --color-paper: #fbfaf7;
+  --color-ink: #151815;
+  --color-ink-2: #0e110f;
+  --color-graphite: #5d625d;
+  --color-mist: #a7ada6;
+  --color-forest: #1c3a2a;
+  --color-sage: #c9cec3;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Type scale: 14, 16, 19, 28, 44, 64 */
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+  --text-base: 1rem;
+  --text-base--line-height: 1.6;
+  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --text-lead--line-height: 1.55;
+  --text-h3: clamp(1.5rem, 1.25rem + 0.8vw, 1.75rem);
+  --text-h3--line-height: 1.15;
+  --text-h2: clamp(2rem, 1.4rem + 2vw, 2.75rem);
+  --text-h2--line-height: 1.08;
+  --text-h1: clamp(2.5rem, 1.6rem + 2.8vw, 4rem);
+  --text-h1--line-height: 1.02;
+
+  --radius-btn: 0.375rem;
+
+  --breakpoint-nav: 56.25rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --font-display: var(--font-caslon-display), "Big Caslon", Georgia, serif;
+  --font-sans: var(--font-hanken), "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-stone);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  [id] {
+    scroll-margin-top: 96px;
+  }
+  a {
+    color: inherit;
+  }
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+  /* No stranded words. Every block of copy on this site is short (six lines
+     at most), so all of it balances: lines break evenly, never leaving one
+     or two words on the last line. */
+  h1,
+  h2,
+  h3,
+  p,
+  li,
+  dd,
+  figcaption,
+  .font-display {
+    text-wrap: balance;
+  }
+  .font-display {
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+}
+
+@layer components {
+  /* The measure every section aligns to */
+  .wrap {
+    width: 100%;
+    max-width: 82rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  :root {
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+  }
+  /* Left edge of .wrap, for content in a full-bleed split */
+  .pl-wrap {
+    padding-left: max(var(--gutter), calc((100vw - 82rem) / 2 + var(--gutter)));
+  }
+
+  /* Film grain, for the green panel and dark moments */
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url("/textures/grain.webp");
+    background-size: 256px;
+    opacity: 0.1;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0 1.25rem;
+    border-radius: var(--radius-btn);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .btn-ink {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  .btn-ink:hover {
+    background: #2a2e2a;
+  }
+  .btn-paper {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+  .btn-paper:hover {
+    background: #ffffff;
+  }
+  .btn-ghost {
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 28%, transparent);
+  }
+  .btn-ghost:hover {
+    box-shadow: inset 0 0 0 1px currentColor;
+  }
+
+  .link {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    transition: text-decoration-color 0.2s ease;
+  }
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* Footer links: plain until pointed at */
+  .footer-link {
+    font-size: var(--text-base);
+    color: color-mix(in srgb, var(--color-paper) 88%, transparent);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    transition:
+      color 0.2s ease,
+      text-decoration-color 0.2s ease;
+  }
+  .footer-link:hover {
+    color: var(--color-paper);
+    text-decoration-color: currentColor;
+  }
+
+  .rule {
+    border-color: color-mix(in srgb, currentColor 16%, transparent);
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* Reveal on scroll, for the few things that draw themselves */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.9s var(--ease-out),
+      transform 0.9s var(--ease-out);
+    transition-delay: var(--d, 0s);
+  }
+  [data-in] .reveal,
+  [data-in].reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* NGEN hover card */
+.ngen-tip {
+  animation: tip-in 0.18s ease-out;
+}
+@keyframes tip-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+/* Speaker bio dialog */
+.speaker-dialog[open] {
+  animation: dialog-in 0.5s var(--ease-out);
+}
+.speaker-dialog[open]::backdrop {
+  animation: fade-in 0.3s ease;
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+/* The mission diagram draws itself once it is in view */
+.venn {
+  color: var(--color-paper);
+}
+.venn-ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-opacity: 0.5;
+  stroke-width: 1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 2.2s var(--ease-out);
+}
+.venn-ring-b {
+  transition-delay: 0.3s;
+}
+.venn-fill,
+.venn-label {
+  opacity: 0;
+  transition: opacity 1.2s ease 1.3s;
+}
+.venn-label {
+  transition-delay: 1.6s;
+}
+[data-in] .venn-ring {
+  stroke-dashoffset: 0;
+}
+[data-in] .venn-fill,
+[data-in] .venn-label {
+  opacity: 1;
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Launch sequence (home). Everything below only runs under
+   html[data-intro="play"], set before first paint by the layout script; any
+   other state (skip, no JS) is simply the finished page. Timings come from
+   components/launch/timeline.ts as --t-* custom properties.
+   ------------------------------------------------------------------------ */
+
+.intro-dark,
+.intro-preroll,
+.intro-bars {
+  display: none;
+}
+
+/* A low light in the green panel, as if from the stage */
+.intro-glow {
+  background: radial-gradient(60% 55% at 40% 60%, rgb(250 250 247 / 0.09), transparent 70%);
+  pointer-events: none;
+}
+
+html[data-intro="play"] .intro-glow {
+  animation: fade-in 2.4s var(--ease-out) var(--t-title) both;
+}
+
+/* House lights down until the title */
+html[data-intro="play"] .intro-dark {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: #070907 url("/textures/grain.webp");
+  background-size: auto, 256px;
+  background-blend-mode: screen;
+  animation: lights-up 1.6s var(--ease-out) calc(var(--t-title) - 0.2s) both;
+}
+
+/* The cuts */
+html[data-intro="play"] .intro-preroll {
+  display: flex;
+  position: absolute;
+  /* Centred in the screen, not the hero: the hero can be taller than it */
+  inset: 0 0 auto;
+  height: 100svh;
+  z-index: 20;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.intro-frame {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  opacity: 0;
+}
+html[data-intro="play"] .intro-frame {
+  animation: cut var(--t-cut-length) linear var(--at) both;
+}
+html[data-intro="play"] .intro-studio {
+  animation-name: card;
+  animation-duration: var(--t-studio-length);
+}
+html[data-intro="play"] .intro-turn {
+  animation-name: card;
+  animation-duration: var(--t-turn-length);
+}
+/* Figures count up: an integer custom property drives a CSS counter */
+@property --count {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+.intro-count {
+  --count: var(--to);
+  counter-reset: figure var(--count);
+}
+.intro-count::after {
+  content: var(--pre) counter(figure) var(--post);
+}
+html[data-intro="play"] .intro-count {
+  animation: count var(--t-count-length) cubic-bezier(0.25, 0.8, 0.3, 1) var(--at) both;
+}
+@keyframes count {
+  from {
+    --count: 0;
+  }
+  to {
+    --count: var(--to);
+  }
+}
+
+/* Montage: the frame holds while the names cut hard, one per beat */
+html[data-intro="play"] .intro-montage {
+  animation-name: hold;
+  animation-duration: var(--t-montage-length);
+}
+.intro-flash {
+  opacity: 0;
+}
+html[data-intro="play"] .intro-flash {
+  animation: flash var(--t-flash) linear var(--at) both;
+}
+html[data-intro="play"] .intro-caption {
+  animation: fade-in 0.5s var(--ease-out) calc(var(--at) + 0.45s) both;
+}
+html[data-intro="play"] .intro-rule-late {
+  animation-delay: calc(var(--at) + 0.35s);
+}
+@keyframes hold {
+  0% {
+    opacity: 0;
+  }
+  6%,
+  94% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  2% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.intro-rule {
+  display: block;
+  width: 3rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+  transform-origin: center;
+}
+html[data-intro="play"] .intro-rule {
+  animation: draw-x 0.5s var(--ease-out) calc(var(--at) + 0.1s) both;
+}
+
+/* The title: rises out of focus, then a light sweeps across the letters */
+html[data-intro="play"] .intro-kicker {
+  animation: settle 1.2s var(--ease-out) calc(var(--t-title) + 0.35s) both;
+}
+html[data-intro="play"] .intro-title > span {
+  background: linear-gradient(
+    100deg,
+    var(--color-ink) 0 33%,
+    var(--color-forest) 37%,
+    rgb(21 24 21 / 0.12) 45% 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation:
+    rise 1.3s var(--ease-out) calc(var(--t-title) + var(--i) * var(--t-line-stagger)) both,
+    sheen 1.9s cubic-bezier(0.45, 0, 0.2, 1) calc(var(--t-sheen) + var(--i) * 0.12s) both;
+}
+html[data-intro="play"] .intro-details,
+html[data-intro="play"] .intro-ticket {
+  animation: settle 1s var(--ease-out) var(--t-details) both;
+}
+html[data-intro="play"] .site-header {
+  animation: header-in 0.9s var(--ease-out) var(--t-bars) both;
+}
+
+/* Letterbox */
+html[data-intro="play"] .intro-bars {
+  display: block;
+}
+.intro-bar {
+  position: fixed;
+  inset-inline: 0;
+  z-index: 70;
+  height: clamp(3.5rem, 11vh, 6.5rem);
+  background: #030805;
+  animation: 1.1s cubic-bezier(0.7, 0, 0.2, 1) var(--t-bars) both;
+}
+.intro-bar-top {
+  top: 0;
+  animation-name: bar-up;
+}
+.intro-bar-bottom {
+  bottom: 0;
+  animation-name: bar-down;
+}
+.intro-clock {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: rgb(250 250 247 / 0.45);
+  transform-origin: left;
+  animation: draw-x var(--t-bars) linear both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes lights-up {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes cut {
+  0% {
+    opacity: 0;
+    transform: scale(1.16);
+    filter: blur(18px);
+    letter-spacing: 0.04em;
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1.03);
+    filter: blur(0);
+    letter-spacing: 0;
+  }
+  86% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.985);
+    filter: blur(6px);
+  }
+}
+@keyframes card {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  25%,
+  78% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+@keyframes draw-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.16em);
+    filter: blur(14px);
+  }
+}
+@keyframes sheen {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@keyframes header-in {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+  }
+}
+@keyframes grain-shift {
+  33% {
+    background-position: 37px 91px;
+  }
+  66% {
+    background-position: -59px 23px;
+  }
+  100% {
+    background-position: 113px -71px;
+  }
+}
+@keyframes bar-up {
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes bar-down {
+  to {
+    transform: translateY(100%);
+  }
+}
+
+/* Page changes: a quick cross-fade, nothing cinematic */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,85 @@
+.root {
+  display: block;
+  overflow: visible;
+  aspect-ratio: 332 / 480;
+}
+
+.stem {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.leaf {
+  fill: currentColor;
+}
+
+/* 1. The stem draws itself from the base to the tip. */
+.drawing .stem {
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 1;
+  animation: draw 1.5s cubic-bezier(0.55, 0.05, 0.3, 1) calc(var(--vine-delay) + 0.2s) forwards;
+}
+
+/* 2. Each leaf unfurls from its base as the stem reaches it. SVG children
+   default to transform-origin 0 0, which the parent translate puts on the stem. */
+.drawing .unfurl {
+  transform: scale(0) rotate(var(--leaf-from));
+  animation: unfurl 0.9s cubic-bezier(0.2, 1.35, 0.4, 1) calc(var(--vine-delay) + var(--leaf-delay))
+    forwards;
+}
+
+/* 4. Then a slow, continuous sway, each leaf at its own speed. */
+.swaying .swayer {
+  animation: sway var(--sway-duration) ease-in-out var(--sway-delay) infinite;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes unfurl {
+  to {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(var(--sway-angle));
+  }
+}
+
+/* The launch sequence was skipped or has played: show the grown vine. */
+:global(html[data-intro="skip"]) .drawing .stem {
+  animation: none;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+}
+:global(html[data-intro="skip"]) .drawing .unfurl {
+  animation: none;
+  transform: none;
+}
+
+/* 6. Reduced motion: the finished vine, perfectly still. */
+@media (prefers-reduced-motion: reduce) {
+  .drawing .stem {
+    animation: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+  .drawing .unfurl {
+    animation: none;
+    transform: none;
+  }
+  .swaying .swayer {
+    animation: none;
+  }
+}
