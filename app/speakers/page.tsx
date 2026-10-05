@@ -10,16 +10,25 @@ const { speakers } = pages;
 
 export const metadata: Metadata = { title: "Speakers", description: speakers.intro };
 
-/** Where each portrait sits in the fanned stack, back to front. Names live in the grid below. */
+/**
+ * Where each portrait sits, in a 4:3 frame the size of the Sponsors mosaic.
+ * The set alternates high and low; the low ones sit in front, so they only
+ * ever cover the bodies of the high ones and every face stays clear. The
+ * outer two are inset by their tilt so the corners stay inside the margins.
+ * Names live in the grid below.
+ */
 const FAN = [
-  "left-0 top-10 -rotate-[6deg]",
-  "left-[23%] top-2 -rotate-2 z-10",
-  "right-[20%] top-5 rotate-2 z-20",
-  "right-0 top-12 rotate-[4deg] z-30",
+  "left-[3%] top-[3%] -rotate-[5deg]",
+  "left-[21%] top-[33%] rotate-[3deg] z-20",
+  "left-[41%] top-[1%] -rotate-2 z-10",
+  "right-[2.5%] top-[35%] rotate-[4deg] z-30",
 ];
 
 export default function SpeakersPage() {
   const withPhotos = site.speakers.items.filter((s) => s.headshot).slice(0, 4);
+  // "Past speakers at the Trailblazers Conference, New York."
+  const { title, subtitle } = site.speakers;
+  const caption = `${title} ${subtitle.charAt(0).toLowerCase()}${subtitle.slice(1)}.`;
 
   return (
     <>
@@ -33,20 +42,23 @@ export default function SpeakersPage() {
           </PageLink>
         }
         aside={
-          <div aria-hidden="true" className="group relative mx-auto h-[17rem] w-full max-w-[34rem] sm:h-[20rem]">
-            {withPhotos.map((s, i) =>
-              s.headshot ? (
-                <div
-                  key={s.name}
-                  className={`absolute w-[30%] overflow-hidden rounded-xl bg-stone-2 shadow-[0_24px_50px_-24px_rgb(21_24_21/0.45)] ring-4 ring-paper transition-transform duration-700 ease-out group-hover:rotate-0 ${FAN[i]}`}
-                >
-                  <div className="relative aspect-[4/5]">
-                    <Image src={s.headshot.src} alt="" fill sizes="220px" className="object-cover object-top grayscale" />
+          <figure className="flex flex-col gap-3">
+            <div aria-hidden="true" className="group relative aspect-[4/3] w-full">
+              {withPhotos.map((s, i) =>
+                s.headshot ? (
+                  <div
+                    key={s.name}
+                    className={`absolute w-[37%] overflow-hidden rounded-xl bg-stone-2 shadow-[0_24px_50px_-24px_rgb(21_24_21/0.45)] ring-4 ring-paper transition-transform duration-700 ease-out group-hover:rotate-0 ${FAN[i]}`}
+                  >
+                    <div className="relative aspect-[4/5]">
+                      <Image src={s.headshot.src} alt="" fill sizes="(min-width: 1024px) 220px, 40vw" className="object-cover object-top grayscale" />
+                    </div>
                   </div>
-                </div>
-              ) : null,
-            )}
-          </div>
+                ) : null,
+              )}
+            </div>
+            <figcaption className="text-small text-graphite">{caption}</figcaption>
+          </figure>
         }
       />
 
