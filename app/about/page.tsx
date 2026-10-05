@@ -17,39 +17,39 @@ export default function AboutPage() {
     <>
       <PageHero
         id="about-title"
-        layout="wide"
         title={about.title}
         intro={about.intro}
-        media={
+        action={
+          <div className="flex flex-col items-start gap-10">
+            <PageLink href={site.nav.cta.href} className="btn btn-ink">
+              {site.nav.cta.label}
+            </PageLink>
+            {/* The facts, grouped with the intro and clearly smaller than the headline */}
+            <dl className="grid w-full max-w-md grid-cols-3 gap-x-6">
+              {about.facts.map((f) => (
+                <div key={f.label} className="border-t border-ink/15 pt-4">
+                  <dt className="text-small text-graphite">{f.label}</dt>
+                  <dd className="mt-1 text-base font-medium">{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        }
+        aside={
           // Where it began: the real Trailblazers room, greyscale until pointed at.
           <figure className="group flex flex-col gap-3">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-stone-2 md:aspect-[21/9]">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-stone-2">
               <Image
                 src={site.photos.trailblazers.src}
                 alt={site.photos.trailblazers.alt}
                 fill
                 priority
-                sizes="(min-width: 1312px) 1216px, 100vw"
-                className="object-cover object-[50%_40%] grayscale transition-[filter,transform] duration-700 ease-out group-hover:scale-[1.02] group-hover:grayscale-0"
+                sizes="(min-width: 1024px) 520px, 100vw"
+                className="object-cover object-[50%_60%] grayscale transition-[filter,transform] duration-700 ease-out group-hover:scale-[1.02] group-hover:grayscale-0"
               />
             </div>
             <figcaption className="text-small text-graphite">{site.photos.trailblazers.caption}</figcaption>
           </figure>
-        }
-        action={
-          <PageLink href={site.nav.cta.href} className="btn btn-ink">
-            {site.nav.cta.label}
-          </PageLink>
-        }
-        below={
-          <dl className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-3">
-            {about.facts.map((f) => (
-              <div key={f.label}>
-                <dt className="text-small text-graphite">{f.label}</dt>
-                <dd className="mt-1 text-base font-medium">{f.value}</dd>
-              </div>
-            ))}
-          </dl>
         }
       />
 

@@ -20,7 +20,7 @@ panel where the vine grows. Libre Caslon Display for headlines, Hanken Grotesk f
 - **Press release (`/press`):** the launch announcement set as a letter, Decade-style, with NGEN
   founders' press coverage below. Copy and date live in `pages.press` (date is **TBD**).
 - **Inner page headers (`PageHero`):** same headline size and position everywhere, but each page
-  brings its own visual: About a photo band with facts, Sponsors a mosaic of NGEN founders, Team the
+  brings its own visual on the right: About the Trailblazers photo, Sponsors a mosaic of NGEN founders, Team the
   conference photo with a join card, Contact a dark full-screen header with the email drawn as a
   draft (hovering a topic rewrites its subject line) and the topics along the bottom.
 - **Footer:** brand and invite button, then Pages, Social (LinkedIn, Press release) and Contact.
