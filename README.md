@@ -28,7 +28,9 @@ panel where the vine grows. Libre Caslon Display for headlines, Hanken Grotesk f
 - **NGEN hover card:** every "NGEN" in running text explains itself (`components/brand/Ngen.tsx`).
 - **Launch sequence (home, once per session):** letterbox, three cuts whose figures count up
   (3 / 18 / $30M), a montage of the firms behind past speakers and alumni, "Now, a bigger stage."
-  over New York City, then the lights come up on the real hero. About 7.5s, skippable, ends by
+  over New York City, then the lights come up on the real hero. Sound is on by default: where the
+  browser holds audio until the first interaction, the bar says "Click for sound" and the first click
+  starts the score in sync; a visitor who turns it off is remembered. About 7.5s, skippable, ends by
   scrolling, replayable ("Watch the launch, with sound"). The score is synthesised live with Web
   Audio (`components/launch/score.ts`). Timings live in `components/launch/timeline.ts`, shared by
   the CSS and the score. Reduced motion, anchor links and repeat visits start on the finished page.

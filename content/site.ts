@@ -105,6 +105,7 @@ export type SiteContent = {
       skip: string;
       soundOn: string;
       soundOff: string;
+      soundPending: string;
       replay: string;
     };
   };
@@ -221,6 +222,7 @@ export const site: SiteContent = {
       skip: "Skip intro",
       soundOn: "Sound on",
       soundOff: "Sound off",
+      soundPending: "Click for sound",
       replay: "Watch the launch, with sound",
     },
   },

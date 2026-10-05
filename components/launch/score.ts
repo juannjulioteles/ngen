@@ -13,10 +13,18 @@ import { LEAF_TIMES, T } from "./timeline";
  *
  * Everything runs through one room reverb and a compressor.
  * `offset` starts the score part-way through (sound switched on mid-sequence).
+ *
+ * Returns a stop function, or null when the browser won't play sound yet
+ * (no click or key press on the page so far): the caller tries again on the
+ * first interaction, from that moment, so the score stays in sync.
  */
-export function playScore(offset = 0, montageCount = 7): () => void {
+export function playScore(offset = 0, montageCount = 7): (() => void) | null {
   const Ctx = window.AudioContext ?? (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
   const ctx = new Ctx();
+  if (ctx.state === "suspended") {
+    ctx.close();
+    return null;
+  }
   const now = ctx.currentTime + 0.05;
   const at = (t: number) => now + Math.max(0, t - offset);
   const future = (t: number) => t >= offset - 0.05;
