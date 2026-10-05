@@ -414,7 +414,7 @@ export const site: SiteContent = {
     presentedBy:
       "Presented by NGEN, the NextGen Entrepreneurship Network, a 501(c)(3) nonprofit.",
     copyrightHolder: "NGEN",
-    status: "Invite-only, in New York City. Date to be announced.",
+    status: "Connecting world-class student entrepreneurs with today’s most influential leaders.",
     columns: { pages: "Pages", social: "Social", contact: "Contact" },
     social: [
       { label: "LinkedIn", href: "https://www.linkedin.com/company/ngen-network/", external: true },
