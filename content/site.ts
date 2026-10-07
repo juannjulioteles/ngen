@@ -349,14 +349,6 @@ export const site: SiteContent = {
         press: { title: "Nerd Apply raises $3.2 million in seed funding for its college admissions counseling platform", href: "https://www.edtechinnovationhub.com/news/nerd-apply-raises-32-million-in-seed-funding-for-its-college-admissions-counseling-platform" },
       },
       {
-        name: "Cloak",
-        badge: "$75K raised",
-        description: "Protects online publisher content against AI scraping.",
-        photo: { src: "https://www.ngennetwork.org/team-photos/cloak-photo.jpg", alt: "The Cloak team", width: 900, height: 600 },
-        logo: { src: "https://www.ngennetwork.org/logos/startups/cloak-logo.png", alt: "Cloak", width: 1159, height: 455 },
-        press: { title: "Cloak Wins $75,000 Perlman Grand Prize in Venture Lab Startup Challenge", href: "https://news.wharton.upenn.edu/press-releases/2026/05/cloak-wins-75000-perlman-grand-prize-in-venture-lab-startup-challenge/" },
-      },
-      {
         name: "Doe",
         // Y Combinator's standard deal: $500K to every company in the batch.
         badge: "$500K raised",
@@ -364,14 +356,6 @@ export const site: SiteContent = {
         photo: { src: "https://www.ngennetwork.org/team-photos/doe-photo.jpeg", alt: "The Doe team", width: 800, height: 1333 },
         logo: { src: "https://www.ngennetwork.org/logos/startups/doe-lockup-dark.svg", alt: "Doe", width: 200, height: 78 },
         press: { title: "Doe: A new productivity platform", href: "https://www.ycombinator.com/launches/OyO-doe-a-new-productivity-platform" },
-      },
-      {
-        name: "Cai Creative",
-        badge: "Techstars",
-        description: "AI co-composer helping musicians create chords and melodies.",
-        photo: { src: "https://www.ngennetwork.org/team-photos/cai-creative-photo.avif", alt: "Cai Creative", width: 1840, height: 1120 },
-        logo: { src: "https://www.ngennetwork.org/logos/startups/cai-creative-logo.png", alt: "Cai Creative", width: 658, height: 450 },
-        press: { title: "How Mathematician Reuel Williams Is Uniting Art & Technology", href: "https://www.inverse.com/tech/how-mathematician-reuel-williams-is-uniting-art-technology" },
       },
       // Not on ngennetwork.org yet, so these two are served from /public/startups.
       {
