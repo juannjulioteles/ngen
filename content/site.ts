@@ -204,9 +204,9 @@ export const site: SiteContent = {
       { label: "Speakers", href: "/speakers" },
       { label: "Sponsors", href: "/sponsors" },
       { label: "Team", href: "/team" },
-      { label: "Contact", href: "/contact" },
     ],
-    cta: { label: "Request an invite", href: "/contact" },
+    // Contact is the button beside the links, so it is not repeated as a link.
+    cta: { label: "Contact", href: "/contact" },
   },
 
   hero: {
@@ -217,7 +217,7 @@ export const site: SiteContent = {
     dateLabel: "Date",
     venueLabel: "Location",
     inviteOnly: "Invite-only",
-    primaryCta: { label: "Request an invite", href: "/contact" },
+    primaryCta: { label: "Contact", href: "/contact" },
     secondaryCta: { label: "Partner with us", href: "/sponsors" },
     launch: {
       studio: "NGEN presents",
@@ -456,7 +456,7 @@ export const site: SiteContent = {
     body: "The conference is invite-only: student entrepreneurs request an invite to attend. It takes place on April\u00a017,\u00a02027, in New\u00a0York\u00a0City, and invitations arrive by email.",
     dateLabel: "Date",
     venueLabel: "Location",
-    cta: "Request an invite",
+    cta: "Contact",
   },
 
   partner: {
