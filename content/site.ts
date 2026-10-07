@@ -312,7 +312,7 @@ export const site: SiteContent = {
         label: "Now",
         figure: "The Ivy League\nEntrepreneurship\nConference",
         title: "Now, a bigger stage",
-        body: "The inaugural Ivy League Entrepreneurship Conference comes to New York City on April\u00a017,\u00a02027.",
+        body: "The mission is clear: an invite-only conference where world-class student entrepreneurs meet today’s most influential leaders face\u00a0to\u00a0face.",
       },
     ],
     more: { label: "Read the full story", href: "/about" },
