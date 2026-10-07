@@ -206,7 +206,7 @@ export const site: SiteContent = {
       { label: "Team", href: "/team" },
       { label: "Contact", href: "/contact" },
     ],
-    cta: { label: "Request an invite", href: "/invite" },
+    cta: { label: "Request an invite", href: "/contact" },
   },
 
   hero: {
@@ -217,7 +217,7 @@ export const site: SiteContent = {
     dateLabel: "Date",
     venueLabel: "Location",
     inviteOnly: "Invite-only",
-    primaryCta: { label: "Request an invite", href: "/invite" },
+    primaryCta: { label: "Request an invite", href: "/contact" },
     secondaryCta: { label: "Partner with us", href: "/sponsors" },
     launch: {
       studio: "NGEN presents",
@@ -513,19 +513,6 @@ export type PagesContent = {
     contact: string;
     back: string;
   };
-  invite: {
-    title: string;
-    intro: string;
-    stepsTitle: string;
-    steps: { title: string; body: string }[];
-    formTitle: string;
-    fields: { name: string; email: string; school: string; year: string; startup: string; link: string; building: string };
-    optional: string;
-    submit: string;
-    submitNote: string;
-    subject: string;
-    others: { title: string; body: string; href: string }[];
-  };
   about: {
     title: string;
     intro: string;
@@ -618,35 +605,6 @@ export const pages: PagesContent = {
     back: "Back to home",
   },
 
-  invite: {
-    title: "Request an invite.",
-    intro:
-      "The Ivy League Entrepreneurship Conference is invite-only. Tell us about you and what you’re building, and the NGEN team will be in touch.",
-    stepsTitle: "How it works",
-    steps: [
-      { title: "Send your request", body: "A few lines on you, your school and what you’re building." },
-      { title: "The team reviews it", body: "Every request is read by the NGEN team." },
-      { title: "Invitations arrive by email", body: "Along with the venue, once it’s announced." },
-    ],
-    formTitle: "Your request",
-    fields: {
-      name: "Full name",
-      email: "Email",
-      school: "School",
-      year: "Graduation year",
-      startup: "Startup (if you have one)",
-      link: "Website or LinkedIn",
-      building: "What are you building, or what would you like to build?",
-    },
-    optional: "Optional",
-    submit: "Write the email",
-    submitNote: "Opens your email app with your request filled in. Nothing is sent until you press send.",
-    subject: "Invite request",
-    others: [
-      { title: "Partners and sponsors", body: "Talk to us about partnering.", href: "/sponsors" },
-      { title: "Speakers", body: "Propose yourself or someone else.", href: "/contact" },
-    ],
-  },
 
   about: {
     title: "Connecting world-class student entrepreneurs with today’s most influential leaders.",

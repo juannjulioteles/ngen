@@ -24,8 +24,8 @@ panel where the vine grows. Libre Caslon Display for headlines, Hanken Grotesk f
   conference photo with a join card, Contact a dark full-screen header with the email drawn as a
   draft (hovering a topic rewrites its subject line) and the topics along the bottom.
 - **Footer:** brand and invite button, then Pages, Social (LinkedIn, Press release) and Contact.
-- **Request an invite (`/invite`):** the event is invite-only; the form writes the request as an
-  email to the team (no backend), and every "Request an invite" button points here.
+- **Request an invite:** the event is invite-only; every "Request an invite" button leads to
+  Contact, where the Attending topic opens an email to the team. `/invite` redirects there.
 - **Journey:** the story as a pinned scroll, with progress ticks; shared with the About page.
 - **Startups:** NGEN's featured startups (raised, one-liner, press link), in `startups`.
 - **Speakers:** portrait cards with each speaker's Ivy affiliation; a dialog holds the bio.
