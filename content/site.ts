@@ -710,7 +710,7 @@ export const pages: PagesContent = {
         name: "Juan Teles",
         study: "Economics + Art History",
         school: "Dartmouth ’28",
-        bio: "Has worked in fintech at Stone in São Paulo, private equity at Tigbourne Capital in London and research at Harvard. A Fundação Estudar Fellow, Wells Fargo Fellow, one of Brazil’s top 26 most promising young leaders and former executive vice president of the Brazil Conference at Harvard\u00a0&\u00a0MIT.",
+        bio: "King Scholar at Dartmouth, Fundação Estudar Fellow and one of Brazil’s top 26 most promising young leaders. Led the Brazil Conference at Harvard & MIT, the largest student-run conference at both schools, with a $700K+ budget and 120+ speakers including Brad\u00a0Jacobs. A Wells\u00a0Fargo Fellow who has worked in fintech at Stone, private equity at Tigbourne Capital and research at\u00a0Harvard.",
         linkedin: "https://www.linkedin.com/in/juanteles/",
         headshot: { src: "/team/juan-teles.webp", alt: "Juan Teles", width: 800, height: 1000 },
       },

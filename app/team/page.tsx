@@ -13,7 +13,8 @@ const joinHref = `mailto:${site.links.email}?subject=${encodeURIComponent(`${sit
 /**
  * Portrait cards in the Speakers grid: the photo greyscale until pointed at,
  * the school as a tag on it, then name, title (or field of study), a short
- * bio and the LinkedIn link.
+ * bio and the LinkedIn link, pinned to the card's foot so links line up
+ * across a row whatever the bio length.
  */
 function MemberGrid({ members }: { members: TeamMember[] }) {
   return (
@@ -41,7 +42,7 @@ function MemberGrid({ members }: { members: TeamMember[] }) {
             href={m.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-fit items-center gap-1.5 text-small underline decoration-ink/30 underline-offset-4 transition-colors hover:decoration-ink"
+            className="mt-auto inline-flex w-fit items-center gap-1.5 text-small underline decoration-ink/30 underline-offset-4 transition-colors hover:decoration-ink"
           >
             {team.linkedinLabel}
             <svg aria-hidden="true" width="9" height="9" viewBox="0 0 10 10" fill="none">
