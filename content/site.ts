@@ -491,7 +491,7 @@ export type TeamMember = {
   role?: string;
   /** Field of study, shown when there is no title. */
   study?: string;
-  /** School and class year, shown as a tag on the photo. */
+  /** University, shown as a tag on the photo. */
   school: string;
   bio: string;
   linkedin: string;
@@ -693,7 +693,7 @@ export const pages: PagesContent = {
       {
         name: "Jackson Lehner",
         role: "Co-Founder, NGEN",
-        school: "Princeton ’24",
+        school: "Princeton",
         bio: "Co-founded NGEN in 2023. At Princeton, co-president of the Entrepreneurship Club, the university’s largest student organization, with 500 members and 15 subteams, and on the founding team of Berry, a grocery-recommendation startup.",
         linkedin: "https://www.linkedin.com/in/jacksonlehner/",
         headshot: { src: "/team/jackson-lehner.webp", alt: "Jackson Lehner", width: 800, height: 1000 },
@@ -701,7 +701,7 @@ export const pages: PagesContent = {
       {
         name: "Harsha Ravindran",
         role: "Co-Founder & Executive Director, NGEN",
-        school: "Penn ’26",
+        school: "Penn",
         bio: "Co-founded NGEN in 2023 and Expop, an incubator where more than 200 high school students build their first startups. A Diana Award recipient, member of OpenAI’s inaugural ChatGPT Lab and former president of Wharton’s Undergraduate Entrepreneurship Club.",
         linkedin: "https://www.linkedin.com/in/actuallyharsha/",
         headshot: { src: "/team/harsha-ravindran.webp", alt: "Harsha Ravindran", width: 800, height: 1000 },
@@ -709,7 +709,7 @@ export const pages: PagesContent = {
       {
         name: "Juan Teles",
         study: "Economics + Art History",
-        school: "Dartmouth ’28",
+        school: "Dartmouth",
         bio: "King Scholar at Dartmouth and Fundação Estudar’s Fellow. Led the Brazil Conference, the largest student-led conference at Harvard\u00a0&\u00a0MIT, and has worked in fintech at StoneCO, private equity at Tigbourne Capital and research at\u00a0Harvard.",
         linkedin: "https://www.linkedin.com/in/juanteles/",
         headshot: { src: "/team/juan-teles.webp", alt: "Juan Teles", width: 800, height: 1000 },
@@ -728,7 +728,7 @@ export const pages: PagesContent = {
       {
         name: "Shiven Dawda",
         study: "Mathematical Economics & Politics",
-        school: "Penn ’29",
+        school: "Penn",
         bio: "Ben Franklin Scholar at Penn and vice president of the Class of 2029 in student government. An eight-time award-winning public speaker, consulting fellow at Umbrex and undergraduate associate at Perry\u00a0World\u00a0House.",
         linkedin: "https://www.linkedin.com/in/sdawda/",
         headshot: { src: "/team/shiven-dawda.webp", alt: "Shiven Dawda", width: 800, height: 1000 },
