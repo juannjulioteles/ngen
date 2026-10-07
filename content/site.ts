@@ -710,7 +710,7 @@ export const pages: PagesContent = {
         name: "Juan Teles",
         study: "Economics + Art History",
         school: "Dartmouth ’28",
-        bio: "CEO of bcs. Previously a summer analyst at Stone in São Paulo, a private equity summer analyst at Tigbourne Capital in London and an undergraduate research assistant at Harvard. A Wells Fargo Fellow.",
+        bio: "Grew up in Bahia, Brazil, where a research fellowship at SESI Bahia led to a first published article. Since then: fintech at Stone in São Paulo, private equity at Tigbourne Capital in London, research at Harvard, and now CEO of bcs. A Wells\u00a0Fargo\u00a0Fellow.",
         linkedin: "https://www.linkedin.com/in/juanteles/",
         headshot: { src: "/team/juan-teles.webp", alt: "Juan Teles", width: 800, height: 1000 },
       },
