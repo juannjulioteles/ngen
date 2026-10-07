@@ -710,7 +710,7 @@ export const pages: PagesContent = {
         name: "Juan Teles",
         study: "Economics + Art History",
         school: "Dartmouth ’28",
-        bio: "King Scholar at Dartmouth and a Fundação Estudar’s Fellow. Led the Brazil Conference, the largest student-led conference at Harvard\u00a0&\u00a0MIT, with a $700K+ budget and 120+ speakers. Has worked in fintech at Stone in São Paulo, private equity at Tigbourne Capital in London, and research at\u00a0Harvard.",
+        bio: "King Scholar at Dartmouth and Fundação Estudar’s Fellow. Led the Brazil Conference, the largest student-led conference at Harvard\u00a0&\u00a0MIT, with a $700K+ budget and 120+ speakers. Has worked in fintech at StoneCO, private equity at Tigbourne Capital, and research at\u00a0Harvard.",
         linkedin: "https://www.linkedin.com/in/juanteles/",
         headshot: { src: "/team/juan-teles.webp", alt: "Juan Teles", width: 800, height: 1000 },
       },
