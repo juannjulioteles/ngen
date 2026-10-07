@@ -358,7 +358,8 @@ export const site: SiteContent = {
       },
       {
         name: "Doe",
-        badge: "Y Combinator",
+        // Y Combinator's standard deal: $500K to every company in the batch.
+        badge: "$500K raised",
         description: "AI platform building company-native agents to automate work.",
         photo: { src: "https://www.ngennetwork.org/team-photos/doe-photo.jpeg", alt: "The Doe team", width: 800, height: 1333 },
         logo: { src: "https://www.ngennetwork.org/logos/startups/doe-lockup-dark.svg", alt: "Doe", width: 200, height: 78 },
@@ -371,6 +372,24 @@ export const site: SiteContent = {
         photo: { src: "https://www.ngennetwork.org/team-photos/cai-creative-photo.avif", alt: "Cai Creative", width: 1840, height: 1120 },
         logo: { src: "https://www.ngennetwork.org/logos/startups/cai-creative-logo.png", alt: "Cai Creative", width: 658, height: 450 },
         press: { title: "How Mathematician Reuel Williams Is Uniting Art & Technology", href: "https://www.inverse.com/tech/how-mathematician-reuel-williams-is-uniting-art-technology" },
+      },
+      // Not on ngennetwork.org yet, so these two are served from /public/startups.
+      {
+        name: "Zorbe",
+        badge: "$8M raised",
+        description: "Company-owned AI models that beat the frontier.",
+        // Founders Yash Iyer and Pranay Sadani, side by side from their a16z speedrun headshots.
+        photo: { src: "/startups/zorbe-photo.webp", alt: "Zorbe founders Yash Iyer and Pranay Sadani", width: 960, height: 720 },
+        logo: { src: "/startups/zorbe-logo.png", alt: "Zorbe", width: 320, height: 320 },
+        press: { title: "Zorbe on a16z speedrun", href: "https://speedrun.a16z.com/companies/zorbe" },
+      },
+      {
+        name: "Nirvana Carbon Solutions",
+        badge: "$2M raised",
+        description: "Turns agricultural waste into critical inputs for industry.",
+        photo: { src: "/startups/nirvana-carbon-photo.webp", alt: "Nirvana Carbon founders Emma Limor and Sunrit Panda", width: 800, height: 434 },
+        logo: { src: "/startups/nirvana-carbon-logo.png", alt: "Nirvana Carbon Solutions", width: 160, height: 161 },
+        press: { title: "First-Gen Founders Limor and Panda Work to Decarbonize Their Heritage Regions", href: "https://thevertical.la/funding/limor-and-panda-nirvana-carbon/" },
       },
     ],
   },

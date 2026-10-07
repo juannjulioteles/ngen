@@ -12,7 +12,7 @@ export const metadata: Metadata = { title: "Sponsors", description: sponsors.int
 const mailto = (subject: string) => `mailto:${site.links.email}?subject=${encodeURIComponent(subject)}`;
 
 /** The three that raised the most, for the header mosaic. */
-const founders = ["Series", "Freya", "Nerd Apply"]
+const founders = ["Series", "Zorbe", "Freya"]
   .map((name) => site.startups.items.find((s) => s.name === name))
   .filter((s): s is (typeof site.startups.items)[number] => Boolean(s));
 
