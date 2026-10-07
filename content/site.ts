@@ -319,7 +319,7 @@ export const site: SiteContent = {
   },
 
   startups: {
-    title: "Founders who came through",
+    title: "Highlighted founders who came through",
     intro: "Startups from the NGEN network, and what they have raised since.",
     more: { label: "More on ngennetwork.org", href: "https://www.ngennetwork.org" },
     // From NGEN's featured startups. Images are served from ngennetwork.org.
@@ -349,28 +349,31 @@ export const site: SiteContent = {
         press: { title: "Nerd Apply raises $3.2 million in seed funding for its college admissions counseling platform", href: "https://www.edtechinnovationhub.com/news/nerd-apply-raises-32-million-in-seed-funding-for-its-college-admissions-counseling-platform" },
       },
       {
-        name: "Cloak",
-        badge: "$75K raised",
-        description: "Protects online publisher content against AI scraping.",
-        photo: { src: "https://www.ngennetwork.org/team-photos/cloak-photo.jpg", alt: "The Cloak team", width: 900, height: 600 },
-        logo: { src: "https://www.ngennetwork.org/logos/startups/cloak-logo.png", alt: "Cloak", width: 1159, height: 455 },
-        press: { title: "Cloak Wins $75,000 Perlman Grand Prize in Venture Lab Startup Challenge", href: "https://news.wharton.upenn.edu/press-releases/2026/05/cloak-wins-75000-perlman-grand-prize-in-venture-lab-startup-challenge/" },
-      },
-      {
         name: "Doe",
-        badge: "Y Combinator",
+        // Y Combinator's standard deal: $500K to every company in the batch.
+        badge: "$500K raised",
         description: "AI platform building company-native agents to automate work.",
         photo: { src: "https://www.ngennetwork.org/team-photos/doe-photo.jpeg", alt: "The Doe team", width: 800, height: 1333 },
         logo: { src: "https://www.ngennetwork.org/logos/startups/doe-lockup-dark.svg", alt: "Doe", width: 200, height: 78 },
         press: { title: "Doe: A new productivity platform", href: "https://www.ycombinator.com/launches/OyO-doe-a-new-productivity-platform" },
       },
+      // Not on ngennetwork.org yet, so these two are served from /public/startups.
       {
-        name: "Cai Creative",
-        badge: "Techstars",
-        description: "AI co-composer helping musicians create chords and melodies.",
-        photo: { src: "https://www.ngennetwork.org/team-photos/cai-creative-photo.avif", alt: "Cai Creative", width: 1840, height: 1120 },
-        logo: { src: "https://www.ngennetwork.org/logos/startups/cai-creative-logo.png", alt: "Cai Creative", width: 658, height: 450 },
-        press: { title: "How Mathematician Reuel Williams Is Uniting Art & Technology", href: "https://www.inverse.com/tech/how-mathematician-reuel-williams-is-uniting-art-technology" },
+        name: "Zorbe",
+        badge: "$8M raised",
+        description: "Company-owned AI models that beat the frontier.",
+        // Founders Yash Iyer and Pranay Sadani, side by side from their a16z speedrun headshots.
+        photo: { src: "/startups/zorbe-photo.webp", alt: "Zorbe founders Yash Iyer and Pranay Sadani", width: 960, height: 720 },
+        logo: { src: "/startups/zorbe-logo.png", alt: "Zorbe", width: 320, height: 320 },
+        press: { title: "Zorbe on a16z speedrun", href: "https://speedrun.a16z.com/companies/zorbe" },
+      },
+      {
+        name: "Nirvana Carbon Solutions",
+        badge: "$2M raised",
+        description: "Turns agricultural waste into critical inputs for industry.",
+        photo: { src: "/startups/nirvana-carbon-photo.webp", alt: "Nirvana Carbon founders Emma Limor and Sunrit Panda", width: 800, height: 434 },
+        logo: { src: "/startups/nirvana-carbon-logo.png", alt: "Nirvana Carbon Solutions", width: 160, height: 161 },
+        press: { title: "First-Gen Founders Limor and Panda Work to Decarbonize Their Heritage Regions", href: "https://thevertical.la/funding/limor-and-panda-nirvana-carbon/" },
       },
     ],
   },
@@ -649,6 +652,14 @@ export const pages: PagesContent = {
     leadershipTitle: "Leadership",
     leadership: [
       {
+        name: "Juan Teles",
+        study: "Economics + Art History",
+        school: "Dartmouth",
+        bio: "King Scholar at Dartmouth and Fundação Estudar’s Fellow. Led the Brazil Conference, the largest student-led conference at Harvard\u00a0&\u00a0MIT, and has worked in fintech at StoneCO, private equity at Tigbourne Capital and research at\u00a0Harvard.",
+        linkedin: "https://www.linkedin.com/in/juanteles/",
+        headshot: { src: "/team/juan-teles.webp", alt: "Juan Teles", width: 800, height: 1000 },
+      },
+      {
         name: "Jackson Lehner",
         role: "Co-Founder, NGEN",
         school: "Princeton",
@@ -664,14 +675,6 @@ export const pages: PagesContent = {
         linkedin: "https://www.linkedin.com/in/actuallyharsha/",
         headshot: { src: "/team/harsha-ravindran.webp", alt: "Harsha Ravindran", width: 800, height: 1000 },
       },
-      {
-        name: "Juan Teles",
-        study: "Economics + Art History",
-        school: "Dartmouth",
-        bio: "King Scholar at Dartmouth and Fundação Estudar’s Fellow. Led the Brazil Conference, the largest student-led conference at Harvard\u00a0&\u00a0MIT, and has worked in fintech at StoneCO, private equity at Tigbourne Capital and research at\u00a0Harvard.",
-        linkedin: "https://www.linkedin.com/in/juanteles/",
-        headshot: { src: "/team/juan-teles.webp", alt: "Juan Teles", width: 800, height: 1000 },
-      },
     ],
     membersTitle: "Team",
     members: [
@@ -684,20 +687,20 @@ export const pages: PagesContent = {
         headshot: { src: "/team/angie-hu.webp", alt: "Angie Hu", width: 800, height: 1000 },
       },
       {
-        name: "Shiven Dawda",
-        study: "Mathematical Economics & Politics",
-        school: "Penn",
-        bio: "Ben Franklin Scholar at Penn and vice president of the Class of 2029 in student government. An eight-time award-winning public speaker, consulting fellow at Umbrex and undergraduate associate at Perry\u00a0World\u00a0House.",
-        linkedin: "https://www.linkedin.com/in/sdawda/",
-        headshot: { src: "/team/shiven-dawda.webp", alt: "Shiven Dawda", width: 800, height: 1000 },
-      },
-      {
         name: "Julia Lee",
         study: "Trading & Markets",
         school: "Cornell",
         bio: "Equity researcher at Null Hypothesis Labs. Previously a markets intern at Cornell’s Emerging Markets Institute, a venture capital intern at NGEN and head of operations for Cornell Fashion Collective, the largest student fashion show in the\u00a0US.",
         linkedin: "https://www.linkedin.com/in/julia-jh-lee/",
         headshot: { src: "/team/julia-lee.webp", alt: "Julia Lee", width: 800, height: 1000 },
+      },
+      {
+        name: "Shiven Dawda",
+        study: "Mathematical Economics & Politics",
+        school: "Penn",
+        bio: "Ben Franklin Scholar at Penn and vice president of the Class of 2029 in student government. An eight-time award-winning public speaker, consulting fellow at Umbrex and undergraduate associate at Perry\u00a0World\u00a0House.",
+        linkedin: "https://www.linkedin.com/in/sdawda/",
+        headshot: { src: "/team/shiven-dawda.webp", alt: "Shiven Dawda", width: 800, height: 1000 },
       },
     ],
     linkedinLabel: "LinkedIn",
