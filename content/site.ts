@@ -319,7 +319,7 @@ export const site: SiteContent = {
   },
 
   startups: {
-    title: "Founders who came through",
+    title: "Highlighted founders who came through",
     intro: "Startups from the NGEN network, and what they have raised since.",
     more: { label: "More on ngennetwork.org", href: "https://www.ngennetwork.org" },
     // From NGEN's featured startups. Images are served from ngennetwork.org.
