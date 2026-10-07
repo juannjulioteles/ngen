@@ -487,8 +487,14 @@ export const site: SiteContent = {
 
 export type TeamMember = {
   name: string;
-  role: string;
-  school?: string;
+  /** Title at NGEN, where the person lists one. */
+  role?: string;
+  /** Field of study, shown when there is no title. */
+  study?: string;
+  /** School and class year, shown as a tag on the photo. */
+  school: string;
+  bio: string;
+  linkedin: string;
   headshot: ImageAsset | null;
 };
 
@@ -546,8 +552,11 @@ export type PagesContent = {
   team: {
     title: string;
     intro: string;
-    /** TBD: the NGEN organizing team. */
+    leadershipTitle: string;
+    leadership: TeamMember[];
+    membersTitle: string;
     members: TeamMember[];
+    linkedinLabel: string;
     membersEmpty: string;
     joinTitle: string;
     joinBody: string;
@@ -678,8 +687,54 @@ export const pages: PagesContent = {
   team: {
     title: "Built by students, for student founders.",
     intro: "The Ivy League Entrepreneurship Conference is organized by the NGEN team, student founders and operators from across the Ivy League.",
-    // TBD: add the real team, e.g. { name: "", role: "", school: "", headshot: null }.
-    members: [],
+    // From each person's LinkedIn (photos, schools, highlights), October 2026.
+    leadershipTitle: "Leadership",
+    leadership: [
+      {
+        name: "Jackson Lehner",
+        role: "Co-Founder, NGEN",
+        school: "Princeton ’24",
+        bio: "Co-founded NGEN in 2023. At Princeton, co-president of the Entrepreneurship Club, the university’s largest student organization, with 500 members and 15 subteams, and on the founding team of Berry, a grocery-recommendation startup.",
+        linkedin: "https://www.linkedin.com/in/jacksonlehner/",
+        headshot: { src: "/team/jackson-lehner.webp", alt: "Jackson Lehner", width: 800, height: 1000 },
+      },
+      {
+        name: "Harsha Ravindran",
+        role: "Co-Founder & Executive Director, NGEN",
+        school: "Penn ’26",
+        bio: "Co-founded NGEN in 2023 and Expop, an incubator where more than 200 high school students build their first startups. A Diana Award recipient, member of OpenAI’s inaugural ChatGPT Lab and former president of Wharton’s Undergraduate Entrepreneurship Club.",
+        linkedin: "https://www.linkedin.com/in/actuallyharsha/",
+        headshot: { src: "/team/harsha-ravindran.webp", alt: "Harsha Ravindran", width: 800, height: 1000 },
+      },
+      {
+        name: "Juan Teles",
+        study: "Economics + Art History",
+        school: "Dartmouth ’28",
+        bio: "CEO of bcs. Previously a summer analyst at Stone in São Paulo, a private equity summer analyst at Tigbourne Capital in London and an undergraduate research assistant at Harvard. A Wells Fargo Fellow.",
+        linkedin: "https://www.linkedin.com/in/juanteles/",
+        headshot: { src: "/team/juan-teles.webp", alt: "Juan Teles", width: 800, height: 1000 },
+      },
+    ],
+    membersTitle: "Team",
+    members: [
+      {
+        name: "Angie Hu",
+        study: "Philosophy + Computer Science",
+        school: "Columbia",
+        bio: "Product intern at LimX Dynamics, on its embodied-AI toolchain. Previously an AI research fellow in Columbia’s computer science department and an Anson L. Clark Scholar at Texas Tech.",
+        linkedin: "https://www.linkedin.com/in/angiehu76/",
+        headshot: { src: "/team/angie-hu.webp", alt: "Angie Hu", width: 800, height: 1000 },
+      },
+      {
+        name: "Shiven Dawda",
+        study: "Mathematical Economics & Politics",
+        school: "Penn ’29",
+        bio: "Ben Franklin Scholar at Penn and vice president of the Class of 2029 in student government. An eight-time award-winning public speaker, consulting fellow at Umbrex and undergraduate associate at Perry\u00a0World\u00a0House.",
+        linkedin: "https://www.linkedin.com/in/sdawda/",
+        headshot: { src: "/team/shiven-dawda.webp", alt: "Shiven Dawda", width: 800, height: 1000 },
+      },
+    ],
+    linkedinLabel: "LinkedIn",
     membersEmpty: "The organizing team will be introduced here soon.",
     joinTitle: "Help build the conference",
     joinBody: "We are looking for organizers, designers and operators who care about student founders.",

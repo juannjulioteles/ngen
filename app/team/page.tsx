@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { pages, site } from "@/content/site";
+import { pages, site, type TeamMember } from "@/content/site";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
 
@@ -9,6 +9,51 @@ const { team } = pages;
 export const metadata: Metadata = { title: "Team", description: team.intro };
 
 const joinHref = `mailto:${site.links.email}?subject=${encodeURIComponent(`${site.name}: joining the team`)}`;
+
+/**
+ * Portrait cards in the Speakers grid: the photo greyscale until pointed at,
+ * the school as a tag on it, then name, title (or field of study), a short
+ * bio and the LinkedIn link.
+ */
+function MemberGrid({ members }: { members: TeamMember[] }) {
+  return (
+    <ul className="grid grid-cols-1 gap-x-5 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
+      {members.map((m) => (
+        <li key={m.name} className="flex flex-col gap-4">
+          <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-stone-2">
+            {m.headshot && (
+              <Image
+                src={m.headshot.src}
+                alt={m.headshot.alt}
+                fill
+                sizes="(min-width: 768px) 30vw, (min-width: 640px) 45vw, 100vw"
+                className="object-cover object-top grayscale transition-[filter,transform] duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0"
+              />
+            )}
+            <span className="absolute bottom-3 left-3 rounded-full bg-paper/90 px-3 py-1 text-small backdrop-blur">{m.school}</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <h3 className="font-display text-[1.5rem] leading-tight">{m.name}</h3>
+            <p className="text-small text-graphite">{m.role ?? m.study}</p>
+          </div>
+          <p className="text-small leading-relaxed text-graphite [text-wrap:pretty]">{m.bio}</p>
+          <a
+            href={m.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-fit items-center gap-1.5 text-small underline decoration-ink/30 underline-offset-4 transition-colors hover:decoration-ink"
+          >
+            {team.linkedinLabel}
+            <svg aria-hidden="true" width="9" height="9" viewBox="0 0 10 10" fill="none">
+              <path d="M2 8L8 2M3.5 2H8v4.5" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
+            <span className="sr-only">: {m.name} (opens in a new tab)</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function TeamPage() {
   return (
@@ -41,45 +86,24 @@ export default function TeamPage() {
         }
       />
 
-      {team.members.length > 0 ? (
-        <PageSection id="members-title" title="Organizers">
-          <ul className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3">
-            {team.members.map((member) => (
-              <li key={member.name} className="flex flex-col gap-3">
-                {member.headshot && (
-                  <Image
-                    src={member.headshot.src}
-                    alt=""
-                    width={member.headshot.width}
-                    height={member.headshot.height}
-                    sizes="(min-width: 768px) 25vw, 45vw"
-                    className="aspect-[4/5] w-full rounded-xl object-cover grayscale"
-                  />
-                )}
-                <div>
-                  <h3 className="font-display text-[1.5rem] leading-tight">
-                    {member.name}
-                  </h3>
-                  <p className="text-small text-graphite">
-                    {[member.role, member.school].filter(Boolean).join(", ")}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </PageSection>
+      {team.leadership.length + team.members.length > 0 ? (
+        <>
+          <PageSection id="leadership-title" title={team.leadershipTitle}>
+            <MemberGrid members={team.leadership} />
+          </PageSection>
+          {team.members.length > 0 && (
+            <PageSection id="members-title" title={team.membersTitle} className="pt-0">
+              <MemberGrid members={team.members} />
+            </PageSection>
+          )}
+        </>
       ) : (
         // Until the team is announced: just the sentence, centred, no side label.
-        <section
-          aria-labelledby="members-title"
-          className="wrap py-[clamp(5rem,10vw,8rem)]"
-        >
+        <section aria-labelledby="members-title" className="wrap py-[clamp(5rem,10vw,8rem)]">
           <h2 id="members-title" className="sr-only">
-            Organizers
+            {team.membersTitle}
           </h2>
-          <p className="mx-auto max-w-[24ch] text-center font-display text-h2">
-            {team.membersEmpty}
-          </p>
+          <p className="mx-auto max-w-[24ch] text-center font-display text-h2">{team.membersEmpty}</p>
         </section>
       )}
     </>
