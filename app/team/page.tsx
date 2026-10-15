@@ -17,8 +17,10 @@ const joinHref = `mailto:${site.links.email}?subject=${encodeURIComponent(`${sit
  * across a row whatever the bio length.
  */
 function MemberGrid({ members }: { members: TeamMember[] }) {
+  // Rows stay full: four people sit four across (two on tablets) rather than three plus one.
+  const cols = members.length % 4 === 0 && members.length % 3 !== 0 ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-2 md:grid-cols-3";
   return (
-    <ul className="grid grid-cols-1 gap-x-5 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
+    <ul className={`grid grid-cols-1 gap-x-5 gap-y-12 ${cols}`}>
       {members.map((m) => (
         <li key={m.name} className="flex flex-col gap-4">
           <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-stone-2">
