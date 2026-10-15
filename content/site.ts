@@ -479,7 +479,7 @@ export const site: SiteContent = {
     status: "Connecting world-class student entrepreneurs with today’s most influential leaders.",
     columns: { pages: "Pages", social: "Social", contact: "Contact" },
     social: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/company/ngen-network/", external: true },
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/the-ivy-league-entrepreneurship-conference/", external: true },
       { label: "Press release", href: "/press" },
     ],
   },
