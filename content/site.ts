@@ -688,6 +688,14 @@ export const pages: PagesContent = {
         headshot: { src: "/team/angie-hu.webp", alt: "Angie Hu", width: 800, height: 1000 },
       },
       {
+        name: "Heidi Lee",
+        study: "Neuroscience",
+        school: "Princeton",
+        bio: "Research intern at KAIST’s AI Brain Lab, at the intersection of machine learning and computational neuroscience. Previously a research intern at Curityba Biotech in Brazil and a QuestBridge finalist.",
+        linkedin: "https://www.linkedin.com/in/heidi-lee-62a463287/",
+        headshot: { src: "/team/heidi-lee.webp", alt: "Heidi Lee", width: 800, height: 1000 },
+      },
+      {
         name: "Julia Lee",
         study: "Trading & Markets",
         school: "Cornell",
