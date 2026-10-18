@@ -161,8 +161,8 @@ export const site: SiteContent = {
   name: "Ivy League Entrepreneurship Conference",
   description:
     "Connecting world-class student entrepreneurs with today’s most influential leaders. The inaugural Ivy League Entrepreneurship Conference, presented by NGEN.",
-  // Production address. Swap for the custom domain once it is connected.
-  url: "https://ngen-five.vercel.app",
+  // Production address. ivyleagueconference.org and ivyplusconference.com/.org redirect here (set in Vercel).
+  url: "https://ivyleagueconference.com",
 
   org: {
     name: "NGEN",
