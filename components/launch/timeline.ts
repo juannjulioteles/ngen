@@ -5,7 +5,7 @@
  *
  *   0.1  dark, letterbox closed: "NGEN presents"
  *   0.75 three cuts, each figure counting up and holding long enough to read:
- *        3 / 18 / $30M
+ *        3 / 20+ / $30M
  *   3.3  montage: the firms behind past speakers and alumni, one per beat
  *   4.4  "Now, a bigger stage." and, beneath it, New York City
  *   5.3  lights up, the title rises line by line, a light sweeps the letters,
