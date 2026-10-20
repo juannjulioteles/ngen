@@ -223,7 +223,7 @@ export const site: SiteContent = {
       studio: "NGEN presents",
       frames: [
         { figure: "3", caption: "years building the network" },
-        { figure: "18", caption: "conferences, treks and pitch competitions" },
+        { figure: "20+", caption: "events, treks and pitch competitions" },
         { figure: "$30M", caption: "raised by founders who came through" },
       ],
       montageLabel: "Past speakers and alumni backers from",
@@ -304,8 +304,8 @@ export const site: SiteContent = {
       },
       {
         label: "Three years",
-        figure: "18",
-        title: "Conferences, treks and pitch competitions",
+        figure: "20+",
+        title: "Events, treks and pitch competitions",
         body: "NGEN built the Ivy League founder network event by event. Founders who came through raised more than $30M, earned backing from Y Combinator, a16z and Techstars, and sold their companies.",
       },
       {
@@ -595,7 +595,7 @@ export const pages: PagesContent = {
       "In a few years, they won’t. Their calendars will fill. Their rounds will close before most people hear about them. The window to meet them, help them and back them early will have passed.",
       "Most people only notice founders once they’re already too big to reach.",
       "Three years ago, NGEN started the Trailblazers Conference: an intimate gathering in New York where student founders could sit across the table from the operators and investors they wanted to learn from.",
-      "Since then, NGEN has run 18 conferences, founder treks and pitch competitions. Founders who came through have earned backing from Y Combinator, a16z and Techstars, raised more than $30M, and led their startups to acquisition. Past speakers include Geoff Ralston, Howard Morgan, Tom Gardner and Seema Hingorani.",
+      "Since then, NGEN has run more than 20 events, treks and pitch competitions. Founders who came through have earned backing from Y Combinator, a16z and Techstars, raised more than $30M, and led their startups to acquisition. Past speakers include Geoff Ralston, Howard Morgan, Tom Gardner and Seema Hingorani.",
       "Today, we’re announcing what comes next.",
       "The Ivy League Entrepreneurship Conference is Trailblazers, reborn on a larger stage. Invite-only and held in New York City, it connects world-class student entrepreneurs with today’s most influential leaders, face to face.",
       "It is deliberately small: a room built for real conversations, not a hall where business cards change hands.",
@@ -724,7 +724,7 @@ export const pages: PagesContent = {
       "Put your brand in front of Ivy League student founders and the investors and operators who show up for them.",
     figures: [
       { value: "$30M+", label: "raised by founders who came through" },
-      { value: "18", label: "conferences, treks and pitch competitions" },
+      { value: "20+", label: "events, treks and pitch competitions" },
     ],
     supportersTitle: "Past supporters",
     supportersNote: "Companies that have supported NGEN events.",
