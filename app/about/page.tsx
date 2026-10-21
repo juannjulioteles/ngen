@@ -11,6 +11,7 @@ export const metadata: Metadata = { title: "About", description: about.intro };
 
 export default function AboutPage() {
   const photos = about.photos.filter((p) => p.image);
+  const [leadStat, ...moreStats] = about.ngenStats;
 
   return (
     <>
@@ -57,6 +58,16 @@ export default function AboutPage() {
             </p>
           ))}
         </div>
+        {/* Why meeting founders early matters, on the same two columns as the text above */}
+        <dl className="mt-16 grid gap-x-10 gap-y-12 lg:grid-cols-2">
+          {about.evidence.map((e) => (
+            <div key={e.value} className="flex flex-col gap-3">
+              <dt className="font-display text-[clamp(3rem,6vw,4.5rem)] leading-none">{e.value}</dt>
+              <dd className="text-lead [text-wrap:pretty]">{e.label}</dd>
+              <dd className="text-small text-graphite">{e.source}</dd>
+            </div>
+          ))}
+        </dl>
       </PageSection>
 
       {photos.length > 0 && (
@@ -88,7 +99,7 @@ export default function AboutPage() {
           <NgenMark className="mb-6 h-12" />
           {/*
             One grid for both sides, so each figure lines up with a row of text:
-            the first with the title, the second with the mission line.
+            the lead figure with the title, the smaller pair with the mission line.
           */}
           <div className="grid gap-x-8 gap-y-6 lg:grid-cols-12">
             <h2 id="ngen-title" className="font-display text-h1 lg:col-span-7 lg:row-start-1">
@@ -99,18 +110,20 @@ export default function AboutPage() {
             <a href={site.org.url} className="btn btn-paper mt-2 justify-self-start lg:col-span-7 lg:row-start-4">
               Visit {site.org.urlLabel}
             </a>
-            {about.ngenStats.map((stat, i) => (
-              <dl
-                key={stat.label}
-                className={`border-t border-paper/15 pt-5 lg:col-span-4 lg:col-start-9 ${
-                  i === 0 ? "mt-10 lg:row-span-2 lg:row-start-1 lg:mt-0" : "lg:row-span-2 lg:row-start-3"
-                }`}
-              >
-                <dt className="sr-only">{stat.label}</dt>
-                <dd className="font-display text-[clamp(3rem,6vw,4.5rem)] leading-none">{stat.value}</dd>
-                <dd className="mt-2 text-small text-mist">{stat.label}</dd>
-              </dl>
-            ))}
+            <dl className="mt-10 border-t border-paper/15 pt-5 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:mt-0">
+              <dt className="sr-only">{leadStat.label}</dt>
+              <dd className="font-display text-[clamp(3rem,6vw,4.5rem)] leading-none">{leadStat.value}</dd>
+              <dd className="mt-2 text-small text-mist">{leadStat.label}</dd>
+            </dl>
+            <div className="grid grid-cols-2 gap-x-8 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-3">
+              {moreStats.map((stat) => (
+                <dl key={stat.label} className="border-t border-paper/15 pt-5">
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd className="font-display text-[clamp(2.25rem,4vw,3rem)] leading-none">{stat.value}</dd>
+                  <dd className="mt-2 text-small text-mist [text-wrap:pretty]">{stat.label}</dd>
+                </dl>
+              ))}
+            </div>
           </div>
         </div>
       </section>
