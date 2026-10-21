@@ -568,9 +568,6 @@ export type PagesContent = {
     supporters: BrandMention[];
     /** Small label over the firms behind past speakers and alumni, on the same page. */
     firmsLabel: string;
-    /** TBD for review: partnership formats, no pricing until NGEN confirms. */
-    formatsTitle: string;
-    formats: Item[];
     logosEmpty: string;
     ctaTitle: string;
   };
@@ -771,12 +768,6 @@ export const pages: PagesContent = {
         title: "The track record",
         body: "Conference alumni have raised over $30M and led their startups to acquisition.",
       },
-    ],
-    formatsTitle: "Ways to partner",
-    // TBD for review: confirm formats with NGEN.
-    formats: [
-      { title: "Conference partner", body: "Presence across the flagship event." },
-      { title: "Pitch competition", body: "Back the prize and meet the finalists." },
     ],
     logosEmpty: "Partners will be announced here.",
     ctaTitle: "Talk to us about partnering",

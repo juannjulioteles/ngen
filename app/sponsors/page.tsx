@@ -117,29 +117,6 @@ export default function SponsorsPage() {
         <LogoGrid brands={site.strip.firms} />
       </PageSection>
 
-      <PageSection
-        id="formats-title"
-        title={sponsors.formatsTitle}
-        className="pt-0"
-        aside={<p className="text-small text-graphite">Each one opens an email to the team.</p>}
-      >
-        <ul className="rule border-b">
-          {sponsors.formats.map((f) => (
-            <li key={f.title} className="rule border-t">
-              <a
-                href={mailto(`${site.name}: ${f.title}`)}
-                className="group grid gap-x-8 gap-y-1 py-6 lg:grid-cols-[1fr_minmax(0,22rem)]"
-              >
-                <span className="font-display text-h3 underline decoration-transparent decoration-1 underline-offset-[0.18em] transition-colors group-hover:decoration-current">
-                  {f.title}
-                </span>
-                <span className="text-base text-graphite lg:pt-1">{f.body}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </PageSection>
-
       <section aria-labelledby="sponsor-cta" className="bg-ink text-paper">
         <div className="wrap grid gap-y-8 py-[clamp(4rem,8vw,7rem)] md:grid-cols-12 md:gap-x-8">
           <div className="flex flex-col items-start gap-6 md:col-span-8">
