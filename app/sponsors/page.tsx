@@ -82,7 +82,20 @@ export default function SponsorsPage() {
       />
 
       <PageSection id="why-title" title={sponsors.reasonsTitle}>
-        <ul className="rule border-b">
+        {/*
+          The case first: two outside figures on why meeting founders early pays, then the reasons.
+          The figures sit on the reasons' columns, so the second starts where their text does.
+        */}
+        <dl className="grid gap-x-8 gap-y-12 lg:grid-cols-[1fr_minmax(0,22rem)]">
+          {sponsors.evidence.map((e) => (
+            <div key={e.value} className="flex max-w-[30rem] flex-col gap-3">
+              <dt className="font-display text-[clamp(3rem,5vw,4rem)] leading-none">{e.value}</dt>
+              <dd className="text-lead [text-wrap:pretty]">{e.label}</dd>
+              <dd className="text-small text-graphite">{e.source}</dd>
+            </div>
+          ))}
+        </dl>
+        <ul className="rule mt-14 border-b">
           {sponsors.reasons.map((r) => (
             <li key={r.title} className="rule grid gap-x-8 gap-y-1 border-t py-6 lg:grid-cols-[1fr_minmax(0,22rem)]">
               <h3 className="font-display text-h3">{r.title}</h3>

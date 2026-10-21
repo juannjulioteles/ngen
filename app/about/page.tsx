@@ -58,16 +58,6 @@ export default function AboutPage() {
             </p>
           ))}
         </div>
-        {/* Why meeting founders early matters, on the same two columns as the text above */}
-        <dl className="mt-16 grid gap-x-10 gap-y-12 lg:grid-cols-2">
-          {about.evidence.map((e) => (
-            <div key={e.value} className="flex flex-col gap-3">
-              <dt className="font-display text-[clamp(3rem,6vw,4.5rem)] leading-none">{e.value}</dt>
-              <dd className="text-lead [text-wrap:pretty]">{e.label}</dd>
-              <dd className="text-small text-graphite">{e.source}</dd>
-            </div>
-          ))}
-        </dl>
       </PageSection>
 
       {photos.length > 0 && (
