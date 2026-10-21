@@ -525,8 +525,6 @@ export type PagesContent = {
     conferenceTitle: string;
     /** The conference's own bio. */
     conference: string[];
-    /** Why meeting founders early matters: outside figures, each with its source. */
-    evidence: { value: string; label: string; source: string }[];
     /** TBD: event photos. The block is hidden until one has an image. */
     photos: Photo[];
     ngenTitle: string;
@@ -561,6 +559,8 @@ export type PagesContent = {
     /** Figures set in the page header. */
     figures: { value: string; label: string }[];
     reasonsTitle: string;
+    /** Why meeting founders early matters: outside figures, each with its source. */
+    evidence: { value: string; label: string; source: string }[];
     reasons: Item[];
     /** Companies that have supported NGEN events before. */
     supportersTitle: string;
@@ -624,20 +624,6 @@ export const pages: PagesContent = {
       "The mission is clear: an invite-only conference where world-class student entrepreneurs meet today’s most influential leaders face to face.",
       "Formerly the Trailblazers Conference, an intimate New York gathering, the event has been reborn on a larger stage to expand its impact. Its alumni have gone on to earn backing from Y Combinator, a16z and Techstars, raise over $30M, and lead their startups to acquisition.",
       "Past speakers include Geoff Ralston (President Emeritus, Y Combinator), Tom Gardner (Co-Founder & CEO, The Motley Fool) and Seema Hingorani (Founder, Girls Who Invest).",
-    ],
-    // Same figures and sources as the sponsorship deck. 36% sums Strebulaev's school counts
-    // (1,268 of 3,505 founders), so a founder with two of these degrees counts twice.
-    evidence: [
-      {
-        value: "36%",
-        label: "of US unicorn founders studied at an Ivy League school, Stanford, MIT or Duke.",
-        source: "Ilya Strebulaev, Stanford GSB, June 2026; school counts summed",
-      },
-      {
-        value: "Nearly half",
-        label: "of US venture-backed tech companies banked with Silicon Valley Bank, which met founders early.",
-        source: "Federal Reserve Board, April 2023",
-      },
     ],
     photos: [
       { image: null, caption: "A speaker on stage at Trailblazers, New York" },
@@ -758,6 +744,20 @@ export const pages: PagesContent = {
     ],
     firmsLabel: "Past speakers and alumni backers from",
     reasonsTitle: "Why partner",
+    // Same figures and sources as the sponsorship deck. 36% sums Strebulaev's school counts
+    // (1,268 of 3,505 founders), so a founder with two of these degrees counts twice.
+    evidence: [
+      {
+        value: "36%",
+        label: "of US unicorn founders studied at an Ivy League school, Stanford, MIT or Duke.",
+        source: "Ilya Strebulaev, Stanford GSB, June 2026; school counts summed",
+      },
+      {
+        value: "Nearly half",
+        label: "of US venture-backed tech companies banked with Silicon Valley Bank, which met founders early.",
+        source: "Federal Reserve Board, April 2023",
+      },
+    ],
     reasons: [
       {
         title: "The founders",
