@@ -9,7 +9,7 @@ import { DaysAway } from "./DaysAway";
 import { Ticket } from "./Ticket";
 import { Ngen, withNgen } from "@/components/brand/Ngen";
 
-const { hero, strip } = site;
+const { hero } = site;
 const { launch } = hero;
 
 const vars = (v: Record<string, string | number>) => v as CSSProperties;
@@ -23,7 +23,7 @@ const vars = (v: Record<string, string | number>) => v as CSSProperties;
 export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="hero-stage relative overflow-hidden bg-stone text-ink">
-      <style>{timelineCss(strip.firms.length)}</style>
+      <style>{timelineCss()}</style>
 
       <div className="grid min-h-[100svh] md:grid-cols-2">
         <div className="pl-wrap flex flex-col justify-center gap-8 pt-28 pr-[var(--gutter)] pb-12 md:pr-[clamp(1.5rem,4vw,5rem)] md:pb-16">
@@ -123,21 +123,6 @@ export function Hero() {
             </div>
           );
         })}
-        <div className="intro-frame intro-montage" style={vars({ "--at": `${T.montage}s` })}>
-          <span className="text-lead text-paper/70">{launch.montageLabel}</span>
-          <span className="intro-rule" />
-          <span className="relative block h-[2.2em] w-[min(92vw,64rem)] font-display text-[clamp(2.5rem,8vw,7rem)] leading-[1.05]">
-            {strip.firms.map((firm, i) => (
-              <span
-                key={firm.name}
-                className="intro-flash absolute inset-0 flex items-center justify-center text-center text-balance"
-                style={vars({ "--at": `${T.montage + i * T.flash}s` })}
-              >
-                {firm.name}
-              </span>
-            ))}
-          </span>
-        </div>
         <div className="intro-frame intro-turn" style={vars({ "--at": `${T.turn}s` })}>
           <span className="max-w-[14ch] px-5 font-display text-[clamp(2.5rem,6vw,5rem)] leading-[1.04]">{launch.turn}</span>
           <span className="intro-rule intro-rule-late" />

@@ -6,7 +6,7 @@ import { LEAF_TIMES, T } from "./timeline";
  *
  *   drone    a low, slightly detuned A that sits under the whole sequence
  *   boom     a sub drop on each hard cut, a little higher each time
- *   ticks    a rising run while each figure counts up, a click per montage cut
+ *   ticks    a rising run while each figure counts up
  *   riser    filtered noise climbing into the title, cut dead before it lands
  *   bloom    the title: a deep boom and an A major chord whose filter opens
  *   leaves   one soft chime per leaf as the vine unfurls, panned across
@@ -18,7 +18,7 @@ import { LEAF_TIMES, T } from "./timeline";
  * (no click or key press on the page so far): the caller tries again on the
  * first interaction, from that moment, so the score stays in sync.
  */
-export function playScore(offset = 0, montageCount = 7): (() => void) | null {
+export function playScore(offset = 0): (() => void) | null {
   const Ctx = window.AudioContext ?? (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
   const ctx = new Ctx();
   if (ctx.state === "suspended") {
@@ -90,14 +90,6 @@ export function playScore(offset = 0, montageCount = 7): (() => void) | null {
       tick(at(t + 0.04 + u * (T.countLength - 0.06)), 1400 + k * 90, 0.05);
     }
   });
-
-  // Montage: one click per name, a low pulse on the downbeat.
-  for (let k = 0; k < montageCount; k++) {
-    const t = T.montage + k * T.flash;
-    if (!future(t)) continue;
-    tick(at(t), 2400, 0.09);
-    if (k % 2 === 0) boom(at(t), 70, 0.35);
-  }
 
   if (future(T.turn)) swell(at(T.turn - 0.35), 0.5, 0.12);
 
