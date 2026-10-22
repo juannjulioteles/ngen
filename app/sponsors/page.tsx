@@ -18,11 +18,13 @@ const founders = ["Series", "Zorbe", "Freya"]
 
 /**
  * A set of logos in even cells, one rule above and below and none between
- * rows, so a short last row never leaves a broken line.
+ * rows, so a short last row never leaves a broken line. On wide screens a set
+ * that fills rows of three but not of four (nine supporters) runs in threes.
  */
 function LogoGrid({ brands }: { brands: BrandMention[] }) {
+  const lgCols = brands.length % 3 === 0 && brands.length % 4 !== 0 ? "lg:grid-cols-3" : "lg:grid-cols-4";
   return (
-    <ul className="rule grid grid-cols-2 gap-x-6 gap-y-2 border-y py-4 sm:grid-cols-3 lg:grid-cols-4">
+    <ul className={`rule grid grid-cols-2 gap-x-6 gap-y-2 border-y py-4 sm:grid-cols-3 ${lgCols}`}>
       {brands.map((brand) => (
         <li key={brand.name} className="flex h-16 items-center">
           <BrandLogo brand={brand} />

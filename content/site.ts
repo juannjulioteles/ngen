@@ -26,6 +26,8 @@ export type BrandMention = {
   logo?: ImageAsset;
   /** Set beside a logo that is only a mark, as the brand itself does (Y Combinator's square). */
   logoText?: string;
+  /** Optical correction for a logo of hairline strokes, which reads smaller than the rest at the same area. */
+  scale?: number;
 };
 
 export type Speaker = {
@@ -730,16 +732,20 @@ export const pages: PagesContent = {
     ],
     supportersTitle: "Past supporters",
     supportersNote: "Companies that have supported NGEN events.",
-    // Logos from each company's own site. TBD: official logo files for M31 Capital,
-    // Honors Fund and Blue & Gold Ventures (their names show until then).
+    // Logos from each company's own site or files they sent. Stripe Atlas has no lockup of its
+    // own, so Stripe's wordmark carries the product name, as on stripe.com/atlas.
+    // TBD: an official logo file for Blue & Gold Ventures (its name shows until then).
     supporters: [
+      { name: "J.P. Morgan", logo: { src: "/logos/jp-morgan.svg", alt: "J.P. Morgan", width: 148, height: 30 } },
+      { name: "Stripe Atlas", logo: { src: "/logos/stripe.svg", alt: "Stripe", width: 60, height: 25 }, logoText: "Atlas" },
       { name: "Mercury", logo: { src: "/logos/mercury.svg", alt: "Mercury", width: 139, height: 32 } },
-      { name: "M31 Capital" },
-      { name: "OVO Fund", logo: { src: "/logos/ovo-fund.png", alt: "OVO Fund", width: 268, height: 160 } },
-      { name: "Honors Fund" },
+      // Hairline strokes: a tenth of its box is ink, against a quarter to a half for the rest.
+      { name: "M31 Capital", logo: { src: "/logos/m31-capital.png", alt: "M31 Capital", width: 1169, height: 299 }, scale: 1.35 },
+      { name: "OVO Fund", logo: { src: "/logos/ovo-fund.png", alt: "OVO Fund", width: 814, height: 255 } },
+      { name: "Honors Fund", logo: { src: "/logos/honors-fund.png", alt: "HonorsFund by CEAS", width: 1010, height: 219 } },
       { name: "BullMont Capital", logo: { src: "/logos/bullmont-capital.png", alt: "BullMont Capital", width: 706, height: 124 } },
       { name: "Blue & Gold Ventures" },
-      { name: "ProtoPie", logo: { src: "/logos/protopie.svg", alt: "ProtoPie", width: 70, height: 14 } },
+      { name: "ProtoPie", logo: { src: "/logos/protopie.png", alt: "ProtoPie", width: 1276, height: 256 } },
     ],
     firmsLabel: "Past speakers and alumni backers from",
     reasonsTitle: "Why partner",

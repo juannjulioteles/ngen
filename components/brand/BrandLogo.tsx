@@ -11,14 +11,14 @@ const BASE = 24;
  * Without a logo file the name stands in, in the sans.
  */
 export function BrandLogo({ brand, className = "" }: { brand: BrandMention; className?: string }) {
-  const { name, logo, logoText } = brand;
+  const { name, logo, logoText, scale = 1 } = brand;
 
   if (!logo) {
     return <span className={`text-[1.125rem] leading-none font-medium tracking-[-0.01em] text-ink/80 ${className}`}>{name}</span>;
   }
 
   const ratio = logo.width / logo.height;
-  const height = Math.round(Math.min(44, Math.max(16, BASE * Math.sqrt(4 / ratio))));
+  const height = Math.round(Math.min(44, Math.max(16, BASE * Math.sqrt(4 / ratio) * scale)));
   // A mark paired with its name (Y Combinator's square) stays text-height.
   const markHeight = logoText ? 26 : height;
 
