@@ -44,6 +44,8 @@ export type Startup = {
   badge: string;
   description: string;
   photo: ImageAsset;
+  /** Where the card's 4:3 crop anchors (CSS object-position), for a tall photo whose faces sit high. */
+  photoFocus?: string;
   logo: ImageAsset;
   press: { title: string; href: string };
 };
@@ -352,6 +354,8 @@ export const site: SiteContent = {
         badge: "$500K raised",
         description: "AI platform building company-native agents to automate work.",
         photo: { src: "https://www.ngennetwork.org/team-photos/doe-photo.jpeg", alt: "The Doe team", width: 800, height: 1333 },
+        // The founder's face sits a third of the way down; centred, the badge covered it.
+        photoFocus: "50% 20%",
         logo: { src: "https://www.ngennetwork.org/logos/startups/doe-lockup-dark.svg", alt: "Doe", width: 200, height: 78 },
         press: { title: "Doe: A new productivity platform", href: "https://www.ycombinator.com/launches/OyO-doe-a-new-productivity-platform" },
       },

@@ -34,6 +34,7 @@ export function Startups() {
                     alt={s.photo.alt}
                     fill
                     sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+                    style={s.photoFocus ? { objectPosition: s.photoFocus } : undefined}
                     className="object-cover grayscale transition-[filter,transform] duration-700 ease-out group-hover:scale-[1.04] group-hover:grayscale-0"
                   />
                   <span className="absolute top-3 left-3 rounded-full bg-paper/90 px-3 py-1 text-small font-medium backdrop-blur">
