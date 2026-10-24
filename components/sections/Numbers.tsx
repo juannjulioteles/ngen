@@ -4,9 +4,10 @@ import { PageSection } from "@/components/layout/PageSection";
 const { numbers } = site;
 
 /**
- * Two outside figures as stacked statements (figure on the left, one sentence
- * and its source on the right), then the gap they show, one sentence to a line.
- * Compact is the inner-page size, inside the page grid's nine columns.
+ * Two figures as stacked statements (figure on the left, one sentence and its
+ * source on the right), then the gap they show in the display serif and, under
+ * it, what one conversation can do. Compact is the inner-page size, inside the
+ * page grid's nine columns.
  */
 function Figures({ compact = false }: { compact?: boolean }) {
   return (
@@ -24,17 +25,14 @@ function Figures({ compact = false }: { compact?: boolean }) {
             <dd className="flex flex-col gap-2 lg:col-span-7">
               {/* Pretty, not balance, so each sentence runs out to the right edge */}
               <span className={`[text-wrap:pretty] ${compact ? "text-lead" : "text-h3 leading-[1.35]"}`}>{f.label}</span>
-              <span className="text-small text-graphite">{f.source}</span>
+              <span className="text-small text-graphite [text-wrap:pretty]">{f.source}</span>
             </dd>
           </div>
         ))}
       </dl>
-      <p className={`font-display ${compact ? "mt-12 text-h2" : "mt-14 text-h1 lg:mt-20"}`}>
-        {numbers.close.split(/(?<=\.)\s+/).map((sentence) => (
-          <span key={sentence} className="block">
-            {sentence}
-          </span>
-        ))}
+      <p className={`font-display ${compact ? "mt-12 text-h2" : "mt-14 text-h1 lg:mt-20"}`}>{numbers.close}</p>
+      <p className={`mt-4 text-graphite [text-wrap:pretty] ${compact ? "text-lead" : "text-h3 leading-[1.35]"}`}>
+        {numbers.closeNote}
       </p>
     </>
   );

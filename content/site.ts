@@ -141,7 +141,10 @@ export type SiteContent = {
   numbers: {
     title: string;
     figures: { value: string; label: string; source: string }[];
+    /** The gap the figures show, in the display serif. */
     close: string;
+    /** What the conference does about it, under the close. */
+    closeNote: string;
   };
   journey: {
     title: string;
@@ -274,7 +277,7 @@ export const site: SiteContent = {
 
   mission: {
     kicker: "Our mission is clear",
-    title: "An invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders, face to face.",
+    title: "An invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
     audiences: [
       {
         title: "Student founders",
@@ -304,24 +307,25 @@ export const site: SiteContent = {
     center: "Face to face",
   },
 
-  // Same figures, wording and sources as the sponsorship deck. 3.8%: PitchBook's 2025 rankings
-  // count 6,528 Ivy League undergraduates among 173,000+ venture-backed founders worldwide.
-  // 13.8%: SignalFire's Unicorn DNA, from the degrees founders of ~800 US unicorns list on LinkedIn.
+  // Juan's final guideline (Oct 24, 2026), figures in the deck's order. 13.8%: SignalFire's Unicorn DNA, from the degrees
+  // founders of ~800 US unicorns list on LinkedIn. 3x: that share against the Ivy League's 3.8% of
+  // venture-backed founders worldwide in PitchBook's 2025 rankings (13.8 / 3.8 is about 3.6).
   numbers: {
-    title: "When Ivy League students build, they build big.",
+    title: "When Ivy League students build, they build\u00a0big.",
     figures: [
       {
-        value: "3.8%",
-        label: "of the world’s venture-backed founders went to college in the Ivy League.",
-        source: "PitchBook, 2025 university rankings",
+        value: "3x",
+        label: "Founders from Ivy League schools are three times more likely to build a billion\u2011dollar\u00a0company.",
+        source: "13.8% of unicorn founders (SignalFire) against 3.8% of venture-backed founders (PitchBook,\u00a02025)",
       },
       {
         value: "13.8%",
-        label: "of unicorn founders come from the eight Ivy League schools.",
-        source: "SignalFire, Unicorn DNA: founders of about 800 US unicorns since 2010",
+        label: "of unicorn founders come from the eight Ivy League\u00a0schools.",
+        source: "SignalFire, Unicorn DNA: founders of about 800 US unicorns since\u00a02010",
       },
     ],
-    close: "But too few of them have started yet. We exist to change that.",
+    close: "Yet few of them ever meet the people who have built at the scale they’re aiming\u00a0for.",
+    closeNote: "One conversation at the right moment can shape who a founder\u00a0becomes.",
   },
 
   journey: {
@@ -573,6 +577,7 @@ export type PagesContent = {
     intro: string;
     upcomingTitle: string;
     upcomingBody: string;
+    upcomingLead: string;
     upcomingCta: string;
   };
   team: {
@@ -655,7 +660,7 @@ export const pages: PagesContent = {
     ],
     conferenceTitle: "About the conference",
     conference: [
-      "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face to face.",
+      "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
       "Three years ago, NGEN opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired. Our alumni have since raised over $30M, earned backing from Y Combinator, a16z and Techstars, and led their startups to acquisition. Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every year.",
       "Past speakers include Geoff Ralston (President Emeritus, Y Combinator), Tom Gardner (Co-Founder & CEO, The Motley Fool) and Seema Hingorani (Founder, Girls Who Invest).",
     ],
@@ -681,7 +686,8 @@ export const pages: PagesContent = {
       "Past speakers include the President Emeritus of Y Combinator and the founders of some of the most respected firms in finance and investing.",
     upcomingTitle: "This year’s lineup",
     // TBD: announce speakers here.
-    upcomingBody: "To be announced. If there is someone student founders should hear from, tell us.",
+    upcomingBody: "Your story, including the hard\u2011won lessons and near\u2011quits, can inspire student founders to see their vision\u00a0through.",
+    upcomingLead: "This year’s lineup is to be announced. If there is someone student founders should hear from, tell\u00a0us.",
     upcomingCta: "Propose a speaker",
   },
   team: {
