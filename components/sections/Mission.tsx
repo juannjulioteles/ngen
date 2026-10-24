@@ -29,7 +29,8 @@ export function Mission() {
   return (
     <section aria-labelledby="mission-title" className="mission bg-ink text-paper">
       <InView className="wrap py-[clamp(5rem,10vw,8rem)]">
-        <h2 id="mission-title" className="reveal text-center font-display text-h2 text-paper/90">
+        <p className="reveal text-center text-small font-medium text-mist">{mission.kicker}</p>
+        <h2 id="mission-title" className="reveal mx-auto mt-4 max-w-[34ch] text-center font-display text-h2 text-paper/90">
           {mission.title}
         </h2>
 

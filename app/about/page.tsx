@@ -4,6 +4,7 @@ import { pages, site } from "@/content/site";
 import { NgenMark, withNgen } from "@/components/brand/Ngen";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
+import { NumbersSection } from "@/components/sections/Numbers";
 
 const { about } = pages;
 
@@ -59,6 +60,9 @@ export default function AboutPage() {
           ))}
         </div>
       </PageSection>
+
+      {/* After the mission and the story, the numbers that make the case */}
+      <NumbersSection label={about.numbersTitle} />
 
       {photos.length > 0 && (
         <section aria-label="Photos" className="wrap py-[clamp(4rem,8vw,7rem)]">
