@@ -88,6 +88,7 @@ export default function SponsorsPage() {
           The case first: two outside figures on why meeting founders early pays, then the reasons.
           The figures sit on the reasons' columns, so the second starts where their text does.
         */}
+        <p className="mb-10 font-display text-h2">{sponsors.evidenceTitle}</p>
         <dl className="grid gap-x-8 gap-y-12 lg:grid-cols-[1fr_minmax(0,22rem)]">
           {sponsors.evidence.map((e) => (
             <div key={e.value} className="flex max-w-[30rem] flex-col gap-3">

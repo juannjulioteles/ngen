@@ -129,11 +129,22 @@ export type SiteContent = {
     news: NavLink;
   };
   mission: {
+    /** Small line over the title. */
+    kicker: string;
     title: string;
     /** TBD for review: draft descriptions of who is in the room. */
     /** Draft for review: the three audiences the conference brings together. */
     audiences: [Audience, Audience, Audience];
     center: string;
+  };
+  /** Why the conference exists: outside figures, each with its source, then the gap they show. */
+  numbers: {
+    title: string;
+    figures: { value: string; label: string; source: string }[];
+    /** The gap the figures show, in the display serif. */
+    close: string;
+    /** What the conference does about it, under the close. */
+    closeNote: string;
   };
   journey: {
     title: string;
@@ -265,7 +276,8 @@ export const site: SiteContent = {
   },
 
   mission: {
-    title: "Talk to the next great founder before they’re too big to reach.",
+    kicker: "Our mission is clear",
+    title: "An invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
     audiences: [
       {
         title: "Student founders",
@@ -295,6 +307,27 @@ export const site: SiteContent = {
     center: "Face to face",
   },
 
+  // Juan's final guideline (Oct 24, 2026), figures in the deck's order. 13.8%: SignalFire's Unicorn DNA, from the degrees
+  // founders of ~800 US unicorns list on LinkedIn. 3x: that share against the Ivy League's 3.8% of
+  // venture-backed founders worldwide in PitchBook's 2025 rankings (13.8 / 3.8 is about 3.6).
+  numbers: {
+    title: "When Ivy League students build, they build\u00a0big.",
+    figures: [
+      {
+        value: "3x",
+        label: "Founders from Ivy League schools are three times more likely to build a billion\u2011dollar\u00a0company.",
+        source: "13.8% of unicorn founders (SignalFire) against 3.8% of venture-backed founders (PitchBook,\u00a02025)",
+      },
+      {
+        value: "13.8%",
+        label: "of unicorn founders come from the eight Ivy League\u00a0schools.",
+        source: "SignalFire, Unicorn DNA: founders of about 800 US unicorns since\u00a02010",
+      },
+    ],
+    close: "Yet few of them ever meet the people who have built at the scale they’re aiming\u00a0for.",
+    closeNote: "One conversation at the right moment can shape who a founder\u00a0becomes.",
+  },
+
   journey: {
     title: "From Trailblazers to the Ivy League Entrepreneurship Conference",
     steps: [
@@ -302,19 +335,19 @@ export const site: SiteContent = {
         label: "Origin",
         figure: "Trailblazers",
         title: "An intimate room in New York",
-        body: "It began as the Trailblazers Conference: student founders and the operators and investors they wanted to learn from.",
+        body: "Three years ago, NGEN opened the Trailblazers Conference, where student founders met the operators and investors they most\u00a0admired.",
       },
       {
-        label: "Three years",
+        label: "Since then",
         figure: "20+",
         title: "Events, treks and pitch competitions",
-        body: "NGEN built the Ivy League founder network event by event. Founders who came through raised more than $30M, earned backing from Y Combinator, a16z and Techstars, and sold their companies.",
+        body: "NGEN built the Ivy League founder network event by event. Our alumni have raised over $30M, earned backing from Y Combinator, a16z and Techstars, and led their startups to\u00a0acquisition.",
       },
       {
         label: "Now",
         figure: "The Ivy League\nEntrepreneurship\nConference",
         title: "Now, a bigger stage",
-        body: "The mission is clear: an invite-only conference where world-class student entrepreneurs meet today’s most influential leaders face\u00a0to\u00a0face.",
+        body: "Trailblazers is reborn, held at a different Ivy League school every\u00a0year.",
       },
     ],
     more: { label: "Read the full story", href: "/about" },
@@ -529,6 +562,8 @@ export type PagesContent = {
     conferenceTitle: string;
     /** The conference's own bio. */
     conference: string[];
+    /** Margin label for the numbers that make the case. */
+    numbersTitle: string;
     /** TBD: event photos. The block is hidden until one has an image. */
     photos: Photo[];
     ngenTitle: string;
@@ -542,6 +577,7 @@ export type PagesContent = {
     intro: string;
     upcomingTitle: string;
     upcomingBody: string;
+    upcomingLead: string;
     upcomingCta: string;
   };
   team: {
@@ -563,6 +599,8 @@ export type PagesContent = {
     /** Figures set in the page header. */
     figures: { value: string; label: string }[];
     reasonsTitle: string;
+    /** The line over the evidence. */
+    evidenceTitle: string;
     /** Why meeting founders early matters: outside figures, each with its source. */
     evidence: { value: string; label: string; source: string }[];
     reasons: Item[];
@@ -622,10 +660,11 @@ export const pages: PagesContent = {
     ],
     conferenceTitle: "About the conference",
     conference: [
-      "The mission is clear: an invite-only conference where world-class student entrepreneurs meet today’s most influential leaders face to face.",
-      "Formerly the Trailblazers Conference, an intimate New York gathering, the event has been reborn on a larger stage to expand its impact. Its alumni have gone on to earn backing from Y Combinator, a16z and Techstars, raise over $30M, and lead their startups to acquisition.",
+      "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
+      "Three years ago, NGEN opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired. Our alumni have since raised over $30M, earned backing from Y Combinator, a16z and Techstars, and led their startups to acquisition. Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every year.",
       "Past speakers include Geoff Ralston (President Emeritus, Y Combinator), Tom Gardner (Co-Founder & CEO, The Motley Fool) and Seema Hingorani (Founder, Girls Who Invest).",
     ],
+    numbersTitle: "Why we exist",
     photos: [
       { image: null, caption: "A speaker on stage at Trailblazers, New York" },
       { image: null, caption: "Student founders between sessions" },
@@ -647,7 +686,8 @@ export const pages: PagesContent = {
       "Past speakers include the President Emeritus of Y Combinator and the founders of some of the most respected firms in finance and investing.",
     upcomingTitle: "This year’s lineup",
     // TBD: announce speakers here.
-    upcomingBody: "To be announced. If there is someone student founders should hear from, tell us.",
+    upcomingBody: "Your story, including the hard\u2011won lessons and near\u2011quits, can inspire student founders to see their vision\u00a0through.",
+    upcomingLead: "This year’s lineup is to be announced. If there is someone student founders should hear from, tell\u00a0us.",
     upcomingCta: "Propose a speaker",
   },
   team: {
@@ -749,17 +789,18 @@ export const pages: PagesContent = {
     ],
     firmsLabel: "Past speakers and alumni backers from",
     reasonsTitle: "Why partner",
-    // Same figures and sources as the sponsorship deck. 36% sums Strebulaev's school counts
-    // (1,268 of 3,505 founders), so a founder with two of these degrees counts twice.
+    evidenceTitle: "Great companies start early. Those who meet founders first grow with\u00a0them.",
+    // Same figures, wording and sources as the sponsorship deck. About 50%: YC partner Kat Manalac,
+    // on the founding teams of YC companies valued over $100M. Nearly 50%: the Fed's review of SVB.
     evidence: [
       {
-        value: "36%",
-        label: "of US unicorn founders studied at an Ivy League school, Stanford, MIT or Duke.",
-        source: "Ilya Strebulaev, Stanford GSB, June 2026; school counts summed",
+        value: "About 50%",
+        label: "of the founding teams behind Y\u00a0Combinator startups first met in\u00a0school.",
+        source: "Y Combinator, “How to Find a Cofounder,” 2019",
       },
       {
-        value: "Nearly half",
-        label: "of US venture-backed tech companies banked with Silicon Valley Bank, which met founders early.",
+        value: "Nearly 50%",
+        label: "of US venture-backed companies banked with Silicon Valley Bank, which met them early\u00a0on.",
         source: "Federal Reserve Board, April 2023",
       },
     ],
@@ -778,7 +819,7 @@ export const pages: PagesContent = {
       },
     ],
     logosEmpty: "Partners will be announced here.",
-    ctaTitle: "Talk to us about partnering",
+    ctaTitle: "Join the room where it starts.",
   },
   contact: {
     title: "Talk to us.",

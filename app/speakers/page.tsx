@@ -64,7 +64,11 @@ export default function SpeakersPage() {
 
       <PageSection id="lineup-title" title={speakers.upcomingTitle}>
         <div className="flex flex-wrap items-end justify-between gap-8">
-          <p className="font-display text-h2 lg:max-w-[75%]">{speakers.upcomingBody}</p>
+          {/* The pitch to speakers, then where the lineup stands */}
+          <div className="flex flex-col gap-4 lg:max-w-[75%]">
+            <p className="font-display text-h2">{speakers.upcomingBody}</p>
+            <p className="text-lead text-graphite">{speakers.upcomingLead}</p>
+          </div>
           <PageLink href="/contact" className="btn btn-ink shrink-0">
             {speakers.upcomingCta}
           </PageLink>

@@ -4,21 +4,23 @@ import { AttendPartner } from "@/components/sections/AttendPartner";
 import { Hero } from "@/components/sections/Hero";
 import { Journey } from "@/components/sections/Journey";
 import { Mission } from "@/components/sections/Mission";
+import { Numbers } from "@/components/sections/Numbers";
 import { SpeakersPreview } from "@/components/sections/Speakers";
 import { Startups } from "@/components/sections/Startups";
 import { Strip } from "@/components/sections/Strip";
 
 /**
- * Cover, proof, the idea as a diagram, the story as a pinned scroll, the
- * founders and speakers, and the two ways in.
+ * Cover, proof, the story as a pinned scroll, the mission as a diagram, the
+ * numbers behind it, the founders and speakers, and the two ways in.
  */
 export default function Home() {
   return (
     <>
       <Hero />
       <Strip />
-      <Mission />
       <Journey />
+      <Mission />
+      <Numbers />
       <Startups />
       <SpeakersPreview />
       <AttendPartner />
