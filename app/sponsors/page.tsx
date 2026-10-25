@@ -83,24 +83,33 @@ export default function SponsorsPage() {
         }
       />
 
+      {/*
+        The metrics in a band of their own, right after the header: the headline on the left, its
+        line on the right where the third figure starts, then the three figures side by side.
+      */}
+      <section aria-labelledby="metrics-title" className="border-y border-ink/8 bg-stone-2">
+        <div className="wrap py-[clamp(4rem,8vw,7rem)]">
+          <div className="grid gap-x-8 gap-y-4 lg:grid-cols-12 lg:items-end">
+            <h2 id="metrics-title" className="font-display text-h2 lg:col-span-8">
+              {sponsors.evidenceTitle}
+            </h2>
+            <p className="text-lead text-graphite lg:col-span-4">{sponsors.evidenceLead}</p>
+          </div>
+          <dl className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-3">
+            {sponsors.evidence.map((e) => (
+              <div key={e.value} className="border-t border-ink/15 pt-5">
+                <dt className="sr-only">{e.label}</dt>
+                <dd className="font-display text-[clamp(3rem,5vw,4rem)] leading-none">{e.value}</dd>
+                <dd className="mt-3 text-base [text-wrap:pretty]">{e.label}</dd>
+                <dd className="mt-2 text-small text-graphite [text-wrap:pretty]">{e.source}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
       <PageSection id="why-title" title={sponsors.reasonsTitle}>
-        {/*
-          The case first: outside figures as stacked statements, each figure on the left and its
-          sentence on the right, on the reasons' columns, so every row below lines up with them.
-        */}
-        <p className="mb-10 font-display text-h2">{sponsors.evidenceTitle}</p>
-        <dl className="flex flex-col gap-y-10">
-          {sponsors.evidence.map((e) => (
-            <div key={e.value} className="grid gap-x-8 gap-y-3 lg:grid-cols-[1fr_minmax(0,22rem)] lg:items-center">
-              <dt className="font-display text-[clamp(3rem,5vw,4rem)] leading-none">{e.value}</dt>
-              <dd className="flex flex-col gap-2">
-                <span className="text-base [text-wrap:pretty]">{e.label}</span>
-                <span className="text-small text-graphite [text-wrap:pretty]">{e.source}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
-        <ul className="rule mt-14 border-b">
+        <ul className="rule border-b">
           {sponsors.reasons.map((r) => (
             <li key={r.title} className="rule grid gap-x-8 gap-y-1 border-t py-6 lg:grid-cols-[1fr_minmax(0,22rem)]">
               <h3 className="font-display text-h3">{r.title}</h3>

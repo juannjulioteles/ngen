@@ -29,19 +29,12 @@ export function Mission() {
   return (
     <section aria-labelledby="mission-title" className="mission bg-ink text-paper">
       <InView className="wrap py-[clamp(5rem,10vw,8rem)]">
-        <div className="border border-paper/12 px-6 py-10 md:px-10 lg:py-14">
-          {/* As on the deck's mission slide: the line on one side, the diagram beside it filling the panel */}
-          <div className="grid items-center gap-x-8 gap-y-10 lg:grid-cols-12">
-            <div className="flex flex-col gap-4 lg:col-span-5">
-              <p className="reveal text-small font-medium text-mist">{mission.kicker}</p>
-              <h2 id="mission-title" className="reveal font-display text-h2 text-paper/90">
-                {mission.title}
-              </h2>
-            </div>
-            <div className="lg:col-span-7">
-              <Venn />
-            </div>
-          </div>
+        <h2 id="mission-title" className="reveal text-center font-display text-h2 text-paper/90">
+          {mission.title}
+        </h2>
+
+        <div className="mt-14 border border-paper/12 px-6 py-10 md:px-10 lg:py-14">
+          <Venn />
           <ul className="mt-10 grid gap-x-10 gap-y-10 md:grid-cols-3">
             {mission.audiences.map((a, i) => (
               <li key={a.title} data-audience={i} className="reveal flex flex-col gap-3 border-t border-paper/15 pt-5 transition-colors duration-300 hover:border-paper/50" style={{ "--d": `${0.5 + i * 0.12}s` } as CSSProperties}>
@@ -70,7 +63,7 @@ function Venn() {
   return (
     <svg
       viewBox="0 0 420 350"
-      className="venn mx-auto block w-full max-w-[34rem]"
+      className="venn mx-auto block w-full max-w-[30rem]"
       role="img"
       aria-label={`${names.join(", ")}: ${mission.center}, where all three meet`}
     >
