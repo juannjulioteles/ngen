@@ -559,8 +559,8 @@ export type PagesContent = {
     /** Facts set beside the intro in the page header. */
     facts: { label: string; value: string }[];
     conferenceTitle: string;
-    /** The conference's own line; the story, numbers and speakers come from the home sections. */
-    conference: { mission: string };
+    /** The conference's own bio: the mission as the lead, then the story and past speakers. */
+    conference: string[];
     /** TBD: event photos. The block is hidden until one has an image. */
     photos: Photo[];
     ngenTitle: string;
@@ -657,9 +657,11 @@ export const pages: PagesContent = {
       { label: "Format", value: "Invite-only" },
     ],
     conferenceTitle: "About the conference",
-    conference: {
-      mission: "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
-    },
+    conference: [
+      "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
+      "Three years ago, NGEN, the Ivy League entrepreneurship network, opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired. Our alumni have since raised over $30M, earned backing from Y Combinator, a16z, and Techstars, and led their startups to acquisition. Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every\u00a0year.",
+      "Past speakers include Geoff Ralston (President Emeritus, Y Combinator), Tom Gardner (Co-Founder & CEO, The Motley Fool) and Seema Hingorani (Founder, Girls Who Invest).",
+    ],
     photos: [
       { image: null, caption: "A speaker on stage at Trailblazers, New York" },
       { image: null, caption: "Student founders between sessions" },

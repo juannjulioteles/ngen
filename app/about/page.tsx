@@ -4,20 +4,14 @@ import { pages, site } from "@/content/site";
 import { NgenMark, withNgen } from "@/components/brand/Ngen";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
-import { Journey } from "@/components/sections/Journey";
 import { MetricsBand } from "@/components/sections/MetricsBand";
-import { SpeakersPreview } from "@/components/sections/Speakers";
 
 const { about } = pages;
 const { numbers } = site;
 
 export const metadata: Metadata = { title: "About", description: about.intro };
 
-/**
- * One section per idea, each with its own visual: the mission, the story as
- * the pinned scroll, the numbers in the green band, the people who have
- * spoken, and NGEN.
- */
+/** The mission and the story, the numbers in the green band, then NGEN. */
 export default function AboutPage() {
   const photos = about.photos.filter((p) => p.image);
   const [leadStat, ...moreStats] = about.ngenStats;
@@ -58,12 +52,18 @@ export default function AboutPage() {
       />
 
       <PageSection id="conference-title" title={about.conferenceTitle}>
-        <p className="font-display text-h2 lg:[text-wrap:pretty]">{about.conference.mission}</p>
+        {/* The lead runs the full column; the rest splits into two so lines stay readable */}
+        <p className="font-display text-h2 lg:[text-wrap:pretty]">{about.conference[0]}</p>
+        <div className="mt-10 grid gap-x-10 gap-y-6 border-t border-ink/10 pt-8 lg:grid-cols-2">
+          {about.conference.slice(1).map((p) => (
+            <p key={p} className="text-lead text-graphite">
+              {withNgen(p)}
+            </p>
+          ))}
+        </div>
       </PageSection>
 
-      {/* The story, as on home: the pinned panel holds while the three steps scroll past */}
-      <Journey showMore={false} />
-
+      {/* The numbers that make the case, in the page's one green band */}
       <MetricsBand
         id="numbers-title"
         title={numbers.title}
@@ -71,8 +71,6 @@ export default function AboutPage() {
         figures={numbers.figures}
         statement={numbers.closeNote}
       />
-
-      <SpeakersPreview />
 
       {photos.length > 0 && (
         <section aria-label="Photos" className="wrap py-[clamp(4rem,8vw,7rem)]">
