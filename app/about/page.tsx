@@ -4,15 +4,34 @@ import { pages, site } from "@/content/site";
 import { NgenMark, withNgen } from "@/components/brand/Ngen";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
+import { SpeakerGrid } from "@/components/sections/Speakers";
 
 const { about } = pages;
+const { numbers } = site;
+
+/** One figure or name on the left, one sentence (and its source) on the right, on Sponsors' columns. */
+function Rows({ rows }: { rows: { value: string; label: string; source?: string }[] }) {
+  return (
+    <dl className="flex flex-col gap-y-8">
+      {rows.map((row) => (
+        <div key={row.value} className="grid gap-x-8 gap-y-2 lg:grid-cols-[1fr_minmax(0,22rem)] lg:items-center">
+          <dt className="font-display text-[clamp(3rem,5vw,4rem)] leading-none">{row.value}</dt>
+          <dd className="flex flex-col gap-2">
+            <span className="text-base [text-wrap:pretty]">{withNgen(row.label)}</span>
+            {row.source && <span className="text-small text-graphite [text-wrap:pretty]">{row.source}</span>}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
 
 export const metadata: Metadata = { title: "About", description: about.intro };
 
 export default function AboutPage() {
   const photos = about.photos.filter((p) => p.image);
   const [leadStat, ...moreStats] = about.ngenStats;
-  const [mission, story, ...vision] = about.conference;
+  const { conference } = about;
 
   return (
     <>
@@ -50,18 +69,23 @@ export default function AboutPage() {
       />
 
       <PageSection id="conference-title" title={about.conferenceTitle}>
-        {/* The lead runs the full column; below it the story on the left, the vision and who has spoken on the right */}
-        <p className="font-display text-h2 lg:[text-wrap:pretty]">{mission}</p>
-        <div className="mt-10 grid gap-x-10 gap-y-6 border-t border-ink/10 pt-8 lg:grid-cols-2">
-          <p className="text-lead text-graphite">{story}</p>
-          <div className="flex flex-col gap-6">
-            {vision.map((p) => (
-              <p key={p} className="text-lead text-graphite">
-                {p}
-              </p>
-            ))}
+        {/*
+          Set for people who scroll: the mission, then the story and the numbers as figure rows,
+          the gap they show, and the faces of who has spoken.
+        */}
+        <p className="font-display text-h2 lg:[text-wrap:pretty]">{conference.mission}</p>
+        <div className="mt-10 border-t border-ink/10 pt-10">
+          <Rows rows={conference.story.map((s) => ({ value: s.value, label: s.text }))} />
+        </div>
+        <div className="mt-10 border-t border-ink/10 pt-10">
+          <Rows rows={numbers.figures} />
+          <div className="mt-10 grid gap-x-8 gap-y-3 lg:grid-cols-[1fr_minmax(0,22rem)] lg:items-center">
+            <p className="font-display text-h3">{numbers.close}</p>
+            <p className="text-base text-graphite [text-wrap:pretty]">{numbers.closeNote}</p>
           </div>
         </div>
+        <h3 className="mt-14 mb-4 text-small text-graphite">{conference.speakersTitle}</h3>
+        <SpeakerGrid items={site.speakers.items.filter((s) => s.headshot).slice(0, 4)} />
       </PageSection>
 
       {photos.length > 0 && (

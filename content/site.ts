@@ -130,8 +130,6 @@ export type SiteContent = {
     news: NavLink;
   };
   mission: {
-    /** Small line over the title. */
-    kicker: string;
     title: string;
     /** TBD for review: draft descriptions of who is in the room. */
     /** Draft for review: the three audiences the conference brings together. */
@@ -278,8 +276,7 @@ export const site: SiteContent = {
   },
 
   mission: {
-    kicker: "Our mission is clear",
-    title: "An invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
+    title: "Talk to the next great founder before they’re too big to reach.",
     audiences: [
       {
         title: "Student founders",
@@ -562,8 +559,12 @@ export type PagesContent = {
     /** Facts set beside the intro in the page header. */
     facts: { label: string; value: string }[];
     conferenceTitle: string;
-    /** The conference's own bio. */
-    conference: string[];
+    /** The conference's own bio, set for scanning: the mission, then the story as figure rows. */
+    conference: {
+      mission: string;
+      story: { value: string; text: string }[];
+      speakersTitle: string;
+    };
     /** TBD: event photos. The block is hidden until one has an image. */
     photos: Photo[];
     ngenTitle: string;
@@ -599,8 +600,9 @@ export type PagesContent = {
     /** Figures set in the page header. */
     figures: { value: string; label: string }[];
     reasonsTitle: string;
-    /** The line over the evidence. */
+    /** The metrics section's headline and the line beside it. */
     evidenceTitle: string;
+    evidenceLead: string;
     /** Why meeting founders early matters: outside figures, each with its source. */
     evidence: { value: string; label: string; source: string }[];
     reasons: Item[];
@@ -659,12 +661,24 @@ export const pages: PagesContent = {
       { label: "Format", value: "Invite-only" },
     ],
     conferenceTitle: "About the conference",
-    conference: [
-      "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
-      "Three years ago, NGEN, the Ivy League entrepreneurship network, opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired. Our alumni have since raised over $30M, earned backing from Y Combinator, a16z, and Techstars, and led their startups to acquisition. Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every\u00a0year.",
-      "The eight Ivy League schools produce 13.8% of unicorn founders. When these students build, they build big. In fact, they’re three times more likely to build a billion\u2011dollar company. Yet few of them ever meet the people who have built at the scale they’re aiming for. One conversation at the right moment can shape who a founder\u00a0becomes.",
-      "Past speakers include Geoff Ralston (President Emeritus, Y Combinator), Tom Gardner (Co-Founder & CEO, The Motley Fool) and Seema Hingorani (Founder, Girls Who Invest).",
-    ],
+    conference: {
+      mission: "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
+      story: [
+        {
+          value: "Trailblazers",
+          text: "Three years ago, NGEN opened the Trailblazers Conference in New\u00a0York: an intimate room where student founders met the operators and investors they most\u00a0admired.",
+        },
+        {
+          value: "$30M+",
+          text: "raised by our alumni since, who earned backing from Y Combinator, a16z, and Techstars and led their startups to\u00a0acquisition.",
+        },
+        {
+          value: "Now",
+          text: "Trailblazers is reborn on a larger stage, held at a different Ivy League school every\u00a0year.",
+        },
+      ],
+      speakersTitle: "Past speakers",
+    },
     photos: [
       { image: null, caption: "A speaker on stage at Trailblazers, New York" },
       { image: null, caption: "Student founders between sessions" },
@@ -789,7 +803,8 @@ export const pages: PagesContent = {
     ],
     firmsLabel: "Past speakers and alumni backers from",
     reasonsTitle: "Why partner",
-    evidenceTitle: "Great companies start early. Those who meet founders first grow with\u00a0them.",
+    evidenceTitle: "Great companies start early.",
+    evidenceLead: "Those who meet founders first grow with\u00a0them.",
     // Same figures, wording and sources as the sponsorship deck. 3x: as on the home page. About 50%: YC partner Kat Manalac,
     // on the founding teams of YC companies valued over $100M. Nearly 50%: the Fed's review of SVB.
     evidence: [
