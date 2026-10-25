@@ -1,17 +1,33 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Fragment } from "react";
 import { pages, site } from "@/content/site";
+import { IvyVine } from "@/components/brand/IvyVine";
 import { NgenMark, withNgen } from "@/components/brand/Ngen";
+import { VineCorner } from "@/components/brand/VineCorner";
 import { PageHero } from "@/components/layout/PageHero";
-import { PageSection } from "@/components/layout/PageSection";
-import { MetricsBand } from "@/components/sections/MetricsBand";
 
 const { about } = pages;
-const { numbers } = site;
 
 export const metadata: Metadata = { title: "About", description: about.intro };
 
-/** The mission and the story, the numbers in the green band, then NGEN. */
+/** "**phrase**" marks what a scanning reader should catch: set a weight up, in ink. */
+function Marked({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/\*\*(.+?)\*\*/).map((part, i) =>
+        i % 2 ? (
+          <strong key={i} className="font-medium text-ink">
+            {part}
+          </strong>
+        ) : (
+          <Fragment key={i}>{withNgen(part)}</Fragment>
+        ),
+      )}
+    </>
+  );
+}
+
 export default function AboutPage() {
   const photos = about.photos.filter((p) => p.image);
   const [leadStat, ...moreStats] = about.ngenStats;
@@ -51,25 +67,40 @@ export default function AboutPage() {
         }
       />
 
-      <PageSection id="conference-title" title={about.conferenceTitle}>
-        {/* The lead runs the full column; the rest splits into two so lines stay readable */}
-        <p className="font-display text-h2 lg:[text-wrap:pretty]">{about.conference[0]}</p>
-        <div className="mt-10 grid gap-x-10 gap-y-6 border-t border-ink/10 pt-8 lg:grid-cols-2">
-          {about.conference.slice(1).map((p) => (
-            <p key={p} className="text-lead text-graphite">
-              {withNgen(p)}
-            </p>
-          ))}
+      {/*
+        Set to scan: the mission as the lead, then the story as short lines. Each line's label sits
+        in the left column under the section's own, so the page keeps one rail.
+      */}
+      <section aria-labelledby="conference-title" className="wrap py-[clamp(4rem,8vw,7rem)]">
+        <div className="grid gap-y-6 lg:grid-cols-12 lg:gap-x-8">
+          <h2 id="conference-title" className="text-small font-medium text-graphite lg:col-span-3 lg:pt-2">
+            {about.conferenceTitle}
+          </h2>
+          <p className="font-display text-h2 lg:col-span-9 lg:[text-wrap:pretty]">{about.conference.mission}</p>
         </div>
-      </PageSection>
-
-      {/* The numbers that make the case, in the page's one green band */}
-      <MetricsBand
-        id="numbers-title"
-        title={numbers.title}
-        figures={numbers.figures}
-        close={{ turn: numbers.close, answer: numbers.closeNote }}
-      />
+        <dl className="mt-10 grid gap-y-2 border-t border-ink/10 pt-8 lg:grid-cols-12 lg:items-baseline lg:gap-x-8 lg:gap-y-6">
+          {about.conference.lines.map((line) => (
+            <Fragment key={line.label}>
+              <dt className="mt-4 text-small font-medium text-graphite first:mt-0 lg:col-span-3 lg:mt-0">{line.label}</dt>
+              <dd className="text-lead text-graphite [text-wrap:pretty] lg:col-span-9">
+                <Marked text={line.text} />
+                {/*
+                  The line's highlight: unlike the mission's display serif, the sans at medium weight in
+                  forest, after the ivy mark the hero ticket uses (the page's one touch of green)
+                */}
+                {line.highlight && (
+                  <span className="mt-5 flex items-start gap-3 text-forest">
+                    <IvyVine className="mt-0.5 h-8 shrink-0" />
+                    <span className="text-[clamp(1.125rem,1rem+0.5vw,1.375rem)] leading-snug font-medium [text-wrap:pretty]">
+                      {line.highlight}
+                    </span>
+                  </span>
+                )}
+              </dd>
+            </Fragment>
+          ))}
+        </dl>
+      </section>
 
       {photos.length > 0 && (
         <section aria-label="Photos" className="wrap py-[clamp(4rem,8vw,7rem)]">
@@ -95,20 +126,20 @@ export default function AboutPage() {
         </section>
       )}
 
-      <section aria-labelledby="ngen-title" className="grain bg-ink text-paper">
-        <div className="wrap py-[clamp(4rem,8vw,7rem)]">
-          <NgenMark className="mb-6 h-12" />
+      <section aria-labelledby="ngen-title" className="grain relative overflow-hidden bg-ink text-paper">
+        <div className="wrap relative py-[clamp(4rem,8vw,7rem)]">
+          <VineCorner />
+          <NgenMark className="relative mb-6 h-12" />
           {/*
             One grid for both sides, so each figure lines up with a row of text:
-            the lead figure with the title, the smaller pair with the mission line.
+            the lead figure with the title and the body, the smaller pair with the button.
           */}
-          <div className="grid gap-x-8 gap-y-6 lg:grid-cols-12">
+          <div className="relative grid gap-x-8 gap-y-6 lg:grid-cols-12">
             <h2 id="ngen-title" className="font-display text-h1 lg:col-span-7 lg:row-start-1">
               {about.ngenTitle}
             </h2>
             <p className="max-w-[46ch] text-lead text-paper/80 lg:col-span-7 lg:row-start-2">{withNgen(about.ngenBody)}</p>
-            <p className="max-w-[46ch] font-display text-h3 lg:col-span-7 lg:row-start-3">{about.ngenMission}</p>
-            <a href={site.org.url} className="btn btn-paper mt-2 justify-self-start lg:col-span-7 lg:row-start-4">
+            <a href={site.org.url} className="btn btn-paper mt-2 self-start justify-self-start lg:col-span-7 lg:row-start-3 lg:mt-0">
               Visit {site.org.urlLabel}
             </a>
             <dl className="mt-10 border-t border-paper/15 pt-5 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:mt-0">
@@ -116,7 +147,7 @@ export default function AboutPage() {
               <dd className="font-display text-[clamp(3rem,6vw,4.5rem)] leading-none">{leadStat.value}</dd>
               <dd className="mt-2 text-small text-mist">{leadStat.label}</dd>
             </dl>
-            <div className="grid grid-cols-2 gap-x-8 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-3">
+            <div className="grid grid-cols-2 gap-x-8 lg:col-span-5 lg:col-start-8 lg:row-start-3">
               {moreStats.map((stat) => (
                 <dl key={stat.label} className="border-t border-paper/15 pt-5">
                   <dt className="sr-only">{stat.label}</dt>

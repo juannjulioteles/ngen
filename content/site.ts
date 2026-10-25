@@ -386,7 +386,7 @@ export const site: SiteContent = {
         name: "Doe",
         // Y Combinator's standard deal: $500K to every company in the batch.
         badge: "$500K raised",
-        description: "AI platform building company-native agents to automate work.",
+        description: "AI platform building company\u2011native agents to automate work.",
         photo: { src: "https://www.ngennetwork.org/team-photos/doe-photo.jpeg", alt: "The Doe team", width: 800, height: 1333 },
         // The founder's face sits a third of the way down; centred, the badge covered it.
         photoFocus: "50% 20%",
@@ -538,7 +538,6 @@ export type TeamMember = {
   headshot: ImageAsset | null;
 };
 
-export type Item = { title: string; body: string };
 export type ContactTopic = { title: string; body: string; subject: string };
 
 export type PagesContent = {
@@ -559,14 +558,13 @@ export type PagesContent = {
     /** Facts set beside the intro in the page header. */
     facts: { label: string; value: string }[];
     conferenceTitle: string;
-    /** The conference's own bio: the mission as the lead, then the story and past speakers. */
-    conference: string[];
+    /** The conference's own bio: the mission as the lead, then the story as short labelled lines. "**" marks what a scanning reader should catch. */
+    conference: { mission: string; lines: { label: string; text: string; highlight?: string }[] };
     /** TBD: event photos. The block is hidden until one has an image. */
     photos: Photo[];
     ngenTitle: string;
     /** NGEN's own bio. */
     ngenBody: string;
-    ngenMission: string;
     ngenStats: { value: string; label: string }[];
   };
   speakers: {
@@ -595,21 +593,17 @@ export type PagesContent = {
     intro: string;
     /** Figures set in the page header. */
     figures: { value: string; label: string }[];
-    reasonsTitle: string;
     /** The metrics section's headline and the line beside it. */
     evidenceTitle: string;
     evidenceLead: string;
     /** Why meeting founders early matters: outside figures, each with its source. */
     evidence: { value: string; label: string; source: string }[];
-    reasons: Item[];
     /** Companies that have supported NGEN events before. */
     supportersTitle: string;
     supportersNote: string;
     supporters: BrandMention[];
     /** Small label over the firms behind past speakers and alumni, on the same page. */
     firmsLabel: string;
-    logosEmpty: string;
-    ctaTitle: string;
   };
   contact: {
     title: string;
@@ -657,12 +651,30 @@ export const pages: PagesContent = {
       { label: "Format", value: "Invite-only" },
     ],
     conferenceTitle: "About the conference",
-    conference: [
-      "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
-      "Three years ago, NGEN, the Ivy League entrepreneurship network, opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired. Our alumni have since raised over $30M, earned backing from Y Combinator, a16z, and Techstars, and led their startups to\u00a0acquisition.",
-      // Geoff Ralston is on TIME's 2026 TIME100 AI list; Howard Morgan co-founded First Round Capital.
-      "Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every year. Previously, our stage has welcomed Geoff Ralston, President Emeritus of Y Combinator and named one of TIME’s 100 most influential people in AI; Howard Morgan, co-founder of First Round Capital; Seema Hingorani, founder of Girls Who Invest; and\u00a0more.",
-    ],
+    // Juan's two paragraphs (Oct 24, 2026) set the way the decks' about slide is: a time label, one sentence.
+    // Geoff Ralston is on TIME's 2026 TIME100 AI list; Howard Morgan co-founded First Round Capital.
+    conference: {
+      mission: "The mission is clear: an invite-only conference where world-class student entrepreneurs meet today’s most influential leaders face to face.",
+      lines: [
+        {
+          label: "Three years ago",
+          text: "NGEN, the Ivy League entrepreneurship network, opened the **Trailblazers Conference** in New\u00a0York: an intimate room where student founders met the operators and investors they most\u00a0admired.",
+        },
+        {
+          label: "Since then",
+          text: "Our alumni have raised **over $30M**, earned backing from **Y\u00a0Combinator, a16z, and Techstars**, and led their startups to\u00a0acquisition.",
+        },
+        {
+          label: "Past speakers",
+          text: "**Geoff Ralston**, President Emeritus of Y\u00a0Combinator and named one of TIME’s 100 most influential people in AI; **Howard Morgan**, co\u2011founder of First Round Capital; **Seema Hingorani**, founder of Girls Who Invest; and\u00a0more.",
+        },
+        {
+          label: "Now",
+          text: "Trailblazers is reborn on a larger stage, held at **a different Ivy League school every\u00a0year**.",
+          highlight: "One conversation at the right moment can shape who a founder\u00a0becomes.",
+        },
+      ],
+    },
     photos: [
       { image: null, caption: "A speaker on stage at Trailblazers, New York" },
       { image: null, caption: "Student founders between sessions" },
@@ -671,7 +683,6 @@ export const pages: PagesContent = {
     ngenTitle: "Presented by NGEN",
     ngenBody:
       "NGEN is the Ivy League entrepreneurship network: the center of gravity for student-led innovation, where students meet, build and raise capital.",
-    ngenMission: "Our mission: connecting the next generation of founders across the Ivy League.",
     ngenStats: [
       { value: "$30M+", label: "raised by NGEN founders" },
       { value: "$500K+", label: "put directly into students and our programs by NGEN’s VC partners" },
@@ -765,7 +776,7 @@ export const pages: PagesContent = {
     intro:
       "Put your brand in front of Ivy League student founders and the investors and operators who show up for them.",
     figures: [
-      { value: "$30M+", label: "raised by our alumni, backed by Y Combinator, a16z, and Techstars." },
+      { value: "$30M+", label: "raised by our alumni, backed by Y Combinator, a16z, Techstars, and\u00a0more." },
       { value: "$150K", label: "pitch competition, in partnership with Honors Fund and Mercury" },
     ],
     supportersTitle: "Past supporters",
@@ -786,7 +797,6 @@ export const pages: PagesContent = {
       { name: "ProtoPie", logo: { src: "/logos/protopie.png", alt: "ProtoPie", width: 1276, height: 256 } },
     ],
     firmsLabel: "Past speakers and alumni backers from",
-    reasonsTitle: "Why partner",
     evidenceTitle: "Great companies start early.",
     evidenceLead: "Those who meet founders first grow with\u00a0them.",
     // Same figures, wording and sources as the sponsorship deck. 3x: as on the home page. About 50%: YC partner Kat Manalac,
@@ -808,22 +818,6 @@ export const pages: PagesContent = {
         source: "Federal Reserve Board, April 2023",
       },
     ],
-    reasons: [
-      {
-        title: "The founders",
-        body: "World-class student entrepreneurs from across the Ivy League.",
-      },
-      {
-        title: "The company you keep",
-        body: "Speakers and alumni backers from the firms below.",
-      },
-      {
-        title: "The track record",
-        body: "Conference alumni have raised over $30M and led their startups to acquisition.",
-      },
-    ],
-    logosEmpty: "Partners will be announced here.",
-    ctaTitle: "Join the room where it starts.",
   },
   contact: {
     title: "Talk to us.",
