@@ -78,7 +78,7 @@ function waitForGesture(on: boolean) {
 }
 
 function startSound(offset = elapsed()) {
-  stopSound = playScore(offset);
+  stopSound = playScore(offset, site.strip.firms.length);
   if (stopSound) {
     waitForGesture(false);
     set({ sound: true });

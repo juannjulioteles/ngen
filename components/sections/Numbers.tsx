@@ -1,63 +1,39 @@
 import { site } from "@/content/site";
-import { PageSection } from "@/components/layout/PageSection";
 
 const { numbers } = site;
 
 /**
- * Two figures as stacked statements (figure on the left, one sentence and its
- * source on the right), then the gap they show in the display serif and, under
- * it, what one conversation can do. Compact is the inner-page size, inside the
- * page grid's nine columns.
+ * Why the conference exists, right after the mission. Built like the NGEN
+ * section on About: the headline, the gap and the line on the left; the two
+ * figures on the right as proof, on one grid so the first starts level with
+ * the headline and the second with the closing line.
  */
-function Figures({ compact = false }: { compact?: boolean }) {
-  return (
-    <>
-      <dl className={`flex flex-col gap-y-12 ${compact ? "mt-10" : "mt-12 lg:mt-16"}`}>
-        {numbers.figures.map((f) => (
-          <div key={f.value} className="grid gap-x-8 gap-y-3 lg:grid-cols-12 lg:items-center">
-            <dt
-              className={`font-display leading-none lg:col-span-5 ${
-                compact ? "text-[clamp(4rem,8vw,7rem)]" : "text-[clamp(4.5rem,11vw,9rem)]"
-              }`}
-            >
-              {f.value}
-            </dt>
-            <dd className="flex flex-col gap-2 lg:col-span-7">
-              {/* Pretty, not balance, so each sentence runs out to the right edge */}
-              <span className={`[text-wrap:pretty] ${compact ? "text-lead" : "text-h3 leading-[1.35]"}`}>{f.label}</span>
-              <span className="text-small text-graphite [text-wrap:pretty]">{f.source}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
-      <p className={`font-display ${compact ? "mt-12 text-h2" : "mt-14 text-h1 lg:mt-20"}`}>{numbers.close}</p>
-      <p className={`mt-4 text-graphite [text-wrap:pretty] ${compact ? "text-lead" : "text-h3 leading-[1.35]"}`}>
-        {numbers.closeNote}
-      </p>
-    </>
-  );
-}
-
-/** Why the conference exists, on the home page right after the mission. */
 export function Numbers() {
+  const [first, second] = numbers.figures;
   return (
     <section aria-labelledby="numbers-title" className="bg-stone">
-      <div className="wrap py-[clamp(5rem,10vw,8rem)]">
-        <h2 id="numbers-title" className="font-display text-h2">
-          {numbers.title}
-        </h2>
-        <Figures />
+      <div className="wrap py-[clamp(4rem,8vw,7rem)]">
+        <div className="grid gap-x-8 gap-y-6 lg:grid-cols-12">
+          <h2 id="numbers-title" className="font-display text-h2 lg:col-span-7 lg:row-start-1">
+            {numbers.title}
+          </h2>
+          <p className="max-w-[46ch] text-lead text-graphite lg:col-span-7 lg:row-start-2">{numbers.close}</p>
+          <p className="max-w-[46ch] font-display text-h3 lg:col-span-7 lg:row-start-3">{numbers.closeNote}</p>
+          {[first, second].map((f, i) => (
+            <dl
+              key={f.value}
+              className={`border-t border-ink/15 pt-5 lg:col-span-5 lg:col-start-8 ${
+                i === 0 ? "mt-6 lg:row-span-2 lg:row-start-1 lg:mt-0" : "lg:row-start-3"
+              }`}
+            >
+              <dt className="sr-only">{f.label}</dt>
+              <dd className="font-display text-[clamp(3rem,5vw,4rem)] leading-none">{f.value}</dd>
+              <dd className="mt-2 text-base [text-wrap:pretty]">{f.label}</dd>
+              <dd className="mt-1 text-small text-graphite [text-wrap:pretty]">{f.source}</dd>
+            </dl>
+          ))}
+        </div>
       </div>
     </section>
-  );
-}
-
-/** The same case on an inner page: its label in the margin, carrying on from the section above. */
-export function NumbersSection({ label }: { label: string }) {
-  return (
-    <PageSection id="numbers-title" title={label} className="pt-0">
-      <p className="font-display text-h2">{numbers.title}</p>
-      <Figures compact />
-    </PageSection>
   );
 }

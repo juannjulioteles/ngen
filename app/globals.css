@@ -450,12 +450,50 @@ html[data-intro="play"] .intro-count {
   }
 }
 
-/* The turn: its rule and caption arrive just after the line */
+/* Montage: the frame holds while the names cut hard, one per beat */
+html[data-intro="play"] .intro-montage {
+  animation-name: hold;
+  animation-duration: var(--t-montage-length);
+}
+.intro-flash {
+  opacity: 0;
+}
+html[data-intro="play"] .intro-flash {
+  animation: flash var(--t-flash) linear var(--at) both;
+}
 html[data-intro="play"] .intro-caption {
   animation: fade-in 0.5s var(--ease-out) calc(var(--at) + 0.45s) both;
 }
 html[data-intro="play"] .intro-rule-late {
   animation-delay: calc(var(--at) + 0.35s);
+}
+@keyframes hold {
+  0% {
+    opacity: 0;
+  }
+  6%,
+  94% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  2% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
 }
 
 .intro-rule {
