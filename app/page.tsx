@@ -10,8 +10,8 @@ import { Startups } from "@/components/sections/Startups";
 import { Strip } from "@/components/sections/Strip";
 
 /**
- * Cover, proof, the idea as a diagram and the numbers behind it, the story as
- * a pinned scroll, the founders and speakers, and the two ways in.
+ * Cover, proof, the idea as a diagram, the story as a pinned scroll and the
+ * numbers that follow from it, the founders and speakers, and the two ways in.
  */
 export default function Home() {
   return (
@@ -19,8 +19,8 @@ export default function Home() {
       <Hero />
       <Strip />
       <Mission />
-      <Numbers />
       <Journey />
+      <Numbers />
       <Startups />
       <SpeakersPreview />
       <AttendPartner />
