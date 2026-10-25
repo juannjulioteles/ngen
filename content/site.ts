@@ -111,6 +111,7 @@ export type SiteContent = {
     launch: {
       studio: string;
       frames: { figure: string; caption: string }[];
+      montageLabel: string;
       turn: string;
       turnCaption: string;
       skip: string;
@@ -240,6 +241,7 @@ export const site: SiteContent = {
         { figure: "20+", caption: "events, treks and pitch competitions" },
         { figure: "$30M", caption: "raised by founders who came through" },
       ],
+      montageLabel: "Past speakers and alumni backers from",
       turn: "Now, a bigger stage.",
       turnCaption: "New York City",
       skip: "Skip intro",
