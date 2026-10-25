@@ -45,7 +45,7 @@ export default function SponsorsPage() {
         intro={sponsors.intro}
         action={
           // Proof, grouped with the pitch and clearly smaller than the headline
-          <dl className="grid w-full max-w-md grid-cols-2 gap-x-8">
+          <dl className="grid w-full max-w-xl grid-cols-2 gap-x-8">
             {sponsors.figures.map((f) => (
               <div key={f.label} className="border-t border-ink/15 pt-4">
                 <dt className="sr-only">{f.label}</dt>

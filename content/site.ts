@@ -335,19 +335,19 @@ export const site: SiteContent = {
         label: "Origin",
         figure: "Trailblazers",
         title: "An intimate room in New York",
-        body: "Three years ago, NGEN opened the Trailblazers Conference, where student founders met the operators and investors they most\u00a0admired.",
+        body: "Three years ago, NGEN, the Ivy League entrepreneurship network, opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most\u00a0admired.",
       },
       {
         label: "Since then",
-        figure: "20+",
-        title: "Events, treks and pitch competitions",
-        body: "NGEN built the Ivy League founder network event by event. Our alumni have raised over $30M, earned backing from Y Combinator, a16z and Techstars, and led their startups to\u00a0acquisition.",
+        figure: "$30M+",
+        title: "Raised by our alumni",
+        body: "Our alumni have since raised over $30M, earned backing from Y Combinator, a16z, and Techstars, and led their startups to\u00a0acquisition.",
       },
       {
         label: "Now",
         figure: "The Ivy League\nEntrepreneurship\nConference",
         title: "Now, a bigger stage",
-        body: "Trailblazers is reborn, held at a different Ivy League school every\u00a0year.",
+        body: "Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every\u00a0year.",
       },
     ],
     more: { label: "Read the full story", href: "/about" },
@@ -562,8 +562,6 @@ export type PagesContent = {
     conferenceTitle: string;
     /** The conference's own bio. */
     conference: string[];
-    /** Margin label for the numbers that make the case. */
-    numbersTitle: string;
     /** TBD: event photos. The block is hidden until one has an image. */
     photos: Photo[];
     ngenTitle: string;
@@ -664,7 +662,6 @@ export const pages: PagesContent = {
       "Three years ago, NGEN opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired. Our alumni have since raised over $30M, earned backing from Y Combinator, a16z and Techstars, and led their startups to acquisition. Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every year.",
       "Past speakers include Geoff Ralston (President Emeritus, Y Combinator), Tom Gardner (Co-Founder & CEO, The Motley Fool) and Seema Hingorani (Founder, Girls Who Invest).",
     ],
-    numbersTitle: "Why we exist",
     photos: [
       { image: null, caption: "A speaker on stage at Trailblazers, New York" },
       { image: null, caption: "Student founders between sessions" },
@@ -767,8 +764,8 @@ export const pages: PagesContent = {
     intro:
       "Put your brand in front of Ivy League student founders and the investors and operators who show up for them.",
     figures: [
-      { value: "$30M+", label: "raised by founders who came through" },
-      { value: "20+", label: "events, treks and pitch competitions" },
+      { value: "$30M+", label: "raised by founders who came through NGEN’s events, backed by Y Combinator, a16z, and Techstars." },
+      { value: "$150K", label: "pitch competition, in partnership with Honors Fund and Mercury" },
     ],
     supportersTitle: "Past supporters",
     supportersNote: "Companies that have supported NGEN events.",
