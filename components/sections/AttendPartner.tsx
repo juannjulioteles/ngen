@@ -3,15 +3,17 @@ import { site } from "@/content/site";
 import { eventDateLabel, eventVenueLabel } from "@/lib/event";
 import { PageLink } from "@/components/ui/PageLink";
 import { withNgen } from "@/components/brand/Ngen";
+import { VineCorner } from "@/components/brand/VineCorner";
 
 const { attend, partner, links } = site;
 
 /** The back cover: two ways to be in the room, side by side. */
 export function AttendPartner() {
   return (
-    <section aria-label="Attend or partner" className="bg-ink text-paper">
-      <div className="wrap grid gap-16 py-[clamp(5rem,10vw,9rem)] lg:grid-cols-2 lg:gap-0">
-        <div id="attend" className="flex flex-col items-start gap-6 lg:pr-[clamp(2rem,5vw,5rem)]">
+    <section aria-label="Attend or partner" className="relative overflow-hidden bg-ink text-paper">
+      <div className="wrap relative grid gap-16 py-[clamp(5rem,10vw,9rem)] lg:grid-cols-2 lg:gap-0">
+        <VineCorner />
+        <div id="attend" className="relative flex flex-col items-start gap-6 lg:pr-[clamp(2rem,5vw,5rem)]">
           <h2 className="font-display text-h1">{attend.title}</h2>
           <p className="text-lead lg:[text-wrap:pretty]">{attend.body}</p>
           <dl className="rule grid w-full grid-cols-2 gap-6 border-t pt-5">
@@ -29,7 +31,7 @@ export function AttendPartner() {
           </PageLink>
         </div>
 
-        <div className="rule flex flex-col items-start gap-6 max-lg:border-t max-lg:pt-16 lg:border-l lg:pl-[clamp(2rem,5vw,5rem)]">
+        <div className="rule relative flex flex-col items-start gap-6 max-lg:border-t max-lg:pt-16 lg:border-l lg:pl-[clamp(2rem,5vw,5rem)]">
           <h2 className="font-display text-h1">{partner.title}</h2>
           <p className="text-lead lg:[text-wrap:pretty]">{withNgen(partner.body)}</p>
           <a href={`mailto:${links.email}`} className="link font-display text-h3 [overflow-wrap:anywhere]">

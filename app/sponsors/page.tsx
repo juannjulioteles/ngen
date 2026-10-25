@@ -10,8 +10,6 @@ const { sponsors } = pages;
 
 export const metadata: Metadata = { title: "Sponsors", description: sponsors.intro };
 
-const mailto = (subject: string) => `mailto:${site.links.email}?subject=${encodeURIComponent(subject)}`;
-
 /** The three that raised the most, for the header mosaic. */
 const founders = ["Series", "Zorbe", "Freya"]
   .map((name) => site.startups.items.find((s) => s.name === name))
@@ -36,8 +34,6 @@ function LogoGrid({ brands }: { brands: BrandMention[] }) {
 }
 
 export default function SponsorsPage() {
-  const logos = site.partner.logos;
-
   return (
     <>
       <PageHero
@@ -84,26 +80,7 @@ export default function SponsorsPage() {
         }
       />
 
-      <PageSection id="why-title" title={sponsors.reasonsTitle}>
-        <ul className="rule border-b">
-          {sponsors.reasons.map((r) => (
-            <li key={r.title} className="rule grid gap-x-8 gap-y-1 border-t py-6 lg:grid-cols-[1fr_minmax(0,22rem)]">
-              <h3 className="font-display text-h3">{r.title}</h3>
-              <p className="text-base lg:pt-1">{r.body}</p>
-            </li>
-          ))}
-        </ul>
-      </PageSection>
-
-      {/* The metrics in the page's one green band, after the reasons */}
-      <MetricsBand
-        id="metrics-title"
-        title={sponsors.evidenceTitle}
-        lead={sponsors.evidenceLead}
-        figures={sponsors.evidence}
-      />
-
-      {/* Then the proof: who has backed NGEN events, then where speakers and alumni come from */}
+      {/* Proof first: who has backed NGEN events, then where speakers and alumni come from */}
       <PageSection
         id="supporters-title"
         title={sponsors.supportersTitle}
@@ -114,39 +91,13 @@ export default function SponsorsPage() {
         <LogoGrid brands={site.strip.firms} />
       </PageSection>
 
-      <section aria-labelledby="sponsor-cta" className="bg-ink text-paper">
-        <div className="wrap grid gap-y-8 py-[clamp(4rem,8vw,7rem)] md:grid-cols-12 md:gap-x-8">
-          <div className="flex flex-col items-start gap-6 md:col-span-8">
-            <h2 id="sponsor-cta" className="max-w-[16ch] font-display text-h1">
-              {sponsors.ctaTitle}
-            </h2>
-            <a href={mailto(`${site.name}: partnership`)} className="link font-display text-h3 [overflow-wrap:anywhere]">
-              {site.links.email}
-            </a>
-          </div>
-          <div className="md:col-span-4 md:self-end">
-            <h3 className="mb-4 text-small text-mist">{site.partner.logosLabel}</h3>
-            {logos.length > 0 ? (
-              <ul className="flex flex-wrap items-center gap-x-10 gap-y-6">
-                {logos.map((p) => (
-                  <li key={p.name}>
-                    <Image
-                      src={p.logo.src}
-                      alt={p.logo.alt || p.name}
-                      width={p.logo.width}
-                      height={p.logo.height}
-                      unoptimized={p.logo.src.endsWith(".svg")}
-                      className="h-8 w-auto brightness-0 invert"
-                    />
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>{sponsors.logosEmpty}</p>
-            )}
-          </div>
-        </div>
-      </section>
+      {/* Then the case for meeting founders early, in a dark band like About's "Presented by NGEN" */}
+      <MetricsBand
+        id="metrics-title"
+        title={sponsors.evidenceTitle}
+        lead={sponsors.evidenceLead}
+        figures={sponsors.evidence}
+      />
     </>
   );
 }
