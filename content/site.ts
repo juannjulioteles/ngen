@@ -659,8 +659,9 @@ export const pages: PagesContent = {
     conferenceTitle: "About the conference",
     conference: [
       "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
-      "Three years ago, NGEN, the Ivy League entrepreneurship network, opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired. Our alumni have since raised over $30M, earned backing from Y Combinator, a16z, and Techstars, and led their startups to acquisition. Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every\u00a0year.",
-      "Past speakers include Geoff Ralston (President Emeritus, Y Combinator), Tom Gardner (Co-Founder & CEO, The Motley Fool) and Seema Hingorani (Founder, Girls Who Invest).",
+      "Three years ago, NGEN, the Ivy League entrepreneurship network, opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired. Our alumni have since raised over $30M, earned backing from Y Combinator, a16z, and Techstars, and led their startups to\u00a0acquisition.",
+      // Geoff Ralston is on TIME's 2026 TIME100 AI list; Howard Morgan co-founded First Round Capital.
+      "Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every year. Previously, our stage has welcomed Geoff Ralston, President Emeritus of Y Combinator and named one of TIME’s 100 most influential people in AI; Howard Morgan, co-founder of First Round Capital; Seema Hingorani, founder of Girls Who Invest; and\u00a0more.",
     ],
     photos: [
       { image: null, caption: "A speaker on stage at Trailblazers, New York" },

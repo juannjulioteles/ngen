@@ -67,9 +67,8 @@ export default function AboutPage() {
       <MetricsBand
         id="numbers-title"
         title={numbers.title}
-        lead={numbers.close}
         figures={numbers.figures}
-        statement={numbers.closeNote}
+        close={{ turn: numbers.close, answer: numbers.closeNote }}
       />
 
       {photos.length > 0 && (
