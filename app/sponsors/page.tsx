@@ -84,14 +84,6 @@ export default function SponsorsPage() {
         }
       />
 
-      {/* The metrics in the page's one green band, right after the header */}
-      <MetricsBand
-        id="metrics-title"
-        title={sponsors.evidenceTitle}
-        lead={sponsors.evidenceLead}
-        figures={sponsors.evidence}
-      />
-
       <PageSection id="why-title" title={sponsors.reasonsTitle}>
         <ul className="rule border-b">
           {sponsors.reasons.map((r) => (
@@ -103,11 +95,18 @@ export default function SponsorsPage() {
         </ul>
       </PageSection>
 
-      {/* Proof right after the reasons: who has backed NGEN events, then where speakers and alumni come from */}
+      {/* The metrics in the page's one green band, after the reasons */}
+      <MetricsBand
+        id="metrics-title"
+        title={sponsors.evidenceTitle}
+        lead={sponsors.evidenceLead}
+        figures={sponsors.evidence}
+      />
+
+      {/* Then the proof: who has backed NGEN events, then where speakers and alumni come from */}
       <PageSection
         id="supporters-title"
         title={sponsors.supportersTitle}
-        className="pt-0"
         aside={<p className="text-small text-graphite">{sponsors.supportersNote}</p>}
       >
         <LogoGrid brands={sponsors.supporters} />
