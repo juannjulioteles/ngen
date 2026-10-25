@@ -12,6 +12,7 @@ export const metadata: Metadata = { title: "About", description: about.intro };
 export default function AboutPage() {
   const photos = about.photos.filter((p) => p.image);
   const [leadStat, ...moreStats] = about.ngenStats;
+  const [mission, story, ...vision] = about.conference;
 
   return (
     <>
@@ -49,14 +50,17 @@ export default function AboutPage() {
       />
 
       <PageSection id="conference-title" title={about.conferenceTitle}>
-        {/* The lead runs the full column; the rest splits into two so lines stay readable */}
-        <p className="font-display text-h2 lg:[text-wrap:pretty]">{about.conference[0]}</p>
+        {/* The lead runs the full column; below it the story on the left, the vision and who has spoken on the right */}
+        <p className="font-display text-h2 lg:[text-wrap:pretty]">{mission}</p>
         <div className="mt-10 grid gap-x-10 gap-y-6 border-t border-ink/10 pt-8 lg:grid-cols-2">
-          {about.conference.slice(1).map((p) => (
-            <p key={p} className="text-lead text-graphite">
-              {p}
-            </p>
-          ))}
+          <p className="text-lead text-graphite">{story}</p>
+          <div className="flex flex-col gap-6">
+            {vision.map((p) => (
+              <p key={p} className="text-lead text-graphite">
+                {p}
+              </p>
+            ))}
+          </div>
         </div>
       </PageSection>
 

@@ -630,18 +630,18 @@ export const pages: PagesContent = {
     // TBD: set the real publication date.
     date: "October 5, 2026",
     title: "The next great founders are still taking meetings.",
+    // Rewritten to the vision (Oct 24, 2026): the figures, the gap, the story and the mission, in Juan's words.
     body: [
       "Somewhere in a dorm room tonight, someone is building the company everyone will be talking about in ten years.",
-      "Right now, they still answer their own email.",
-      "In a few years, they won’t. Their calendars will fill. Their rounds will close before most people hear about them. The window to meet them, help them and back them early will have passed.",
-      "Most people only notice founders once they’re already too big to reach.",
-      "Three years ago, NGEN started the Trailblazers Conference: an intimate gathering in New York where student founders could sit across the table from the operators and investors they wanted to learn from.",
-      "Since then, NGEN has run more than 20 events, treks and pitch competitions. Founders who came through have earned backing from Y Combinator, a16z and Techstars, raised more than $30M, and led their startups to acquisition. Past speakers include Geoff Ralston, Howard Morgan, Tom Gardner and Seema Hingorani.",
+      "The eight Ivy League schools produce 13.8% of unicorn founders. When these students build, they build big. In fact, they’re three times more likely to build a billion\u2011dollar company.",
+      "Yet few of them ever meet the people who have built at the scale they’re aiming for. One conversation at the right moment can shape who a founder\u00a0becomes.",
+      "Three years ago, NGEN, the Ivy League entrepreneurship network, opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired.",
+      "Our alumni have since raised over $30M, earned backing from Y Combinator, a16z, and Techstars, and led their startups to acquisition. Past speakers include Geoff Ralston, Howard Morgan, Tom Gardner and Seema\u00a0Hingorani.",
       "Today, we’re announcing what comes next.",
-      "The Ivy League Entrepreneurship Conference is Trailblazers, reborn on a larger stage. Invite-only and held in New York City, it connects world-class student entrepreneurs with today’s most influential leaders, face to face.",
-      "It is deliberately small: a room built for real conversations, not a hall where business cards change hands.",
-      "For student founders, it’s a seat across from the people who can change the course of a company. For investors, operators and partners, it’s the chance to meet the next generation while they still take every meeting.",
-      "The conference takes place on April\u00a017,\u00a02027. Invitations can be requested today.",
+      "Trailblazers is reborn on a larger stage as the Ivy League Entrepreneurship Conference, held at a different Ivy League school every\u00a0year.",
+      "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face. It is deliberately small: a room built for real conversations, not a hall where business cards change\u00a0hands.",
+      "For the leaders in that room, your story, including the hard\u2011won lessons and near\u2011quits, can inspire them to see their vision through. For partners, it’s a place in the room where it\u00a0starts.",
+      "The first edition takes place on April\u00a017,\u00a02027, in New\u00a0York\u00a0City. Invitations can be requested today.",
       "The next great founder is already building. Come meet them.",
     ],
     signature: "The NGEN team",
@@ -661,7 +661,8 @@ export const pages: PagesContent = {
     conferenceTitle: "About the conference",
     conference: [
       "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
-      "Three years ago, NGEN opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired. Our alumni have since raised over $30M, earned backing from Y Combinator, a16z and Techstars, and led their startups to acquisition. Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every year.",
+      "Three years ago, NGEN, the Ivy League entrepreneurship network, opened the Trailblazers Conference in New York: an intimate room where student founders met the operators and investors they most admired. Our alumni have since raised over $30M, earned backing from Y Combinator, a16z, and Techstars, and led their startups to acquisition. Now, Trailblazers is reborn on a larger stage, held at a different Ivy League school every\u00a0year.",
+      "The eight Ivy League schools produce 13.8% of unicorn founders. When these students build, they build big. In fact, they’re three times more likely to build a billion\u2011dollar company. Yet few of them ever meet the people who have built at the scale they’re aiming for. One conversation at the right moment can shape who a founder\u00a0becomes.",
       "Past speakers include Geoff Ralston (President Emeritus, Y Combinator), Tom Gardner (Co-Founder & CEO, The Motley Fool) and Seema Hingorani (Founder, Girls Who Invest).",
     ],
     photos: [
@@ -766,7 +767,7 @@ export const pages: PagesContent = {
     intro:
       "Put your brand in front of Ivy League student founders and the investors and operators who show up for them.",
     figures: [
-      { value: "$30M+", label: "raised by founders who came through NGEN’s events, backed by Y Combinator, a16z, and Techstars." },
+      { value: "$30M+", label: "raised by our alumni, backed by Y Combinator, a16z, and Techstars." },
       { value: "$150K", label: "pitch competition, in partnership with Honors Fund and Mercury" },
     ],
     supportersTitle: "Past supporters",
@@ -789,9 +790,14 @@ export const pages: PagesContent = {
     firmsLabel: "Past speakers and alumni backers from",
     reasonsTitle: "Why partner",
     evidenceTitle: "Great companies start early. Those who meet founders first grow with\u00a0them.",
-    // Same figures, wording and sources as the sponsorship deck. About 50%: YC partner Kat Manalac,
+    // Same figures, wording and sources as the sponsorship deck. 3x: as on the home page. About 50%: YC partner Kat Manalac,
     // on the founding teams of YC companies valued over $100M. Nearly 50%: the Fed's review of SVB.
     evidence: [
+      {
+        value: "3x",
+        label: "Founders from Ivy League schools are three times more likely to build a billion\u2011dollar\u00a0company.",
+        source: "13.8% of unicorn founders (SignalFire) against 3.8% of venture-backed founders (PitchBook,\u00a02025)",
+      },
       {
         value: "About 50%",
         label: "of the founding teams behind Y\u00a0Combinator startups first met in\u00a0school.",
