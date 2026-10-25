@@ -22,6 +22,8 @@ export const VINE_DRAW_DURATION = 0.2 + 1.5 + 0.6;
 type IvyVineProps = {
   /** Draw the stem, unfurl the leaves, then sway. */
   animate?: boolean;
+  /** Draw once its <InView> wrapper scrolls into view, for vines below the fold. */
+  drawOnView?: boolean;
   /** Continuous sway. Defaults to `animate`. */
   sway?: boolean;
   /** Seconds to wait before the sequence starts. */
@@ -41,7 +43,8 @@ type IvyVineProps = {
  */
 export function IvyVine({
   animate = false,
-  sway = animate,
+  drawOnView = false,
+  sway = animate || drawOnView,
   delay = 0,
   label,
   className,
@@ -50,6 +53,7 @@ export function IvyVine({
   const classes = [
     styles.root,
     animate && styles.drawing,
+    drawOnView && styles.onView,
     sway && styles.swaying,
     className,
   ]
@@ -70,7 +74,7 @@ export function IvyVine({
       {LEAVES.map((leaf, i) => {
         const m = LEAF_MOTION[i];
         const [x, y] = leaf.origin;
-        const swayDelay = animate ? delay + m.delay + UNFURL_DURATION + 0.2 : i * 0.4;
+        const swayDelay = animate || drawOnView ? delay + m.delay + UNFURL_DURATION + 0.2 : i * 0.4;
         return (
           <g key={leaf.id} transform={`translate(${x} ${y})`}>
             <g

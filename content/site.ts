@@ -559,12 +559,8 @@ export type PagesContent = {
     /** Facts set beside the intro in the page header. */
     facts: { label: string; value: string }[];
     conferenceTitle: string;
-    /** The conference's own bio, set for scanning: the mission, then the story as figure rows. */
-    conference: {
-      mission: string;
-      story: { value: string; text: string }[];
-      speakersTitle: string;
-    };
+    /** The conference's own line; the story, numbers and speakers come from the home sections. */
+    conference: { mission: string };
     /** TBD: event photos. The block is hidden until one has an image. */
     photos: Photo[];
     ngenTitle: string;
@@ -663,21 +659,6 @@ export const pages: PagesContent = {
     conferenceTitle: "About the conference",
     conference: {
       mission: "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face.",
-      story: [
-        {
-          value: "Trailblazers",
-          text: "Three years ago, NGEN opened the Trailblazers Conference in New\u00a0York: an intimate room where student founders met the operators and investors they most\u00a0admired.",
-        },
-        {
-          value: "$30M+",
-          text: "raised by our alumni since, who earned backing from Y Combinator, a16z, and Techstars and led their startups to\u00a0acquisition.",
-        },
-        {
-          value: "Now",
-          text: "Trailblazers is reborn on a larger stage, held at a different Ivy League school every\u00a0year.",
-        },
-      ],
-      speakersTitle: "Past speakers",
     },
     photos: [
       { image: null, caption: "A speaker on stage at Trailblazers, New York" },

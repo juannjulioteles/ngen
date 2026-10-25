@@ -450,6 +450,19 @@ html[data-intro="play"] .intro-count {
   }
 }
 
+/* The same count, for figures below the fold: they count up the first time
+   their <InView> wrapper scrolls in (the metrics bands on About and Sponsors) */
+.count-up {
+  --count: var(--to);
+  counter-reset: figure var(--count);
+}
+.count-up::after {
+  content: var(--pre) counter(figure) var(--post);
+}
+[data-in] .count-up {
+  animation: count 1.4s cubic-bezier(0.25, 0.8, 0.3, 1) var(--d, 0s) both;
+}
+
 /* Montage: the frame holds while the names cut hard, one per beat */
 html[data-intro="play"] .intro-montage {
   animation-name: hold;

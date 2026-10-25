@@ -83,3 +83,31 @@
     animation: none;
   }
 }
+
+/* 7. Below the fold: hidden until its <InView> wrapper scrolls in, then the
+   same draw and unfurl, whatever the launch sequence did. */
+.onView .stem {
+  stroke-dasharray: 1 2;
+  stroke-dashoffset: 1;
+}
+.onView .unfurl {
+  transform: scale(0) rotate(var(--leaf-from));
+}
+:global([data-in]) .onView .stem {
+  animation: draw 1.5s cubic-bezier(0.55, 0.05, 0.3, 1) calc(var(--vine-delay) + 0.2s) forwards;
+}
+:global([data-in]) .onView .unfurl {
+  animation: unfurl 0.9s cubic-bezier(0.2, 1.35, 0.4, 1) calc(var(--vine-delay) + var(--leaf-delay))
+    forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .onView .stem {
+    animation: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+  .onView .unfurl {
+    animation: none;
+    transform: none;
+  }
+}
