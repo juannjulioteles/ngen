@@ -22,16 +22,9 @@ const domain = (href: string) => new URL(href).hostname.replace(/^www\./, "");
 export default function PressPage() {
   return (
     <article className="bg-stone text-ink">
-      {/* Greyscale at rest, colour on hover, like every people photo on the site */}
-      <div className="group relative h-[clamp(18rem,41vw,37rem)] w-full overflow-hidden bg-stone-2">
-        <Image
-          src={photo.src}
-          alt={photo.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[50%_55%] grayscale transition-[filter] duration-700 ease-out group-hover:grayscale-0"
-        />
+      {/* Greyscale, and it stays grey: no colour on hover here */}
+      <div className="relative h-[clamp(18rem,41vw,37rem)] w-full overflow-hidden bg-stone-2">
+        <Image src={photo.src} alt={photo.alt} fill priority sizes="100vw" className="object-cover object-[50%_55%] grayscale" />
         {/* A soft stone fade under the nav, so the wordmark reads over the busy ceiling */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-linear-to-b from-stone/85 to-transparent" />
       </div>
