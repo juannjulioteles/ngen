@@ -4,34 +4,23 @@ import { pages, site } from "@/content/site";
 import { NgenMark, withNgen } from "@/components/brand/Ngen";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
-import { SpeakerGrid } from "@/components/sections/Speakers";
+import { Journey } from "@/components/sections/Journey";
+import { MetricsBand } from "@/components/sections/MetricsBand";
+import { SpeakersPreview } from "@/components/sections/Speakers";
 
 const { about } = pages;
 const { numbers } = site;
 
-/** One figure or name on the left, one sentence (and its source) on the right, on Sponsors' columns. */
-function Rows({ rows }: { rows: { value: string; label: string; source?: string }[] }) {
-  return (
-    <dl className="flex flex-col gap-y-8">
-      {rows.map((row) => (
-        <div key={row.value} className="grid gap-x-8 gap-y-2 lg:grid-cols-[1fr_minmax(0,22rem)] lg:items-center">
-          <dt className="font-display text-[clamp(3rem,5vw,4rem)] leading-none">{row.value}</dt>
-          <dd className="flex flex-col gap-2">
-            <span className="text-base [text-wrap:pretty]">{withNgen(row.label)}</span>
-            {row.source && <span className="text-small text-graphite [text-wrap:pretty]">{row.source}</span>}
-          </dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
-
 export const metadata: Metadata = { title: "About", description: about.intro };
 
+/**
+ * One section per idea, each with its own visual: the mission, the story as
+ * the pinned scroll, the numbers in the green band, the people who have
+ * spoken, and NGEN.
+ */
 export default function AboutPage() {
   const photos = about.photos.filter((p) => p.image);
   const [leadStat, ...moreStats] = about.ngenStats;
-  const { conference } = about;
 
   return (
     <>
@@ -69,24 +58,21 @@ export default function AboutPage() {
       />
 
       <PageSection id="conference-title" title={about.conferenceTitle}>
-        {/*
-          Set for people who scroll: the mission, then the story and the numbers as figure rows,
-          the gap they show, and the faces of who has spoken.
-        */}
-        <p className="font-display text-h2 lg:[text-wrap:pretty]">{conference.mission}</p>
-        <div className="mt-10 border-t border-ink/10 pt-10">
-          <Rows rows={conference.story.map((s) => ({ value: s.value, label: s.text }))} />
-        </div>
-        <div className="mt-10 border-t border-ink/10 pt-10">
-          <Rows rows={numbers.figures} />
-          <div className="mt-10 grid gap-x-8 gap-y-3 lg:grid-cols-[1fr_minmax(0,22rem)] lg:items-center">
-            <p className="font-display text-h3">{numbers.close}</p>
-            <p className="text-base text-graphite [text-wrap:pretty]">{numbers.closeNote}</p>
-          </div>
-        </div>
-        <h3 className="mt-14 mb-4 text-small text-graphite">{conference.speakersTitle}</h3>
-        <SpeakerGrid items={site.speakers.items.filter((s) => s.headshot).slice(0, 4)} />
+        <p className="font-display text-h2 lg:[text-wrap:pretty]">{about.conference.mission}</p>
       </PageSection>
+
+      {/* The story, as on home: the pinned panel holds while the three steps scroll past */}
+      <Journey showMore={false} />
+
+      <MetricsBand
+        id="numbers-title"
+        title={numbers.title}
+        lead={numbers.close}
+        figures={numbers.figures}
+        statement={numbers.closeNote}
+      />
+
+      <SpeakersPreview />
 
       {photos.length > 0 && (
         <section aria-label="Photos" className="wrap py-[clamp(4rem,8vw,7rem)]">

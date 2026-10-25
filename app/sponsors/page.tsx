@@ -4,6 +4,7 @@ import { pages, site, type BrandMention } from "@/content/site";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { PageHero } from "@/components/layout/PageHero";
 import { PageSection } from "@/components/layout/PageSection";
+import { MetricsBand } from "@/components/sections/MetricsBand";
 
 const { sponsors } = pages;
 
@@ -83,30 +84,13 @@ export default function SponsorsPage() {
         }
       />
 
-      {/*
-        The metrics in a band of their own, right after the header: the headline on the left, its
-        line on the right where the third figure starts, then the three figures side by side.
-      */}
-      <section aria-labelledby="metrics-title" className="border-y border-ink/8 bg-stone-2">
-        <div className="wrap py-[clamp(4rem,8vw,7rem)]">
-          <div className="grid gap-x-8 gap-y-4 lg:grid-cols-12 lg:items-end">
-            <h2 id="metrics-title" className="font-display text-h2 lg:col-span-8">
-              {sponsors.evidenceTitle}
-            </h2>
-            <p className="text-lead text-graphite lg:col-span-4">{sponsors.evidenceLead}</p>
-          </div>
-          <dl className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-3">
-            {sponsors.evidence.map((e) => (
-              <div key={e.value} className="border-t border-ink/15 pt-5">
-                <dt className="sr-only">{e.label}</dt>
-                <dd className="font-display text-[clamp(3rem,5vw,4rem)] leading-none">{e.value}</dd>
-                <dd className="mt-3 text-base [text-wrap:pretty]">{e.label}</dd>
-                <dd className="mt-2 text-small text-graphite [text-wrap:pretty]">{e.source}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
+      {/* The metrics in the page's one green band, right after the header */}
+      <MetricsBand
+        id="metrics-title"
+        title={sponsors.evidenceTitle}
+        lead={sponsors.evidenceLead}
+        figures={sponsors.evidence}
+      />
 
       <PageSection id="why-title" title={sponsors.reasonsTitle}>
         <ul className="rule border-b">
