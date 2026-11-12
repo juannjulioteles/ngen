@@ -28,6 +28,8 @@ export function formatVenue(): string | null {
 
 export const eventDateLabel = formatEventDate() ?? labels.dateTbd;
 export const eventVenueLabel = formatVenue() ?? labels.venueTbd;
+/** The city alone, for the hero ticket: its narrow cell would wrap a full venue name over four lines. */
+export const eventCityLabel = event.city ?? eventVenueLabel;
 
 export type CountdownParts = {
   days: number;

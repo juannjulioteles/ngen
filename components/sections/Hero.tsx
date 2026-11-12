@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { site } from "@/content/site";
-import { eventDateLabel, eventVenueLabel } from "@/lib/event";
+import { eventCityLabel, eventDateLabel } from "@/lib/event";
 import { IvyVine } from "@/components/brand/IvyVine";
 import { LaunchBars, ReplayLaunch } from "@/components/launch/LaunchControls";
 import { T, timelineCss } from "@/components/launch/timeline";
@@ -86,7 +86,7 @@ export function Hero() {
                 </div>
                 <div>
                   <dt className="text-graphite">{hero.venueLabel}</dt>
-                  <dd className="font-medium">{eventVenueLabel}</dd>
+                  <dd className="font-medium">{eventCityLabel}</dd>
                 </div>
               </dl>
               <div className="relative flex items-center justify-between gap-4 border-t border-dashed border-ink/25 px-6 py-4">

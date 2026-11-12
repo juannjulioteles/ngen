@@ -189,10 +189,10 @@ export const site: SiteContent = {
 
   event: {
     // The date is set; the start time is TBD (noon keeps the date right in any time zone).
-    startsAt: "2027-04-17T12:00:00-04:00",
+    startsAt: "2027-04-18T12:00:00-04:00",
     timeZone: "America/New_York",
-    // TBD: venue. The city is set.
-    venue: null,
+    // Confirmed Nov 12, 2026: Lerner Rooms 568 and 569 in Alfred Lerner Hall.
+    venue: "Alfred Lerner Hall, Columbia University",
     city: "New York City",
   },
 
@@ -493,7 +493,7 @@ export const site: SiteContent = {
 
   attend: {
     title: "Attend",
-    body: "The conference is invite-only: student entrepreneurs request an invite to attend. It takes place on April\u00a017,\u00a02027, in New\u00a0York\u00a0City, and invitations arrive by email.",
+    body: "The conference is invite-only: student entrepreneurs request an invite to attend. It takes place on April\u00a018,\u00a02027, in New\u00a0York\u00a0City, and invitations arrive by email.",
     dateLabel: "Date",
     venueLabel: "Location",
     cta: "Contact",
@@ -633,7 +633,7 @@ export const pages: PagesContent = {
       "Trailblazers is reborn on a larger stage as the Ivy League Entrepreneurship Conference, held at a different Ivy League school every\u00a0year.",
       "Our mission is clear: an invite\u2011only conference where world\u2011class student entrepreneurs meet today’s most influential leaders face\u2011to\u2011face. It is deliberately small: a room built for real conversations, not a hall where business cards change\u00a0hands.",
       "For the leaders in that room, your story, including the hard\u2011won lessons and near\u2011quits, can inspire them to see their vision through. For partners, it’s a place in the room where it\u00a0starts.",
-      "The first edition takes place on April\u00a017,\u00a02027, in New\u00a0York\u00a0City. Invitations can be requested today.",
+      "The first edition takes place on April\u00a018,\u00a02027, at Alfred Lerner Hall, Columbia University, in New\u00a0York\u00a0City. Invitations can be requested today.",
       "The next great founder is already building. Come meet them.",
     ],
     signature: "The NGEN team",
