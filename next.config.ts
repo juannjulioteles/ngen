@@ -10,7 +10,16 @@ const nextConfig: NextConfig = {
   },
   // The invite page was retired; invitations are requested through Contact.
   async redirects() {
-    return [{ source: "/invite", destination: "/contact", permanent: true }];
+    return [
+      { source: "/invite", destination: "/contact", permanent: true },
+      // Send the old Vercel address to the real domain, keeping the path.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "ngen-five.vercel.app" }],
+        destination: "https://ivyleagueconference.org/:path*",
+        permanent: true,
+      },
+    ];
   },
 };
 
