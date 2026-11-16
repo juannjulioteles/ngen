@@ -368,7 +368,7 @@ export const site: SiteContent = {
       },
       {
         name: "Series",
-        badge: "$8.2M raised",
+        badge: "$5.1M raised",
         description: "AI-powered social network matching founders and mentors.",
         photo: { src: "https://www.ngennetwork.org/team-photos/series-photo.png", alt: "The Series founders", width: 870, height: 840 },
         logo: { src: "https://www.ngennetwork.org/logos/startups/series-logo.png", alt: "Series", width: 453, height: 315 },
