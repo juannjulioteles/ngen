@@ -8,6 +8,7 @@ import { PageLink } from "@/components/ui/PageLink";
 import { DaysAway } from "./DaysAway";
 import { Ticket } from "./Ticket";
 import { Ngen, withNgen } from "@/components/brand/Ngen";
+import { StatCount } from "@/components/motion/StatCount";
 
 const { hero, strip } = site;
 const { launch } = hero;
@@ -109,20 +110,16 @@ export function Hero() {
         <p className="intro-frame intro-studio font-display text-[1.5rem]" style={vars({ "--at": `${T.studio}s` })}>
           {launch.studio}
         </p>
-        {launch.frames.map((f, i) => {
-          // "$30M" counts up as "$", 0→30, "M"
-          const [, pre = "", num = "0", post = ""] = f.figure.match(/^(\D*)(\d+)(\D*)$/) ?? [];
-          return (
-            <div key={f.figure} className="intro-frame" style={vars({ "--at": `${T.cuts[i]}s` })}>
-              <span
-                className="intro-count tabular font-display text-[clamp(7rem,26vw,19rem)] leading-[0.85]"
-                style={vars({ "--to": Number(num), "--pre": JSON.stringify(pre), "--post": JSON.stringify(post) })}
-              />
-              <span className="intro-rule" />
-              <span className="max-w-[26ch] text-lead text-balance text-paper/80">{f.caption}</span>
-            </div>
-          );
-        })}
+        {launch.frames.map((f, i) => (
+          <div key={f.figure} className="intro-frame" style={vars({ "--at": `${T.cuts[i]}s` })}>
+            <StatCount
+              value={f.figure}
+              className="intro-count tabular font-display text-[clamp(7rem,26vw,19rem)] leading-[0.85]"
+            />
+            <span className="intro-rule" />
+            <span className="max-w-[26ch] text-lead text-balance text-paper/80">{f.caption}</span>
+          </div>
+        ))}
         <div className="intro-frame intro-montage" style={vars({ "--at": `${T.montage}s` })}>
           <span className="text-lead text-paper/70">{launch.montageLabel}</span>
           <span className="intro-rule" />
