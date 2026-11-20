@@ -86,8 +86,9 @@ export function playScore(offset = 0, montageCount = 7): (() => void) | null {
     const steps = 9;
     for (let k = 0; k < steps; k++) {
       // Ease-out spacing, like the count: quick at first, settling at the end.
+      // The run starts when the figure is sharp, with the count itself.
       const u = 1 - (1 - k / (steps - 1)) ** 2;
-      tick(at(t + 0.04 + u * (T.countLength - 0.06)), 1400 + k * 90, 0.05);
+      tick(at(t + T.countDelay + u * (T.countLength - 0.06)), 1400 + k * 90, 0.05);
     }
   });
 

@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { IvyVine } from "@/components/brand/IvyVine";
 import { VineCorner } from "@/components/brand/VineCorner";
 import { InView } from "@/components/motion/InView";
+import { StatCount } from "@/components/motion/StatCount";
 
 type Figure = { value: string; label: string; source?: string };
 
@@ -77,26 +78,13 @@ export function MetricsBand({
           {head}
           <div className={`relative mt-12 grid gap-x-8 gap-y-10 ${figures.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
             {figures.map((f, i) => {
-              // "About 50%" counts up as "About ", 0→50, "%"; "13.8%" as 0→13, ".8%" (CSS counters are whole numbers)
-              const [, pre = "", num = "0", post = ""] = f.value.match(/^(\D*)(\d+)(.*)$/) ?? [];
               const d = `${0.25 + i * 0.15}s`;
               return (
                 <dl key={f.value} className="reveal border-t border-paper/25 pt-5" style={{ "--d": d } as CSSProperties}>
                   <dt className="sr-only">{f.label}</dt>
                   <dd className="font-display text-[clamp(3rem,5vw,4rem)] leading-none">
                     <span className="sr-only">{f.value}</span>
-                    <span
-                      aria-hidden="true"
-                      className="count-up tabular"
-                      style={
-                        {
-                          "--to": Number(num),
-                          "--pre": JSON.stringify(pre),
-                          "--post": JSON.stringify(post),
-                          "--d": d,
-                        } as CSSProperties
-                      }
-                    />
+                    <StatCount aria-hidden value={f.value} className="count-up tabular" />
                   </dd>
                   <dd className="mt-3 text-base text-paper/90 [text-wrap:pretty]">{f.label}</dd>
                   {f.source && <dd className="mt-2 text-small text-paper/70 [text-wrap:pretty]">{f.source}</dd>}

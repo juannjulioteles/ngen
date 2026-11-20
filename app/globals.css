@@ -425,21 +425,46 @@ html[data-intro="play"] .intro-turn {
   animation-name: card;
   animation-duration: var(--t-turn-length);
 }
-/* Figures count up: an integer custom property drives a CSS counter */
+/* Figures count up: an integer custom property drives a CSS counter.
+   The digit box is the width of the final number (a hidden copy of it), so
+   the prefix and suffix stay put. Caslon has no tabular figures, so a `ch`
+   slot would leave a gap. */
 @property --count {
   syntax: "<integer>";
   inherits: false;
   initial-value: 0;
 }
-.intro-count {
+.intro-count,
+.count-up {
+  display: inline-flex;
+  align-items: baseline;
+}
+.stat-affix {
+  white-space: pre;
+}
+.stat-digits {
+  display: inline-grid;
+  justify-items: end;
+}
+.stat-sizer,
+.stat-num {
+  grid-area: 1 / 1;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.stat-sizer {
+  visibility: hidden;
+}
+.stat-num {
   --count: var(--to);
   counter-reset: figure var(--count);
 }
-.intro-count::after {
-  content: var(--pre) counter(figure) var(--post);
+.stat-num::after {
+  content: counter(figure);
 }
-html[data-intro="play"] .intro-count {
-  animation: count var(--t-count-length) cubic-bezier(0.25, 0.8, 0.3, 1) var(--at) both;
+/* The cut is still blurred for its first 12%. Wait until the figure is sharp,
+   then ease from 0 to the final value. Backwards fill keeps it on 0 until then. */
+html[data-intro="play"] .intro-count .stat-num {
+  animation: count var(--t-count-length) cubic-bezier(0.25, 0.8, 0.3, 1) calc(var(--at) + var(--t-count-delay)) both;
 }
 @keyframes count {
   from {
@@ -452,15 +477,8 @@ html[data-intro="play"] .intro-count {
 
 /* The same count, for figures below the fold: they count up the first time
    their <InView> wrapper scrolls in (the metrics bands on About and Sponsors) */
-.count-up {
-  --count: var(--to);
-  counter-reset: figure var(--count);
-}
-.count-up::after {
-  content: var(--pre) counter(figure) var(--post);
-}
-[data-in] .count-up {
-  animation: count 1.4s cubic-bezier(0.25, 0.8, 0.3, 1) var(--d, 0s) both;
+[data-in] .count-up .stat-num {
+  animation: count 1.5s cubic-bezier(0.25, 0.8, 0.3, 1) var(--d, 0s) both;
 }
 
 /* Montage: the frame holds while the names cut hard, one per beat */
@@ -694,5 +712,10 @@ html[data-intro="play"] .intro-bars {
     animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  /* The final figure, immediately. A near-zero duration would still flash 0. */
+  .stat-num {
+    animation: none !important;
+    --count: var(--to);
   }
 }
